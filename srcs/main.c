@@ -3,25 +3,53 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
+/*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 14:00:34 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/10/22 15:34:00 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/10/23 19:53:15 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
 
-int	main(int argc, char **argv)
+//void	print_file(char *filename)
+//{
+//    int		fd;
+//    char	*line;
+
+//	fd = open(filename, O_RDONLY);
+//	if (fd < 0)
+//	{
+//		perror("open");
+//		return;
+//	}
+//	line = ft_gnl(fd);
+//	while (line != NULL)
+//	{
+//		ft_putstr_fd(line, 1);
+//		free(line);
+//		line = ft_gnl(fd);
+//	}
+//	ft_putchar_fd('\n', 1);
+//	close(fd);
+//}
+
+void	open_window(void)
 {
 	void	*mlx_ptr;
 	void	*mlx_win;
 
-	(void)argc;
-	(void)argv;
 	mlx_ptr = mlx_init();
 	mlx_win = mlx_new_window(mlx_ptr, 500, 500, "miniRT");
 	(void)mlx_win;
 	mlx_loop(mlx_ptr);
+}
+
+int	main(int ac, char **av)
+{
+	if (parsing(ac, av))
+		return (1);
+	//print_file(av[1]);
+	open_window();
 	return (0);
 }

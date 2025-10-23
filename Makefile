@@ -21,15 +21,16 @@ else
 endif
 
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -I$(MLX_DIR) -Iincludes
+CFLAGS = -Wall -Werror -Wextra -I$(MLX_DIR) -Iincludes -g
 
 SRC_DIR = srcs
 OBJ_DIR = objs
+DEPS_DIR = includes
 
-SRCS = main.c
+SRCS = main.c helpers/strings.c helpers/gnl.c parsing/parsing.c
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 
-DEPS = includes/miniRT.h
+DEPS = miniRT.h
 RM = rm -f
 
 all: $(NAME)
@@ -38,8 +39,8 @@ all: $(NAME)
 $(NAME): $(OBJS) $(MLX_LIB)
 	$(CC) $(OBJS) $(LD_FLAGS) -o $(NAME)
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(DEPS)
-	@mkdir -p $(OBJ_DIR)
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(DEPS_DIR)/$(DEPS)
+	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 

@@ -30,9 +30,6 @@ interface.o: mlx_image.swiftmodule mlx_window.swiftmodule mlx_init.swiftmodule
 %.o %.swiftmodule: %.swift
 	swiftc $(OPTI) $(INC) -I. -parse-as-library -emit-module -emit-module-path $(patsubst %.swift,%.swiftmodule,$<) -c $< -o $(patsubst %.swift,%.o,$<)
 
-
-
-
 clean:
 	rm -f $(NAME) $(OBJ) $(MODULE_OBJ) $(C_OBJ) *.swiftdoc *~
 
