@@ -3,24 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
+/*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 14:06:06 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/10/23 21:39:17 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/10/25 18:03:51 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIRT_H
 # define MINIRT_H
 
-#include <mlx.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <fcntl.h>
-
-# define BUFFER_SIZE 64
-
+# include "../libft/libft.h"
+# include <mlx.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <stdio.h>
+# include <fcntl.h>
 
 //base structs
 typedef struct s_point
@@ -89,19 +87,8 @@ typedef struct s_object
 }	t_object;
 
 
-
 //parsing
 int		parsing(int ac, char **av);
-
-
-//helper functions
-
-//strings
-void	ft_putchar_fd(char c, int fd);
-int		ft_strlen(char *str);
-void	ft_putstr_fd(char *s, int fd);
-char	*ft_strjoin(const char *s1, const char *s2);
-char	*ft_strdup(const char *s1);
 
 //get_next_line
 char	*ft_gnl(int fd);

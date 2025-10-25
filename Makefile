@@ -1,5 +1,8 @@
 NAME = miniRT
 
+LIBFT = libft.a
+LIBFT_DIR = libft
+
 MLX_DIR_LINUX = ./minilibx-linux
 MLX_LIB_LINUX = libmlx_Linux.a
 
@@ -21,13 +24,13 @@ else
 endif
 
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -I$(MLX_DIR) -Iincludes -g
+CFLAGS = -Wall -Werror -Wextra -I$(MLX_DIR) -Iincludes
 
 SRC_DIR = srcs
 OBJ_DIR = objs
 DEPS_DIR = includes
 
-SRCS = main.c helpers/strings.c helpers/gnl.c parsing/parsing.c
+SRCS = main.c parsing.c
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 
 DEPS = miniRT.h
@@ -36,13 +39,15 @@ RM = rm -f
 all: $(NAME)
 
 
-$(NAME): $(OBJS) $(MLX_LIB)
-	$(CC) $(OBJS) $(LD_FLAGS) -o $(NAME)
+$(NAME): $(OBJS) $(LIBFT) $(MLX_LIB)
+	$(CC) $(OBJS) $(LIBFT_DIR)/$(LIBFT) $(LD_FLAGS) -o $(NAME)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(DEPS_DIR)/$(DEPS)
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@
 
+$(LIBFT):
+	cd $(LIBFT_DIR) ; make
 
 $(MLX_LIB):
 ifeq ($(OS), Linux)
@@ -69,6 +74,7 @@ clean:
 fclean: clean
 	$(RM) $(NAME)
 	$(RM) $(MLX_LIB)
+	cd $(LIBFT_DIR) ; make fclean > /dev/null
 
 re: fclean all
 
