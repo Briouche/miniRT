@@ -6,7 +6,7 @@
 /*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 12:15:29 by brcoppie          #+#    #+#             */
-/*   Updated: 2025/10/25 17:02:14 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/10/26 18:46:33 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,13 @@
 
 char	*ft_strdup(const char *s1)
 {
-	size_t	i;
 	char	*cpy;
+	size_t	len;
 
-	cpy = malloc(ft_strlen(s1) * sizeof(char) + 1);
+	len = ft_strlen(s1) + 1;
+	cpy = malloc((len) * sizeof(char));
 	if (!cpy)
 		return (NULL);
-	i = -1;
-	while (s1[++i])
-		cpy[i] = s1[i];
-	cpy[i] = '\0';
+	ft_memcpy(cpy, s1, len);
 	return (cpy);
 }

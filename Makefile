@@ -30,10 +30,12 @@ SRC_DIR = srcs
 OBJ_DIR = objs
 DEPS_DIR = includes
 
-SRCS = main.c parsing.c
+SRCS = main.c init_display.c render_image.c display_loop.c 
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 
-DEPS = miniRT.h
+DEPS = miniRT.h structures.h
+DEPS := $(addprefix $(DEPS_DIR)/, $(DEPS))
+
 RM = rm -f
 
 all: $(NAME)
@@ -42,9 +44,10 @@ all: $(NAME)
 $(NAME): $(OBJS) $(LIBFT) $(MLX_LIB)
 	$(CC) $(OBJS) $(LIBFT_DIR)/$(LIBFT) $(LD_FLAGS) -o $(NAME)
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(DEPS_DIR)/$(DEPS)
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(DEPS)
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@
+
 
 $(LIBFT):
 	cd $(LIBFT_DIR) ; make
@@ -55,7 +58,6 @@ ifeq ($(OS), Linux)
 else
 	$(MAKE) libx_mac
 endif
-
 
 libx_linux:
 	cd $(MLX_DIR_LINUX) ; make > /dev/null 2>&1

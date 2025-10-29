@@ -6,7 +6,7 @@
 /*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 12:15:29 by brcoppie          #+#    #+#             */
-/*   Updated: 2025/10/25 17:38:41 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/10/26 18:50:25 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	if (!s1 || !s2)
 		return (NULL);
 	len1 = ft_strlen(s1);
-	len2 = ft_strlen(s2);
-	str = malloc(len1 + len2 + 1);
+	len2 = ft_strlen(s2) + 1;
+	str = malloc((len1 + len2) * sizeof(char));
 	if (!str)
 		return (NULL);
 	ft_memcpy(str, s1, len1);
-	ft_memcpy(str + len1, s2, len2 + 1);
+	ft_memcpy(str + len1, s2, len2);
 	return (str);
 }

@@ -6,15 +6,15 @@
 /*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 16:22:35 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/10/25 17:58:52 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/10/29 11:21:59 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include <unistd.h>
-# include <stdlib.h>
+# include <unistd.h> // for write
+# include <stdlib.h> // for malloc
 
 # define BUFFER_SIZE 32
 
