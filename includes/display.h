@@ -6,7 +6,7 @@
 /*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 13:01:26 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/10/29 13:03:54 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/10/31 15:09:47 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,7 @@ typedef struct s_display
 	int		size_line;
 	int		endian;
 }	t_display;
+
+void	put_pixel_to_image(t_display *display, int x, int y, t_vector *color);
 
 #endif

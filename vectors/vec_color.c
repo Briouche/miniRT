@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   multi_colors.c                                     :+:      :+:    :+:   */
+/*   vec_color.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/31 12:11:20 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/10/31 12:17:05 by fkrakow          ###   ########.fr       */
+/*   Created: 2025/10/31 11:59:55 by fkrakow           #+#    #+#             */
+/*   Updated: 2025/10/31 14:23:44 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "colors.h"
+#include "vectors.h"
 
-t_vector	multi_colors(t_vector *a, t_vector *b)
+t_vector	vec_color(double *red,  double *green, double *blue)
 {
-	return ((t_vector){a->x * b->x, a->y * b->y, a->z * b->z, 0});
+	return ((t_vector){*red, *green, *blue, 0});
 }

@@ -6,15 +6,14 @@
 /*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 09:04:26 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/10/31 12:01:44 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/10/31 14:23:31 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LAB_H
 # define LAB_H
 
-#include <unistd.h>
-#include <math.h>
+# include <math.h>
 
 typedef struct s_vector
 {
@@ -24,7 +23,12 @@ typedef struct s_vector
 	double	w;
 }	t_vector;
 
-t_vector	color(double *red,  double *green, double *blue);
+t_vector	add_colors(t_vector *a, t_vector *b);
+t_vector	multi_colors(t_vector *a, t_vector *b);
+t_vector	multi_scalar_colors(t_vector *a, double *n);
+t_vector	sub_colors(t_vector *a, t_vector *b);
+
+t_vector	vec_color(double *red,  double *green, double *blue);
 
 int			is_equal(t_vector *a, t_vector *b);
 int			is_point(t_vector *v);

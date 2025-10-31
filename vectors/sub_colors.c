@@ -6,11 +6,11 @@
 /*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 12:11:50 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/10/31 12:12:45 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/10/31 14:23:51 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "colors.h"
+#include "vectors.h"
 
 t_vector	sub_colors(t_vector *a, t_vector *b)
 {

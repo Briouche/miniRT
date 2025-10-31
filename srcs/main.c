@@ -6,7 +6,7 @@
 /*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 14:00:34 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/10/31 13:00:33 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/10/31 15:13:24 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,10 @@
 //	close(fd);
 //}
 
-int	cannon_ball(void);
-
 int	main(int ac, char **av)
 {
 	t_display	display;
 
-	printf("=========================================================\n");
-	printf("|=============== Chapter 1: CANNON BALL ================|\n");
-	cannon_ball();
 	(void)ac;
 	(void)av;
 	if (init_display(&display))
