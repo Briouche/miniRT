@@ -6,7 +6,7 @@
 /*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 14:00:34 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/10/23 19:53:15 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/10/31 13:59:08 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	open_window(void)
 
 int	main(int ac, char **av)
 {
-	if (parsing(ac, av))
+	if (parsing(ac, av[1]))
 		return (1);
 	//print_file(av[1]);
 	open_window();
