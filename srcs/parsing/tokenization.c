@@ -6,7 +6,7 @@
 /*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 15:12:05 by brcoppie          #+#    #+#             */
-/*   Updated: 2025/10/31 18:06:13 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/10/31 21:35:29 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,6 @@ char	**tokenize_line(int fd)
 
 int	parse_line(t_scene **scene, t_obj_list **objects, char **tokens)
 {
-	int	i;
-
-	i = 0;
 	if (!tokens || !tokens[0])
 		return (0);
 	else if (tokens[0][0] == 'C' && !tokens[0][1])

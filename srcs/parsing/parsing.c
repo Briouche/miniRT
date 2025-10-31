@@ -6,7 +6,7 @@
 /*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 12:52:56 by brcoppie          #+#    #+#             */
-/*   Updated: 2025/10/31 18:22:36 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/10/31 21:33:31 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,7 @@ void	init_scene(t_scene *scene)
 	scene->count.pl_count = 0;
 	scene->count.sp_count = 0;
 
-	scene->ambient_light = NULL;
-	scene->cam = NULL;
-	scene->light = NULL;
+	scene->objects = NULL;
 }
 
 int	parse_scene(t_scene **scene, char *filename)
