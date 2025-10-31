@@ -6,7 +6,7 @@
 /*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 14:06:06 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/10/29 13:35:32 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/10/31 12:48:53 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define MINIRT_H
 
 # include "../libft/libft.h"
+# include "../vectors/vectors.h"
 # include "display.h"
 
 # include <unistd.h>

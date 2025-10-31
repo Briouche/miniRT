@@ -3,6 +3,9 @@ NAME = miniRT
 LIBFT = libft.a
 LIBFT_DIR = libft
 
+VECTORS = vectors.a
+VECTORS_DIR = vectors
+
 MLX_DIR_LINUX = ./minilibx-linux
 MLX_LIB_LINUX = libmlx_Linux.a
 
@@ -30,7 +33,7 @@ SRC_DIR = srcs
 OBJ_DIR = objs
 DEPS_DIR = includes
 
-SRCS = main.c init_display.c render_image.c display_loop.c 
+SRCS = cannon_ball.c main.c init_display.c render_image.c display_loop.c 
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 
 DEPS = miniRT.h structures.h
@@ -41,8 +44,8 @@ RM = rm -f
 all: $(NAME)
 
 
-$(NAME): $(OBJS) $(LIBFT) $(MLX_LIB)
-	$(CC) $(OBJS) $(LIBFT_DIR)/$(LIBFT) $(LD_FLAGS) -o $(NAME)
+$(NAME): $(OBJS) $(LIBFT) $(VECTORS) $(MLX_LIB)
+	$(CC) $(OBJS) $(LIBFT_DIR)/$(LIBFT) $(VECTORS_DIR)/$(VECTORS) $(LD_FLAGS) -o $(NAME)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(DEPS)
 	@mkdir -p $(dir $@)
@@ -50,7 +53,10 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(DEPS)
 
 
 $(LIBFT):
-	cd $(LIBFT_DIR) ; make
+	cd $(LIBFT_DIR) ; make > /dev/null
+
+$(VECTORS):
+	cd $(VECTORS_DIR) ; make > /dev/null
 
 $(MLX_LIB):
 ifeq ($(OS), Linux)
@@ -72,11 +78,14 @@ libx_mac:
 
 clean:
 	$(RM) -r $(OBJ_DIR)
+	cd $(LIBFT_DIR) ; make clean > /dev/null
+	cd $(VECTORS_DIR) ; make clean > /dev/null
 
 fclean: clean
 	$(RM) $(NAME)
 	$(RM) $(MLX_LIB)
 	cd $(LIBFT_DIR) ; make fclean > /dev/null
+	cd $(VECTORS_DIR) ; make fclean > /dev/null
 
 re: fclean all
 
