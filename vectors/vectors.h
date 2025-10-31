@@ -6,12 +6,12 @@
 /*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 09:04:26 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/10/31 14:23:31 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/10/31 15:39:51 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LAB_H
-# define LAB_H
+#ifndef VECTORS_H
+# define VECTORS_H
 
 # include <math.h>
 
@@ -28,7 +28,7 @@ t_vector	multi_colors(t_vector *a, t_vector *b);
 t_vector	multi_scalar_colors(t_vector *a, double *n);
 t_vector	sub_colors(t_vector *a, t_vector *b);
 
-t_vector	vec_color(double *red,  double *green, double *blue);
+t_vector	vec_color(double *red, double *green, double *blue);
 
 int			is_equal(t_vector *a, t_vector *b);
 int			is_point(t_vector *v);
@@ -45,6 +45,5 @@ t_vector	op_plus(t_vector *a, t_vector *b);
 
 t_vector	point(double *x, double *y, double *z);
 t_vector	vector(double *x, double *y, double *z);
-
 
 #endif

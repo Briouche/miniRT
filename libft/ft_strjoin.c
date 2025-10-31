@@ -6,7 +6,7 @@
 /*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 12:15:29 by brcoppie          #+#    #+#             */
-/*   Updated: 2025/10/26 18:50:25 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/10/31 15:53:38 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 char	*ft_strjoin(const char *s1, const char *s2)
 {
-	char *str;
-	size_t len1;
-	size_t len2;
-	
+	char	*str;
+	size_t	len1;
+	size_t	len2;
+
 	if (!s1 || !s2)
 		return (NULL);
 	len1 = ft_strlen(s1);

@@ -6,7 +6,7 @@
 /*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 09:30:10 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/10/31 10:48:06 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/10/31 16:00:12 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 t_vector	vector(double *x, double *y, double *z)
 {
-	return ((t_vector){*x, *y, *z, 0.0});
+	return ((t_vector){(*x), *y, *z, 0});
 }
