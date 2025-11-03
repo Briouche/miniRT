@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenization.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
+/*   By: fkrakow <fkrakow@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 15:12:05 by brcoppie          #+#    #+#             */
-/*   Updated: 2025/10/31 21:35:29 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/11/03 15:47:12 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ char	**tokenize_line(int fd)
 
 int	parse_line(t_scene **scene, t_obj_list **objects, char **tokens)
 {
+	(void)objects;
 	if (!tokens || !tokens[0])
 		return (0);
 	else if (tokens[0][0] == 'C' && !tokens[0][1])
@@ -35,7 +36,7 @@ int	parse_line(t_scene **scene, t_obj_list **objects, char **tokens)
 		parse_ambient(scene, tokens);
 	else if (tokens[0][0] == 'L' && !tokens[0][1])
 		parse_light(scene, tokens);
-	else if (tokens[0][0] && tokens[0][1])
-		parse_objects(scene, objects, tokens);
+	// else if (tokens[0][0] && tokens[0][1])
+	// 	parse_objects(scene, objects, tokens);
 	return (1);
 }

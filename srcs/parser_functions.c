@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_functions.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
+/*   By: fkrakow <fkrakow@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 11:44:39 by brcoppie          #+#    #+#             */
-/*   Updated: 2025/10/31 21:59:00 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/11/03 15:29:36 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ int	parse_point(char *str, t_point *p)
 	if (!tokens)
 		return (0);
 	if (!tokens[0] || !tokens[1] || !tokens[2] || tokens[3])
-		return (ft_free_tab(tokens), 0);
-	p.x = ft_atod(tokens[0]);
-	p.y = ft_atod(tokens[1]);
-	p.z = ft_atod(tokens[2]);
-	if (p.x == -DBL_MAX || p.y == -DBL_MAX || p.z == -DBL_MAX)
-		return (ft_free_tab(tokens), 0);
-	ft_free_tab(tokens);
+		return (ft_free_tab(&tokens), 0);
+	p->x = ft_atod(tokens[0]);
+	p->y = ft_atod(tokens[1]);
+	p->z = ft_atod(tokens[2]);
+	if (p->x == -DBL_MAX || p->y == -DBL_MAX || p->z == -DBL_MAX)
+		return (ft_free_tab(&tokens), 0);
+	ft_free_tab(&tokens);
 	return (1);
 }
 
@@ -38,13 +38,13 @@ int	parse_vector(char *str, t_vec *v)
 	if (!tokens)
 		return (0);
 	if (!tokens[0] || !tokens[1] || !tokens[2] || tokens[3])
-		return (ft_free_tab(tokens), 0);
-	v.x = ft_atod(tokens[0]);
-	v.y = ft_atod(tokens[1]);
-	v.z = ft_atod(tokens[2]);
-	if (v.x == -DBL_MAX || v.y == -DBL_MAX || v.z == -DBL_MAX)
-		return (ft_free_tab(tokens), 0);
-	ft_free_tab(tokens);
+		return (ft_free_tab(&tokens), 0);
+	v->x = ft_atod(tokens[0]);
+	v->y = ft_atod(tokens[1]);
+	v->z = ft_atod(tokens[2]);
+	if (v->x == -DBL_MAX || v->y == -DBL_MAX || v->z == -DBL_MAX)
+		return (ft_free_tab(&tokens), 0);
+	ft_free_tab(&tokens);
 	return (1);
 }
 
@@ -56,11 +56,11 @@ int	parse_color(char *str, t_colors *colors)
 	if (!tokens)
 		return (0);
 	if (!tokens[0] || !tokens[1] || !tokens[2] || tokens[3])
-		return (ft_free_tab(tokens), 0);
+		return (ft_free_tab(&tokens), 0);
 	colors->R = ft_atoi(tokens[0]);
 	colors->G = ft_atoi(tokens[1]);
 	colors->B = ft_atoi(tokens[2]);
-	ft_free_tab(tokens);
+	ft_free_tab(&tokens);
 	if (colors->R < 0 || colors->R > 255 \
 		|| colors->G < 0 || colors->G > 255 \
 		||colors->B < 0 || colors->B > 255)

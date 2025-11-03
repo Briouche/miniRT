@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ato_.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
+/*   By: fkrakow <fkrakow@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 11:49:25 by brcoppie          #+#    #+#             */
-/*   Updated: 2025/10/31 21:30:26 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/11/03 15:42:53 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/miniRT.h"
+#include <miniRT.h>
 
 long	ft_atol(const char *str)
 {

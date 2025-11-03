@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   gnl.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
+/*   By: fkrakow <fkrakow@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 14:25:49 by brcoppie          #+#    #+#             */
-/*   Updated: 2025/10/23 19:33:29 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/11/03 15:43:32 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/miniRT.h"
+#include <miniRT.h>
 
 int	find_newline(char *s)
 {

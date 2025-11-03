@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   strings.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
+/*   By: fkrakow <fkrakow@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 12:15:29 by brcoppie          #+#    #+#             */
-/*   Updated: 2025/10/23 16:30:39 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/11/03 15:43:48 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/miniRT.h"
+#include <miniRT.h>
 
 void	ft_putchar_fd(char c, int fd)
 {

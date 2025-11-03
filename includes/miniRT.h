@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
+/*   By: fkrakow <fkrakow@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 14:06:06 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/10/31 21:11:50 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/11/03 15:45:40 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,8 +102,8 @@ typedef struct s_object
 
 typedef struct s_obj_list
 {
-	t_object	object;
-	t_obj_list	*next;
+	t_object		object;
+	struct s_object	*next;
 }	t_obj_list;
 
 
@@ -142,7 +142,9 @@ typedef struct s_scene
 
 
 //parsing
-int		parsing(int ac, char **av);
+int		parsing(int ac, char *filename);
+char	**tokenize_line(int fd);
+int	parse_line(t_scene **scene, t_obj_list **objects, char **tokens);
 
 
 //helper functions
@@ -159,8 +161,20 @@ void	ft_putstr_fd(char *s, int fd);
 char	*ft_strjoin(const char *s1, const char *s2);
 char	*ft_strdup(const char *s1);
 char	**ft_split(const char *str, char c);
+int		ft_atoi(const char *str);
 long	ft_atol(const char *str);
 double	ft_atod(const char *str);
+void	*ft_calloc(size_t nmemb, size_t size);
+
+void	ft_free_tab(char ***tab);
+
+int	parse_point(char *str, t_point *p);
+int	parse_vector(char *str, t_vec *v);
+int	parse_color(char *str, t_colors *colors);
+int	parse_camera(t_scene **scene, char **line);
+int	parse_ambient(t_scene **scene, char **line);
+int	parse_light(t_scene **scene, char **line);
+
 
 //get_next_line
 char	*ft_gnl(int fd);

@@ -3,27 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
+/*   By: fkrakow <fkrakow@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 12:52:56 by brcoppie          #+#    #+#             */
-/*   Updated: 2025/10/31 21:33:31 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/11/03 15:50:22 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/miniRT.h"
+#include <miniRT.h>
 
 int	check_filename(char *filename)
 {
 	int	len;
 
 	len = ft_strlen(filename);
-	if (len < 4)
-		return (0);
-	if (filename[len - 3] == '.' && filename[len - 2] == 'r' && \
-				filename[len - 1] == 't')
+	if (len > 3 && filename[len - 3] == '.' && filename[len - 2] == 'r'
+		&& filename[len - 1] == 't')
 		return (1);
-	else
-		return (0);
+	return (0);
 }
 
 int	check_openread(char *filename)
@@ -55,28 +52,19 @@ int	check_openread(char *filename)
 	return (1);
 }
 
-void	init_scene(t_scene *scene)
-{
-	scene->count.ambient_count = 0;
-	scene->count.camera_count = 0;
-	scene->count.cy_count = 0;
-	scene->count.light_count = 0;
-	scene->count.pl_count = 0;
-	scene->count.sp_count = 0;
-
-	scene->objects = NULL;
-}
-
 int	parse_scene(t_scene **scene, char *filename)
 {
-	int		fd;
-	char	**line;
+	int			fd;
+	char		**line;
 	t_obj_list	*objects;
 
 	objects = NULL;
 	fd = open(filename, O_RDONLY); //open 2
 	if (fd < 0)
-		return (perror("Error opening file"), 0);
+	{
+		perror("Error opening file");
+		return (0);
+	}
 	line = tokenize_line(fd);
 	while (line != NULL)
 	{
@@ -84,12 +72,12 @@ int	parse_scene(t_scene **scene, char *filename)
 		{
 			if (!parse_line(scene, &objects, line))
 			{
-				ft_free_tab(line);
+				ft_free_tab(&line);
 				close(fd);
 				return (0);
 			}
 		}
-		ft_free_tab(line);
+		ft_free_tab(&line);
 		line = tokenize_line(fd);
 	}
 	close(fd); // close 2
@@ -112,12 +100,12 @@ int	parsing(int ac, char *filename)
 	}
 	else if (!check_openread(filename))
 		return (1);
-	scene = malloc(sizeof(t_scene)); //malloc 1
+	scene = ft_calloc(1, sizeof(t_scene)); //malloc 1
 	if (!scene)
 		return (1);
-	init_scene(scene);
 	if (parse_scene(&scene, filename) == 0)
 		//exit_free
 		free(scene); //free 1
+	free(scene);
 	return (0);
 }

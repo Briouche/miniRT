@@ -27,7 +27,9 @@ SRC_DIR = srcs
 OBJ_DIR = objs
 DEPS_DIR = includes
 
-SRCS = main.c helpers/*.c parsing/*.c
+SRCS =	main.c free.c \
+		ft_ato_.c ft_atoi.c ft_calloc.c ft_split.c gnl.c is.c strings.c \
+		parser_functions.c parsing.c tokenization.c
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 
 DEPS = miniRT.h

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   is.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
+/*   By: fkrakow <fkrakow@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 15:43:27 by brcoppie          #+#    #+#             */
-/*   Updated: 2025/10/31 11:53:01 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/11/03 15:44:06 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/miniRT.h"
+#include <miniRT.h>
 
 int	ft_isalpha(int a)
 {

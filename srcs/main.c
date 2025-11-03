@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
+/*   By: fkrakow <fkrakow@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 14:00:34 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/10/31 13:59:08 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/11/03 15:48:42 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,22 +34,22 @@
 //	close(fd);
 //}
 
-void	open_window(void)
-{
-	void	*mlx_ptr;
-	void	*mlx_win;
+// void	open_window(void)
+// {
+// 	void	*mlx_ptr;
+// 	void	*mlx_win;
 
-	mlx_ptr = mlx_init();
-	mlx_win = mlx_new_window(mlx_ptr, 500, 500, "miniRT");
-	(void)mlx_win;
-	mlx_loop(mlx_ptr);
-}
+// 	mlx_ptr = mlx_init();
+// 	mlx_win = mlx_new_window(mlx_ptr, 500, 500, "miniRT");
+// 	(void)mlx_win;
+// 	mlx_loop(mlx_ptr);
+// }
 
 int	main(int ac, char **av)
 {
 	if (parsing(ac, av[1]))
 		return (1);
 	//print_file(av[1]);
-	open_window();
+	//open_window();
 	return (0);
 }

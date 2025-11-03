@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
+/*   By: fkrakow <fkrakow@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 16:56:58 by brcoppie          #+#    #+#             */
-/*   Updated: 2025/10/31 16:57:23 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/11/03 15:44:18 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
+#include <miniRT.h>
 
 void	ft_free_tab(char ***tab)
 {
