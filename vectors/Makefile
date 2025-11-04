@@ -10,10 +10,13 @@ else
 	LDFLAGS =
 endif
 
-SRCS=	is_equal.c is_point.c is_vector.c \
+SRCS=	is_equal.c is_point.c is_vector.c is_equal_matrix.c \
 		op_cross.c op_dot.c op_magnitude.c op_minus.c op_multi.c op_normalise.c op_opposite.c op_plus.c \
 		add_colors.c multi_colors.c multi_scalar_colors.c sub_colors.c \
-		point.c vector.c vec_color.c
+		point.c vector.c vec_color.c matrix.c \
+		matrices_add.c matrices_multiply.c \
+		matrix_cofactor.c matrix_det_d2.c matrix_determinant.c matrix_minor.c \
+		matrix_inverse.c matrix_reduce.c matrix_transpose.c matrix_vector_multi.c
 
 OBJ_DIR= objs
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
