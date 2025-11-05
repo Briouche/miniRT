@@ -29,7 +29,8 @@ DEPS_DIR = includes
 
 SRCS =	main.c free.c \
 		ft_ato_.c ft_atoi.c ft_calloc.c ft_split.c gnl.c is.c strings.c \
-		parser_functions.c parsing.c tokenization.c
+		parsing/parser_functions.c parsing/parsing.c parsing/tokenization.c \
+		parsing/file.c debug_scene.c
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 
 DEPS = miniRT.h

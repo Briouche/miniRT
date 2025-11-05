@@ -3,68 +3,63 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkrakow <fkrakow@student.s19.be>           +#+  +:+       +#+        */
+/*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 12:52:56 by brcoppie          #+#    #+#             */
-/*   Updated: 2025/11/03 15:50:22 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/11/05 16:31:35 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <miniRT.h>
+#include "../../includes/miniRT.h"
 
-int	check_filename(char *filename)
+int	list_to_array(t_scene *scene, t_obj_list *objects)
 {
-	int	len;
+	int			count;
+	int			i;
+	t_obj_list	*tmp;
+	t_obj_list	*tmp2;
 
-	len = ft_strlen(filename);
-	if (len > 3 && filename[len - 3] == '.' && filename[len - 2] == 'r'
-		&& filename[len - 1] == 't')
-		return (1);
-	return (0);
+	i = 0;
+	count = 0;
+	tmp = objects;
+	while (tmp && ++count)
+		tmp = tmp->next;
+	scene->objects = malloc(sizeof(t_object) * count);
+	if (!scene->objects)
+		return (print_error("Malloc failed\n"), 0);
+	tmp = objects;
+	while (tmp)
+	{
+		scene->objects[i++] = *(tmp->object);
+		free(tmp->object);
+		tmp2 = tmp->next;
+		free(tmp);
+		tmp = tmp2;
+	}
+	scene->count.obj_count = count;
+	return (1);
 }
 
-int	check_openread(char *filename)
+static void	init_scene(t_scene *scene)
 {
-	int		fd;
-	char	buffer;
-	int		bytes_read;
+	scene->count.ambient_count = 0;
+	scene->count.camera_count = 0;
+	scene->count.light_count = 0;
+	scene->count.obj_count = 0;
 
-	fd = open(filename, O_RDONLY);
-	if (fd < 0)
-	{
-		perror("Error opening file");
-		return (0);
-	}
-	bytes_read = read(fd, &buffer, 1);
-	if (bytes_read == 0)
-	{
-		ft_putstr_fd("Error: empty file\n", 2);
-		close(fd);
-		return (0);
-	}
-	else if (bytes_read < 0)
-	{
-		perror("Error reading file");
-		close(fd);
-		return (0);
-	}
-	close(fd);
-	return (1);
+	scene->objects = NULL;
 }
 
 int	parse_scene(t_scene **scene, char *filename)
 {
-	int			fd;
-	char		**line;
+	int		fd;
+	char	**line;
 	t_obj_list	*objects;
 
 	objects = NULL;
-	fd = open(filename, O_RDONLY); //open 2
+	fd = open(filename, O_RDONLY);
 	if (fd < 0)
-	{
-		perror("Error opening file");
-		return (0);
-	}
+		return (perror("Error opening file"), 0);
 	line = tokenize_line(fd);
 	while (line != NULL)
 	{
@@ -72,6 +67,7 @@ int	parse_scene(t_scene **scene, char *filename)
 		{
 			if (!parse_line(scene, &objects, line))
 			{
+				free_object_list(objects);
 				ft_free_tab(&line);
 				close(fd);
 				return (0);
@@ -80,14 +76,20 @@ int	parse_scene(t_scene **scene, char *filename)
 		ft_free_tab(&line);
 		line = tokenize_line(fd);
 	}
-	close(fd); // close 2
+	if (!list_to_array(*scene, objects))
+	{
+		free_object_list(objects);
+		ft_free_tab(&line);
+		close(fd);
+		return (0);
+	}
+	ft_free_tab(&line);
+	close(fd);
 	return (1);
 }
 
-int	parsing(int ac, char *filename)
+int	parsing(int ac, char *filename, t_scene **scene)
 {
-	t_scene	*scene;
-
 	if (ac != 2)
 	{
 		ft_putstr_fd("Error: Usage: minirt <scene.rt>\n", 2);
@@ -100,12 +102,8 @@ int	parsing(int ac, char *filename)
 	}
 	else if (!check_openread(filename))
 		return (1);
-	scene = ft_calloc(1, sizeof(t_scene)); //malloc 1
-	if (!scene)
+	init_scene(*scene);
+	if (!parse_scene(scene, filename))
 		return (1);
-	if (parse_scene(&scene, filename) == 0)
-		//exit_free
-		free(scene); //free 1
-	free(scene);
 	return (0);
 }

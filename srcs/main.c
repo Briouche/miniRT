@@ -3,36 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkrakow <fkrakow@student.s19.be>           +#+  +:+       +#+        */
+/*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 14:00:34 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/11/03 15:48:42 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/11/05 16:07:11 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
 
-//void	print_file(char *filename)
-//{
-//    int		fd;
-//    char	*line;
+void	print_file(char *filename)
+{
+    int		fd;
+    char	*line;
 
-//	fd = open(filename, O_RDONLY);
-//	if (fd < 0)
-//	{
-//		perror("open");
-//		return;
-//	}
-//	line = ft_gnl(fd);
-//	while (line != NULL)
-//	{
-//		ft_putstr_fd(line, 1);
-//		free(line);
-//		line = ft_gnl(fd);
-//	}
-//	ft_putchar_fd('\n', 1);
-//	close(fd);
-//}
+	fd = open(filename, O_RDONLY);
+	if (fd < 0)
+	{
+		perror("open");
+		return;
+	}
+	line = ft_gnl(fd);
+	while (line != NULL)
+	{
+		ft_putstr_fd(line, 1);
+		free(line);
+		line = ft_gnl(fd);
+	}
+	ft_putchar_fd('\n', 1);
+	ft_putchar_fd('\n', 1);
+	close(fd);
+}
 
 // void	open_window(void)
 // {
@@ -47,9 +48,16 @@
 
 int	main(int ac, char **av)
 {
-	if (parsing(ac, av[1]))
+	t_scene	*scene;
+
+	scene = malloc(sizeof(t_scene));
+	if (!scene)
+		return (print_error("Malloc failed\n"), 1);
+	if (parsing(ac, av[1], &scene))
 		return (1);
-	//print_file(av[1]);
+	print_file(av[1]);
+	print_scene(scene);
 	//open_window();
+	free_scene(&scene);
 	return (0);
 }

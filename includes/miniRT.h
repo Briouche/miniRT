@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkrakow <fkrakow@student.s19.be>           +#+  +:+       +#+        */
+/*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 14:06:06 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/11/03 15:45:40 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/11/05 16:32:25 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,7 @@ typedef struct s_count
 	int	ambient_count;
 	int	camera_count;
 	int	light_count;
-	int	sp_count;
-	int	pl_count;
-	int	cy_count;
+	int	obj_count;
 }	t_count;
 
 
@@ -102,8 +100,8 @@ typedef struct s_object
 
 typedef struct s_obj_list
 {
-	t_object		object;
-	struct s_object	*next;
+	t_object			*object;
+	struct s_obj_list	*next;
 }	t_obj_list;
 
 
@@ -142,41 +140,60 @@ typedef struct s_scene
 
 
 //parsing
-int		parsing(int ac, char *filename);
+int		check_filename(char *filename);
+int		check_openread(char *filename);
+int		list_to_array(t_scene *scene, t_obj_list *objects);
+int		parse_scene(t_scene **scene, char *filename);
+int		parsing(int ac, char *filename, t_scene **scene);
 char	**tokenize_line(int fd);
-int	parse_line(t_scene **scene, t_obj_list **objects, char **tokens);
+int		parse_line(t_scene **scene, t_obj_list **objects, char **tokens);
+int		parse_point(char *str, t_point *p);
+int		parse_vector(char *str, t_vec *v);
+int		parse_color(char *str, t_colors *colors);
+int		parse_camera(t_scene **scene, char **line);
+int		parse_ambient(t_scene **scene, char **line);
+int		parse_light(t_scene **scene, char **line);
+int		parse_sphere(t_obj_list **objects, char **line);
+int		parse_plane(t_obj_list **objects, char **line);
+int		parse_cylinder(t_obj_list **objects, char **line);
+int		add_to_list(t_object *new_object, t_obj_list **objects);
+int		is_normed_v(t_vec *vec);
 
 
 //helper functions
+// free
+void	print_error(char *error_msg);
+void	free_object_list(t_obj_list *objects);
+void	ft_free_tab(char ***tab);
+void	free_scene(t_scene **scene);
 
-//is
+// is
 int		ft_isalpha(int a);
 int		ft_isuppercase(int a);
 int		ft_isdigit(int a);
 
-//strings
+// strings
 void	ft_putchar_fd(char c, int fd);
+void	ft_putstr_fd(char *s, int fd);
 int		ft_strlen(char *str);
+char	*ft_strchr(const char *s, int c);
 void	ft_putstr_fd(char *s, int fd);
 char	*ft_strjoin(const char *s1, const char *s2);
 char	*ft_strdup(const char *s1);
 char	**ft_split(const char *str, char c);
-int		ft_atoi(const char *str);
 long	ft_atol(const char *str);
 double	ft_atod(const char *str);
-void	*ft_calloc(size_t nmemb, size_t size);
+int		ft_atoi(const char *str);
 
-void	ft_free_tab(char ***tab);
-
-int	parse_point(char *str, t_point *p);
-int	parse_vector(char *str, t_vec *v);
-int	parse_color(char *str, t_colors *colors);
-int	parse_camera(t_scene **scene, char **line);
-int	parse_ambient(t_scene **scene, char **line);
-int	parse_light(t_scene **scene, char **line);
-
-
-//get_next_line
+// get_next_line
 char	*ft_gnl(int fd);
+
+//DEBUGGING
+// print scene
+void	print_scene(t_scene *scene);
+void	print_object(t_object *obj);
+void	print_vector(t_vec v);
+void	print_point(t_point p);
+void	print_color(t_colors color);
 
 #endif
