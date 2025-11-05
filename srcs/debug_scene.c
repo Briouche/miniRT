@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   debug_scene.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
+/*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 15:20:42 by brcoppie          #+#    #+#             */
-/*   Updated: 2025/11/05 17:16:33 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/11/05 18:17:59 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void print_color(t_colors color)
 {
-    printf("R:%d G:%d B:%d", color.R, color.G, color.B);
+    printf("R:%d G:%d B:%d", color.r, color.g, color.b);
 }
 
 void print_point(t_point p)

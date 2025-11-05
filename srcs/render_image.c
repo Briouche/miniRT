@@ -6,40 +6,39 @@
 /*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 13:31:03 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/10/29 13:50:15 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/11/05 17:41:45 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
 
-static void	put_pixel_to_image(t_display *display, int x, int y, int color)
+static int	ft_vtoi(t_vector *color)
+{
+	return (((int)(color->x) << 16) | ((int)(color->y) << 8) | (int)(color->z));
+}
+
+void	put_pixel_to_image(t_display *display, int x, int y, t_vector *color)
 {
 	char	*pixel_address;
 
-	pixel_address = display->addr + (y * display->size_line + x * (display->bits_per_pixel / 8));
-	*(unsigned int *)pixel_address = color;
+	pixel_address = display->addr + \
+		(y * display->size_line + x * (display->bits_per_pixel / 8));
+	*(unsigned int *)pixel_address = ft_vtoi(color);
 }
 
 int	render_image(t_display *img)
 {
-	int	x;
-	int	y;
-	int	color;
+	t_vector	color;
+	double		r;
+	double		g;
+	double		b;
 
-	y = 0;
-	while (y < HEIGHT)
-	{
-		x = 0;
-		while (x < WIDTH)
-		{
-			int r = (x * 255) / WIDTH;
-			int g = (y * 255) / HEIGHT;
-			int b = 0;
-			color = (r << 16) | (g << 8) | b;
-			put_pixel_to_image(img, x, y, color);
-			x++;
-		}
-		y++;
-	}
+	r = 255;
+	g = 0;
+	b = 0;
+	// color = vec_color(&r, &g, &b);
+	// cannon_ball(img, &color);
+	color = vec_color(&r, &g, &b);
+	draw_clock(img, &color);
 	return (0);
 }

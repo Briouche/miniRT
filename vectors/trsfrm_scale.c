@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color.c                                            :+:      :+:    :+:   */
-/*                                                      +:+ +:+         +:+     */
+/*   trsfrm_scale.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
 /*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/31 11:59:55 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/10/31 12:00:10 by fkrakow          ###   ########.fr       */
+/*   Created: 2025/11/05 13:15:41 by fkrakow           #+#    #+#             */
+/*   Updated: 2025/11/05 16:59:15 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vectors.h"
 
-t_vector	color(double *red,  double *green, double *blue)
+t_matrix	trsfrm_scale(double *x, double *y, double *z)
 {
-	return ((t_vector){*red, *green, *blue, 0});
+	return ((t_matrix){{(*x), 0, 0, 0}, {0, *y, 0, 0},
+		{0, 0, *z, 0}, {0, 0, 0, 1}});
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_functions.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
+/*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 11:44:39 by brcoppie          #+#    #+#             */
-/*   Updated: 2025/11/05 16:30:42 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/11/05 18:17:48 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,13 +60,13 @@ int	parse_color(char *str, t_colors *colors)
 	if (!tokens[0] || !tokens[1] || !tokens[2] || tokens[3] || \
 		!tokens[0][0] || !tokens[1][0] || !tokens[2][0])
 		return (ft_free_tab(&tokens), 0);
-	colors->R = ft_atoi(tokens[0]);
-	colors->G = ft_atoi(tokens[1]);
-	colors->B = ft_atoi(tokens[2]);
+	colors->r = ft_atoi(tokens[0]);
+	colors->g = ft_atoi(tokens[1]);
+	colors->b = ft_atoi(tokens[2]);
 	ft_free_tab(&tokens);
-	if (colors->R < 0 || colors->R > 255 \
-		|| colors->G < 0 || colors->G > 255 \
-		||colors->B < 0 || colors->B > 255)
+	if (colors->r < 0 || colors->r > 255 \
+		|| colors->g < 0 || colors->g > 255 \
+		||colors->b < 0 || colors->b > 255)
 		return (0);
 	return (1);
 }

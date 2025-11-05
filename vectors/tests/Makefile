@@ -1,7 +1,13 @@
-NAME= colors.a
+NAME= tests_vectors
+
+LIBFT =
+LIBFT_DIR =
+
+VECTORS = vectors.a
+VECTORS_DIR = ..
 
 CC= cc
-CFLAGS= -Wall -Werror -Wextra -I..
+CFLAGS= -Wall -Werror -Wextra
 
 UNAME := $(shell uname)
 ifeq ($(UNAME), Linux)
@@ -10,13 +16,14 @@ else
 	LDFLAGS =
 endif
 
-SRCS=	color.c \
-		add_colors.c multi_colors.c multi_scalar_colors.c sub_colors.c
+SRCS=	main.c prints.c \
+		test_matrices_multi.c test_matrix_reductions.c \
+		test_translation.c test_shearing.c test_rotations.c
 
 OBJ_DIR= objs
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 
-DEPS= colors.h
+DEPS= tests.h
 
 RM= rm -f
 AR = ar crs
@@ -24,7 +31,7 @@ AR = ar crs
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(AR) $@ $^
+	$(CC) $(OBJS) $(VECTORS_DIR)/$(VECTORS) -o $(NAME) $(CFLAGS) $(LDFLAGS)
 
 $(OBJ_DIR)/%.o: %.c $(DEPS)
 	@mkdir -p $(dir $@)

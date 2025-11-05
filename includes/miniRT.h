@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
+/*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 14:06:06 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/11/05 17:10:29 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/11/05 18:16:51 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,17 @@
 #include <mlx.h>
 #include <float.h>
 
-# define WIDTH 512
-# define HEIGHT 512
+# define WIDTH 900
+# define HEIGHT 550
 
 
 // main functions
 int		init_display(t_display *display);
 int		render_image(t_display *img);
 void	display_loop(t_display *display);
+
+int		cannon_ball(t_display *img, t_vector *color);
+int		draw_clock(t_display *img, t_vector *white);
 
 //parsing
 int		check_filename(char *filename);
@@ -53,7 +56,6 @@ int		parse_plane(t_obj_list **objects, char **line);
 int		parse_cylinder(t_obj_list **objects, char **line);
 int		add_to_list(t_object *new_object, t_obj_list **objects);
 int		is_normed_v(t_vec *vec);
-
 
 //helper functions
 // free
@@ -83,5 +85,7 @@ void	print_object(t_object *obj);
 void	print_vector(t_vec v);
 void	print_point(t_point p);
 void	print_color(t_colors color);
+
+int		cannon_ball(t_display *img, t_vector *color);
 
 #endif

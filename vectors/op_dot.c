@@ -6,7 +6,7 @@
 /*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 16:38:35 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/10/31 10:49:08 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/11/04 11:55:43 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 double	op_dot(t_vector *a, t_vector *b)
 {
-	return (a->x * b->x + a->y * b->y + a->z * b->z);
+	return (a->x * b->x + a->y * b->y + a->z * b->z + a->w * b->w);
 }

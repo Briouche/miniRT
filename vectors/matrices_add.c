@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   multi_scalar_colors.c                              :+:      :+:    :+:   */
+/*   matrices_add.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/31 12:12:50 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/10/31 12:14:31 by fkrakow          ###   ########.fr       */
+/*   Created: 2025/11/03 14:32:10 by fkrakow           #+#    #+#             */
+/*   Updated: 2025/11/03 17:51:10 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "colors.h"
+#include "vectors.h"
 
-t_vector	multi_scalar_colors(t_vector *a, double *n)
+t_matrix	matrices_add(t_matrix *a, t_matrix *b)
 {
-	return (op_multi(a, n));
+	return ((t_matrix){
+		op_plus(&a->c1, &b->c1),
+		op_plus(&a->c2, &b->c2),
+		op_plus(&a->c3, &b->c3),
+		op_plus(&a->c4, &b->c4)
+	});
 }

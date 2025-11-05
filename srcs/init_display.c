@@ -6,7 +6,7 @@
 /*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 13:22:23 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/10/29 13:39:46 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/10/31 15:56:42 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ int	init_display(t_display *display)
 	display->mlx_ptr = mlx_init();
 	if (!display->mlx_ptr)
 		return (1);
-	display->mlx_win = mlx_new_window(display->mlx_ptr, WIDTH, HEIGHT, "miniRT");
+	display->mlx_win = mlx_new_window(display->mlx_ptr,
+			WIDTH, HEIGHT, "miniRT");
 	if (!display->mlx_win)
 	{
 		return (1);
@@ -27,7 +28,7 @@ int	init_display(t_display *display)
 	{
 		return (1);
 	}
-	display->addr = mlx_get_data_addr(display->mlx_img, &display->bits_per_pixel,
-		&display->size_line, &display->endian);
+	display->addr = mlx_get_data_addr(display->mlx_img,
+			&display->bits_per_pixel, &display->size_line, &display->endian);
 	return (0);
 }

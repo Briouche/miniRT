@@ -33,7 +33,7 @@ SRC_DIR = srcs
 OBJ_DIR = objs
 DEPS_DIR = includes
 
-SRCS = cannon_ball.c main.c init_display.c render_image.c display_loop.c free.c \
+SRCS =	cannon_ball.c draw_clock.c main.c init_display.c render_image.c display_loop.c free.c \
 		ft_ato_.c ft_atoi.c ft_calloc.c ft_split.c is.c \
 		parser_functions.c parsing.c tokenization.c file.c debug_scene.c
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))

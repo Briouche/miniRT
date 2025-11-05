@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
+/*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 14:00:34 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/11/05 17:31:47 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/11/05 18:17:19 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,19 +34,6 @@
 //	close(fd);
 //}
 
-int	cannon_ball(void);
-
-// void	open_window(void)
-// {
-// 	void	*mlx_ptr;
-// 	void	*mlx_win;
-
-// 	mlx_ptr = mlx_init();
-// 	mlx_win = mlx_new_window(mlx_ptr, 500, 500, "miniRT");
-// 	(void)mlx_win;
-// 	mlx_loop(mlx_ptr);
-// }
-
 int	main(int ac, char **av)
 {
 	t_display	display;
@@ -65,7 +52,8 @@ int	main(int ac, char **av)
 
 	printf("=========================================================\n");
 	printf("|=============== Chapter 1: CANNON BALL ================|\n");
-	cannon_ball();
+	(void)ac;
+	(void)av;
 	if (init_display(&display))
 		return (1);
 	if (render_image(&display))

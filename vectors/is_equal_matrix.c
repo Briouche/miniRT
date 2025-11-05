@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   add_colors.c                                       :+:      :+:    :+:   */
+/*   is_equal_matrix.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/31 12:10:17 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/10/31 12:11:12 by fkrakow          ###   ########.fr       */
+/*   Created: 2025/11/03 14:25:26 by fkrakow           #+#    #+#             */
+/*   Updated: 2025/11/04 14:44:56 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "colors.h"
+#include "vectors.h"
 
-t_vector	add_colors(t_vector *a, t_vector *b)
+int	is_equal_matrix(t_matrix *a, t_matrix *b)
 {
-	return (op_plus(a, b));
+	(void)a;
+	(void)b;
+	return (is_equal(&a->c1, &b->c1));
 }
