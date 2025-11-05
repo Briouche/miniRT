@@ -1,5 +1,8 @@
 NAME= vectors.a
 
+TESTS_BIN= tests_vectors
+TESTS_DIR= tests
+
 CC= cc
 CFLAGS= -Wall -Werror -Wextra
 
@@ -35,13 +38,19 @@ $(OBJ_DIR)/%.o: %.c $(DEPS)
 	@mkdir -p $(dir $@)
 	$(CC) -c $< -o $@ $(CFLAGS) $(LDFLAGS)
 
+test: $(NAME)
+	cd $(TESTS_DIR) ; make
+	./$(TESTS_DIR)/$(TESTS_BIN)
+
 clean:
 	$(RM) -r $(OBJ_DIR)
+	cd $(TESTS_DIR) ; make clean
 	
 
 fclean: clean
 	$(RM) $(NAME)
+	cd $(TESTS_DIR) ; make fclean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all test clean fclean re
