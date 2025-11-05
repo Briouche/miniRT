@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   structures.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
+/*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 11:09:02 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/10/29 11:09:28 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/11/05 16:50:44 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTURES_H
 # define STRUCTURE_H
+
 
 //base structs
 typedef struct s_point
@@ -37,6 +38,16 @@ typedef struct s_colors
 
 
 //object structs
+
+typedef struct s_count
+{
+	int	ambient_count;
+	int	camera_count;
+	int	light_count;
+	int	obj_count;
+}	t_count;
+
+
 typedef enum e_type
 {
 	SPHERE,
@@ -67,7 +78,6 @@ typedef struct s_cylinder
 	t_colors	color;
 }	t_cylinder;
 
-
 typedef struct s_object
 {
 	t_type	type;
@@ -78,5 +88,45 @@ typedef struct s_object
 		t_cylinder	cy;
 	}				obj;
 }	t_object;
+
+typedef struct s_obj_list
+{
+	t_object			*object;
+	struct s_obj_list	*next;
+}	t_obj_list;
+
+
+//other elements
+typedef struct s_ambient
+{
+	double		ratio;
+	t_colors	color;
+}	t_ambient;
+
+typedef struct s_camera
+{
+	t_point	viewpoint;
+	t_vec	orientation;
+	double	fov;
+}	t_camera;
+
+typedef struct s_light
+{
+	t_point		coord;
+	double		ratio;
+	t_colors	color;
+}	t_light;
+
+
+//scene
+typedef struct s_scene
+{
+	t_ambient	ambient_light;
+	t_camera	cam;
+	t_light		light;
+	t_object	*objects;
+	t_count		count;
+}	t_scene;
+
 
 #endif

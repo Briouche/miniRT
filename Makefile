@@ -33,7 +33,10 @@ SRC_DIR = srcs
 OBJ_DIR = objs
 DEPS_DIR = includes
 
-SRCS = cannon_ball.c main.c init_display.c render_image.c display_loop.c 
+SRCS = cannon_ball.c main.c init_display.c render_image.c display_loop.c free.c \
+		ft_ato_.c ft_atoi.c ft_calloc.c ft_split.c gnl.c is.c strings.c \
+		parsing/parser_functions.c parsing/parsing.c parsing/tokenization.c \
+		parsing/file.c debug_scene.c
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 
 DEPS = miniRT.h structures.h
