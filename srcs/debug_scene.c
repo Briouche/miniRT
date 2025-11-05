@@ -6,11 +6,11 @@
 /*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 15:20:42 by brcoppie          #+#    #+#             */
-/*   Updated: 2025/11/05 15:39:29 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/11/05 17:16:33 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/miniRT.h"
+#include <miniRT.h>
 
 void print_color(t_colors color)
 {

@@ -13,7 +13,7 @@ MLX_DIR_MAC = ./minilibx-mac
 MLX_LIB_MAC = libmlx.dylib
 
 LD_FLAGS_MAC = $(MLX_LIB_MAC) -framework Metal -framework MetalKit -framework Cocoa
-LD_FLAGS_LINUX = -L$(MLX_DIR_LINUX) $(MLX_LIB_LINUX) -lXext -lX11 -lm -lz -lbsd
+LD_FLAGS_LINUX = -L$(MLX_DIR_LINUX) $(MLX_LIB_LINUX) -lXext -lX11 -lz -lbsd
 
 OS:= $(shell uname -s)
 ifeq ($(OS), Linux)
@@ -34,9 +34,8 @@ OBJ_DIR = objs
 DEPS_DIR = includes
 
 SRCS = cannon_ball.c main.c init_display.c render_image.c display_loop.c free.c \
-		ft_ato_.c ft_atoi.c ft_calloc.c ft_split.c gnl.c is.c strings.c \
-		parsing/parser_functions.c parsing/parsing.c parsing/tokenization.c \
-		parsing/file.c debug_scene.c
+		ft_ato_.c ft_atoi.c ft_calloc.c ft_split.c is.c \
+		parser_functions.c parsing.c tokenization.c file.c debug_scene.c
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 
 DEPS = miniRT.h structures.h
@@ -48,7 +47,7 @@ all: $(NAME)
 
 
 $(NAME): $(OBJS) $(LIBFT) $(VECTORS) $(MLX_LIB)
-	$(CC) $(OBJS) $(LIBFT_DIR)/$(LIBFT) $(VECTORS_DIR)/$(VECTORS) $(LD_FLAGS) -o $(NAME)
+	$(CC) $(OBJS) $(LIBFT_DIR)/$(LIBFT) $(VECTORS_DIR)/$(VECTORS) $(LD_FLAGS) -lm -o $(NAME)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(DEPS)
 	@mkdir -p $(dir $@)

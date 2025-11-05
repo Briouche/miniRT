@@ -6,12 +6,12 @@
 /*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 11:09:02 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/11/05 16:50:44 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/11/05 17:05:26 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTURES_H
-# define STRUCTURE_H
+# define STRUCTURES_H
 
 
 //base structs

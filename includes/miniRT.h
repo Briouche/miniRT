@@ -6,7 +6,7 @@
 /*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 14:06:06 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/11/05 17:00:25 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/11/05 17:10:29 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,6 @@
 
 # define WIDTH 512
 # define HEIGHT 512
-
-# define BUFFER_SIZE 64
-
 
 
 // main functions
@@ -71,13 +68,6 @@ int		ft_isuppercase(int a);
 int		ft_isdigit(int a);
 
 // strings
-void	ft_putchar_fd(char c, int fd);
-void	ft_putstr_fd(char *s, int fd);
-int		ft_strlen(char *str);
-char	*ft_strchr(const char *s, int c);
-void	ft_putstr_fd(char *s, int fd);
-char	*ft_strjoin(const char *s1, const char *s2);
-char	*ft_strdup(const char *s1);
 char	**ft_split(const char *str, char c);
 long	ft_atol(const char *str);
 double	ft_atod(const char *str);

@@ -34,7 +34,7 @@ $(NAME): $(OBJS) $(COL_LIB)
 
 $(OBJ_DIR)/%.o: %.c $(DEPS)
 	@mkdir -p $(dir $@)
-	$(CC) -c $< -o $@ $(CFLAGS) $(LDFLAGS)
+	$(CC) -c $< -o $@ $(CFLAGS)
 
 $(COL_LIB):
 	cd $(COL_DIR) ; make > /dev/null

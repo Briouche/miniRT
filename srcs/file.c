@@ -6,11 +6,11 @@
 /*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 14:50:11 by brcoppie          #+#    #+#             */
-/*   Updated: 2025/11/05 14:50:42 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/11/05 17:16:18 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/miniRT.h"
+#include <miniRT.h>
 
 int	check_filename(char *filename)
 {

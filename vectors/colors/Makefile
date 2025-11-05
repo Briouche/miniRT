@@ -28,7 +28,7 @@ $(NAME): $(OBJS)
 
 $(OBJ_DIR)/%.o: %.c $(DEPS)
 	@mkdir -p $(dir $@)
-	$(CC) -c $< -o $@ $(CFLAGS) $(LDFLAGS)
+	$(CC) -c $< -o $@ $(CFLAGS)
 
 clean:
 	$(RM) -r $(OBJ_DIR)

@@ -6,13 +6,13 @@
 /*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 14:25:49 by brcoppie          #+#    #+#             */
-/*   Updated: 2025/11/05 17:01:41 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/11/05 17:17:19 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <miniRT.h>
+#include "libft.h"
 
-int	find_newline(char *s)
+static int	find_newline(char *s)
 {
 	int	i;
 
@@ -28,7 +28,7 @@ int	find_newline(char *s)
 	return (-1);
 }
 
-void	fill_leftovers(char **leftovers, char *buffer)
+static void	fill_leftovers(char **leftovers, char *buffer)
 {
 	char	*temp;
 
@@ -48,7 +48,7 @@ void	fill_leftovers(char **leftovers, char *buffer)
 	}
 }
 
-char	*copy_until_nl(char *str, int index)
+static char	*copy_until_nl(char *str, int index)
 {
 	char	*res;
 	int		i;
@@ -66,7 +66,7 @@ char	*copy_until_nl(char *str, int index)
 	return (res);
 }
 
-char	*split_on_nl(char **leftovers)
+static char	*split_on_nl(char **leftovers)
 {
 	int		i;
 	char	*result;

@@ -6,7 +6,7 @@
 /*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 14:00:34 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/11/05 16:56:32 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/11/05 17:31:47 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,17 @@ int	main(int ac, char **av)
 	t_display	display;
 	t_scene		*scene;
 
+	//parsing tester
+	scene = malloc(sizeof(t_scene));
+	if (!scene)
+		return (print_error("Malloc failed\n"), 1);
+	if (parsing(ac, av[1], &scene))
+		return (1);
+	//print_file(av[1]);
+	print_scene(scene);
+	free_scene(&scene);
+
+
 	printf("=========================================================\n");
 	printf("|=============== Chapter 1: CANNON BALL ================|\n");
 	cannon_ball();
@@ -60,14 +71,5 @@ int	main(int ac, char **av)
 	if (render_image(&display))
 		return (1);
 	display_loop(&display);
-
-	//scene = malloc(sizeof(t_scene));
-	//if (!scene)
-	//	return (print_error("Malloc failed\n"), 1);
-	//if (parsing(ac, av[1], &scene))
-	//	return (1);
-	////print_file(av[1]);
-	//print_scene(scene);
-	//free_scene(&scene);
 	return (0);
 }

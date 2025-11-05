@@ -7,7 +7,7 @@ DEPS = libft.h
 SRCS =	ft_memcpy.c \
 		ft_putchar_fd.c ft_putstr_fd.c \
 		ft_strdup.c ft_strjoin.c ft_strlen.c \
-		get_next_line.c
+		gnl.c ft_strchr.c
 OBJS = ${SRCS:.c=.o}
 
 BONUS_SRCS =

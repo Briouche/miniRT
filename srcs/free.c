@@ -6,11 +6,11 @@
 /*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 16:56:58 by brcoppie          #+#    #+#             */
-/*   Updated: 2025/11/05 16:37:31 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/11/05 17:16:01 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
+#include <miniRT.h>
 
 void	print_error(char *error_msg)
 {
