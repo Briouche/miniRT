@@ -6,7 +6,7 @@
 /*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 14:06:06 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/10/31 15:14:36 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/11/05 17:20:31 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int		render_image(t_display *img);
 void	display_loop(t_display *display);
 
 int		cannon_ball(t_display *img, t_vector *color);
+int		draw_clock(t_display *img, t_vector *white);
 
 //parsing
 int		parsing(int ac, char **av);

@@ -6,7 +6,7 @@
 /*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 09:04:26 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/11/04 14:23:47 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/11/05 17:03:38 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,17 @@ double		matrix_det_d2(t_vector *m);
 double		matrix_determinant(t_matrix *m, int d);
 double		matrix_minor(t_matrix *m, int r, int c, int d);
 
-t_matrix	matrix_inverse(t_matrix *m, double det);
+t_matrix	matrix_inverse(t_matrix *m);
 t_matrix	matrix_reduce(t_matrix *m, int r, int c);
 t_matrix	matrix_transpose(t_matrix *m);
 t_vector	matrix_vector_multi(t_matrix *m, t_vector *v);
+
+// transformations
+t_matrix	trsfrm_rotate_x(double *angle);
+t_matrix	trsfrm_rotate_y(double *angle);
+t_matrix	trsfrm_rotate_z(double *angle);
+t_matrix	trsfrm_scale(double *x, double *y, double *z);
+t_matrix	trsfrm_shear(t_vector *a, t_vector *b);
+t_matrix	trsfrm_translate(double *x, double *y, double *z);
 
 #endif

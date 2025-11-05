@@ -6,7 +6,7 @@
 /*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 09:27:10 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/11/05 10:03:29 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/11/05 17:06:52 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@ int	main(int argc, char *const argv[])
 	(void)argv;
 	test_matrices_multi();
 	test_matrix_reductions();
+	test_translation();
+	test_rotations();
+	test_shearing();
 	return (0);
 }
 

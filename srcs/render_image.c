@@ -6,7 +6,7 @@
 /*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 13:31:03 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/10/31 16:04:50 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/11/05 17:41:45 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	put_pixel_to_image(t_display *display, int x, int y, t_vector *color)
 
 int	render_image(t_display *img)
 {
-	t_vector	red;
+	t_vector	color;
 	double		r;
 	double		g;
 	double		b;
@@ -36,7 +36,9 @@ int	render_image(t_display *img)
 	r = 255;
 	g = 0;
 	b = 0;
-	red = vec_color(&r, &g, &b);
-	cannon_ball(img, &red);
+	// color = vec_color(&r, &g, &b);
+	// cannon_ball(img, &color);
+	color = vec_color(&r, &g, &b);
+	draw_clock(img, &color);
 	return (0);
 }

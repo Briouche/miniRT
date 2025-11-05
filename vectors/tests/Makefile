@@ -16,8 +16,9 @@ else
 	LDFLAGS =
 endif
 
-SRCS=	main.c print_matrix.c \
-		test_matrices_multi.c test_matrix_reductions.c
+SRCS=	main.c prints.c \
+		test_matrices_multi.c test_matrix_reductions.c \
+		test_translation.c test_shearing.c test_rotations.c
 
 OBJ_DIR= objs
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
@@ -30,7 +31,7 @@ AR = ar crs
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(OBJS) $(VECTORS_DIR)/$(VECTORS) $(LD_FLAGS) -o $(NAME)
+	$(CC) $(OBJS) $(VECTORS_DIR)/$(VECTORS) -o $(NAME) $(CFLAGS) $(LDFLAGS)
 
 $(OBJ_DIR)/%.o: %.c $(DEPS)
 	@mkdir -p $(dir $@)
