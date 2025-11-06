@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
+/*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 12:52:56 by brcoppie          #+#    #+#             */
-/*   Updated: 2025/11/05 16:57:24 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/11/06 14:26:04 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,13 @@ static void	init_scene(t_scene *scene)
 	scene->count.camera_count = 0;
 	scene->count.light_count = 0;
 	scene->count.obj_count = 0;
-
 	scene->objects = NULL;
 }
 
 int	parse_scene(t_scene **scene, char *filename)
 {
-	int		fd;
-	char	**line;
+	int			fd;
+	char		**line;
 	t_obj_list	*objects;
 
 	objects = NULL;

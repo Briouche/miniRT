@@ -6,83 +6,63 @@
 /*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 15:20:42 by brcoppie          #+#    #+#             */
-/*   Updated: 2025/11/05 18:17:59 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/11/06 13:59:08 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
 
-void print_color(t_colors color)
+void	print_object(t_object *obj)
 {
-    printf("R:%d G:%d B:%d", color.r, color.g, color.b);
+	if (!obj && obj->type == SPHERE)
+	{
+		printf("Sphere\n");
+		print_vec("\tCenter: ", &obj->obj.sp.center);
+		printf("\tDiameter: %.2f\n", obj->obj.sp.diameter);
+		print_vec("\tColor: ", &obj->obj.sp.color);
+	}
+	else if (!obj && obj->type == PLANE)
+	{
+		printf("Plane\n");
+		print_vec("\tPoint: ", &obj->obj.pl.p);
+		print_vec("\tNormal: ", &obj->obj.pl.v);
+		print_vec("\tColor: ", &obj->obj.pl.color);
+	}
+	else if (!obj && obj->type == CYLINDER)
+	{
+		printf("Cylinder\n");
+		print_vec("\tCenter: ", &obj->obj.cy.center);
+		print_vec("\tVector: ", &obj->obj.cy.v);
+		printf("\tDiameter: %.2f\n", obj->obj.cy.diameter);
+		printf("\tHeight: %.2f\n", obj->obj.cy.height);
+		print_vec("\tColor: ", &obj->obj.cy.color);
+	}
+	else
+		printf("Unkown type\n");
 }
 
-void print_point(t_point p)
+void	print_scene(t_scene *scene)
 {
-    printf("(%.2f, %.2f, %.2f)", p.x, p.y, p.z);
-}
+	int	n;
 
-void print_vector(t_vec v)
-{
-    printf("(%.2f, %.2f, %.2f)", v.x, v.y, v.z);
-}
-
-void print_object(t_object *obj)
-{
-    if (!obj)
-        return;
-    printf("Type: ");
-    switch (obj->type)
-    {
-        case SPHERE:
-            printf("Sphere\n");
-            printf("  Center: "); print_point(obj->obj.sp.center); printf("\n");
-            printf("  Diameter: %.2f\n", obj->obj.sp.diameter);
-            printf("  Color: "); print_color(obj->obj.sp.color); printf("\n");
-            break;
-        case PLANE:
-            printf("Plane\n");
-            printf("  Point: "); print_point(obj->obj.pl.p); printf("\n");
-            printf("  Normal: "); print_vector(obj->obj.pl.v); printf("\n");
-            printf("  Color: "); print_color(obj->obj.pl.color); printf("\n");
-            break;
-        case CYLINDER:
-            printf("Cylinder\n");
-            printf("  Center: "); print_point(obj->obj.cy.center); printf("\n");
-            printf("  Vector: "); print_vector(obj->obj.cy.v); printf("\n");
-            printf("  Diameter: %.2f\n", obj->obj.cy.diameter);
-            printf("  Height: %.2f\n", obj->obj.cy.height);
-            printf("  Color: "); print_color(obj->obj.cy.color); printf("\n");
-            break;
-    }
-}
-
-void print_scene(t_scene *scene)
-{
-    if (!scene)
-        return;
-
-    printf("=== Scene ===\n");
-
-    printf("Ambient Light:\n");
-    printf("  Ratio: %.2f\n", scene->ambient_light.ratio);
-    printf("  Color: "); print_color(scene->ambient_light.color); printf("\n");
-
-    printf("Camera:\n");
-    printf("  Viewpoint: "); print_point(scene->cam.viewpoint); printf("\n");
-    printf("  Orientation: "); print_vector(scene->cam.orientation); printf("\n");
-    printf("  FOV: %.2f\n", scene->cam.fov);
-
-    printf("Light:\n");
-    printf("  Coord: "); print_point(scene->light.coord); printf("\n");
-    printf("  Ratio: %.2f\n", scene->light.ratio);
-    printf("  Color: "); print_color(scene->light.color); printf("\n");
-
-    printf("Objects (%d):\n", scene->count.obj_count);
-    for (int i = 0; i < scene->count.obj_count; i++)
-    {
-        printf("Object %d:\n", i + 1);
-        print_object(&scene->objects[i]);
-        printf("\n");
-    }
+	printf("=== Scene ===\n");
+	printf("Ambient Light:\n");
+	printf("\tRatio: %.2f\n", scene->ambient_light.ratio);
+	print_vec("\tColor: ", &scene->ambient_light.color);
+	printf("Camera:\n");
+	print_vec("\tViewpoint: ", &scene->cam.viewpoint);
+	print_vec("\tOrientation: ", &scene->cam.orientation);
+	printf("\tFOV: %.2f\n", scene->cam.fov);
+	printf("Light:\n");
+	print_vec("\tCoord: ", &scene->light.coord);
+	printf("\tRatio: %.2f\n", scene->light.ratio);
+	print_vec("\tColor: ", &scene->light.color);
+	printf("Objects (%d):\n", scene->count.obj_count);
+	n = -1;
+	while (++n < scene->count.obj_count)
+	{
+		printf("Object %d:\n", n);
+		print_object(&scene->objects[n]);
+		printf("\n");
+	}
 }

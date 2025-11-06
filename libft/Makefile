@@ -4,36 +4,33 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
 DEPS = libft.h 
-SRCS =	ft_memcpy.c \
+SRCS =	ft_isalpha.c ft_isdigit.c ft_islower.c ft_isupper.c \
+		ft_calloc.c ft_free_array.c ft_memcpy.c ft_memset.c \
 		ft_putchar_fd.c ft_putstr_fd.c \
-		ft_strdup.c ft_strjoin.c ft_strlen.c \
-		gnl.c ft_strchr.c
-OBJS = ${SRCS:.c=.o}
-
-BONUS_SRCS =
-BONUS_OBJS = ${BONUS_SRCS:.c=.o}
+		ft_atoi.c ft_atol.c \
+		ft_split.c ft_strchr.c ft_strdup.c ft_strjoin.c ft_strlen.c \
+		gnl.c
+OBJS_DIR= objs
+OBJS = $(addprefix $(OBJS_DIR)/, $(SRCS:.c=.o))
 
 RM = rm -f
 AR = ar crs
 
-
-%.o: %.c $(DEPS)
-	$(CC) $(CFLAGS) -c $< -o $@
+all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(AR) $@ $^
 
-all: $(NAME)
-
-bonus: all ${BONUS_OBJS}
-	${AR} ${NAME} ${BONUS_OBJS}
+$(OBJS_DIR)/%.o: %.c $(DEPS)
+	@mkdir -p $(dir $@)
+	$(CC) -c $< -o $@ $(CFLAGS)
 
 clean: 
-	$(RM) $(OBJS) ${BONUS_OBJS}
+	$(RM) -r $(OBJS_DIR)
 
 fclean: clean
 	$(RM) $(NAME)
 
 re: fclean all
 
-.PHONY: all bonus clean fclean re
+.PHONY: all clean fclean re

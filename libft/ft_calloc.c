@@ -3,31 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkrakow <fkrakow@student.s19.be>           +#+  +:+       +#+        */
+/*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/03 15:11:38 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/11/03 15:22:12 by fkrakow          ###   ########.fr       */
+/*   Created: 2025/11/06 14:33:33 by fkrakow           #+#    #+#             */
+/*   Updated: 2025/11/06 14:44:08 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <miniRT.h>
-
-static void	*ft_memset(void	*s, int c, size_t n)
-{
-	unsigned char	*ptr;
-	size_t			i;
-
-	ptr = (unsigned char *)s;
-	i = -1;
-	while (++i < n)
-		ptr[i] = (unsigned char)c;
-	return (s);
-}
+#include "libft.h"
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {
-	void	*ptr;
 	size_t	total;
+	void	*ptr;
 
 	total = nmemb * size;
 	if (size != 0 && total / nmemb != size)

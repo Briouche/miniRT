@@ -16,7 +16,7 @@ else
 	LDFLAGS =
 endif
 
-SRCS=	main.c prints.c \
+SRCS=	main.c \
 		test_matrices_multi.c test_matrix_reductions.c \
 		test_translation.c test_shearing.c test_rotations.c
 

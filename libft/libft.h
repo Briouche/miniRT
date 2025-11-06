@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
+/*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 16:22:35 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/11/05 17:14:53 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/11/06 14:53:28 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,23 @@
 
 # define BUFFER_SIZE 32
 
+int		ft_isalpha(int c);
+int		ft_isdigit(int c);
+int		ft_islower(int c);
+int		ft_isupper(int c);
+
+void	*ft_calloc(size_t nmemb, size_t size);
+void	ft_free_array(void **arr);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
+void	*ft_memset(void	*s, int c, size_t n);
 
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 
+int		ft_atoi(const char *str);
+long	ft_atol(const char *str);
+
+char	**ft_split(const char *s, char c);
 char	*ft_strchr(char *s, int c);
 char	*ft_strdup(const char *s1);
 char	*ft_strjoin(const char *s1, const char *s2);

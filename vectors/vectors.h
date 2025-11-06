@@ -6,7 +6,7 @@
 /*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 09:04:26 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/11/05 17:03:38 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/11/06 14:53:52 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@ typedef struct s_matrix
 	t_vector	c3;
 	t_vector	c4;
 }	t_matrix;
+
+void		print_vec(char *const str, t_vector *v);
+void		print_matrix(const char *str, t_matrix *m, int d);
 
 // Colors
 t_vector	add_colors(t_vector *a, t_vector *b);

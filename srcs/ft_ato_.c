@@ -3,41 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ato_.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkrakow <fkrakow@student.s19.be>           +#+  +:+       +#+        */
+/*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 11:49:25 by brcoppie          #+#    #+#             */
-/*   Updated: 2025/11/03 15:42:53 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/11/06 14:50:31 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
 
-long	ft_atol(const char *str)
-{
-	long	result;
-	long	sign;
-	int		i;
-
-	result = 0;
-	sign = 1;
-	i = 0;
-	while (str[i] == ' ')
-		i++;
-	if (str[i] == '-' || str[i] == '+')
-	{
-		if (str[i] == '-')
-			sign = -1;
-		i++;
-	}
-	while (ft_isdigit(str[i]))
-	{
-		result = result * 10 + str[i] - '0';
-		i++;
-	}
-	return (sign * result);
-}
-
-double	ft_atod_helper(int i, const char *str)
+static double	ft_atod_helper(int i, const char *str)
 {
 	double	decimal;
 	double	result;

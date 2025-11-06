@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenization.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
+/*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 15:12:05 by brcoppie          #+#    #+#             */
-/*   Updated: 2025/11/05 16:17:54 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/11/06 14:09:38 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ char	**tokenize_line(int fd)
 	line = ft_gnl(fd);
 	if (!line)
 		return (NULL);
-	if ((newline = ft_strchr(line, '\n')))
+	newline = ft_strchr(line, '\n');
+	if (newline)
 		*newline = '\0';
 	tokens = ft_split(line, ' ');
 	free(line);

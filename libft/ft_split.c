@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkrakow <fkrakow@student.s19.be>           +#+  +:+       +#+        */
+/*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 15:27:07 by brcoppie          #+#    #+#             */
-/*   Updated: 2025/11/03 15:43:17 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/11/06 14:51:14 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <miniRT.h>
+#include "libft.h"
 
 static size_t	count_words(const char *str, char c)
 {
@@ -95,19 +95,3 @@ char	**ft_split(const char *s, char c)
 	tab[w] = 0;
 	return (tab);
 }
-/*
-int	main(void)
-{
-	char	s[] = "hehe salut, tu marche?";
-	char	**tab;
-	size_t	i;
-
-	tab = ft_split(s, ' ');
-	i = 0;
-	while (tab[i])
-	{
-		printf("%s\n", tab[i]);
-		i++;
-	}
-}
-*/
