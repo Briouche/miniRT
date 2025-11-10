@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_functions_2.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
+/*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 10:50:13 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/11/09 15:30:37 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/11/10 15:20:12 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

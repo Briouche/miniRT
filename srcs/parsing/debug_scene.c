@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   debug_scene.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
+/*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 15:20:42 by brcoppie          #+#    #+#             */
-/*   Updated: 2025/11/09 15:31:08 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/11/10 15:19:52 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,21 @@
 
 void	print_object(t_object *obj)
 {
-	if (!obj && obj->type == SPHERE)
+	if (obj && obj->type == SPHERE)
 	{
 		printf("Sphere\n");
 		print_vec("\tCenter: ", &obj->obj.sp.c);
 		printf("\tRadius: %.2f\n", obj->obj.sp.r);
 		print_vec("\tColor: ", &obj->obj.sp.color);
 	}
-	else if (!obj && obj->type == PLANE)
+	else if (obj && obj->type == PLANE)
 	{
 		printf("Plane\n");
 		print_vec("\tPoint: ", &obj->obj.pl.p);
 		print_vec("\tNormal: ", &obj->obj.pl.v);
 		print_vec("\tColor: ", &obj->obj.pl.color);
 	}
-	else if (!obj && obj->type == CYLINDER)
+	else if (obj && obj->type == CYLINDER)
 	{
 		printf("Cylinder\n");
 		print_vec("\tCenter: ", &obj->obj.cy.c);

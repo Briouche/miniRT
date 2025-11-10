@@ -35,7 +35,8 @@ DEPS_DIR = includes
 
 SRCS =	cannon_ball.c draw_clock.c main.c init_display.c render_image.c display_loop.c free.c \
 		ft_ato_.c \
-		parser_functions.c parser_functions_2.c parsing.c tokenization.c file.c debug_scene.c \
+		parsing/parser_functions.c parsing/parser_functions_2.c parsing/parsing.c \
+		parsing/tokenization.c parsing/file.c parsing/debug_scene.c \
 		utils/ray.c utils/intersect.c utils/position.c utils/sphere.c
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 
