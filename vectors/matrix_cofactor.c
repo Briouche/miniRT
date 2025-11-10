@@ -6,13 +6,14 @@
 /*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 12:02:09 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/11/10 11:32:29 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/11/10 11:43:35 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vectors.h"
 
-double	matrix_cofactor(const t_matrix *m, const int r, const int c, const int d)
+double	matrix_cofactor(const t_matrix *m, const int r,
+const int c, const int d)
 {
 	double	minor;
 

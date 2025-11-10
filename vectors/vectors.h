@@ -6,7 +6,7 @@
 /*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 09:04:26 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/11/10 11:31:47 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/11/10 11:43:27 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ t_vector	vec_color(const double red, const double green, const double blue);
 // Vectors
 int			is_equal(const t_vector *a, const t_vector *b);
 int			is_point(const t_vector *v);
- int			is_vector(const t_vector *v);
+int			is_vector(const t_vector *v);
 
 t_vector	op_cross(const t_vector *a, const t_vector *b);
 double		op_dot(const t_vector *a, const t_vector *b);
@@ -62,17 +62,19 @@ t_vector	vector(const double x, const double y, const double z);
 
 // matrices
 t_matrix	matrix(const t_vector *a, const t_vector *b,
-			const t_vector *c, const t_vector *d);
+				const t_vector *c, const t_vector *d);
 
 int			is_equal_matrix(const t_matrix *a, const t_matrix *b);
 
 t_matrix	matrices_add(const t_matrix *a, const t_matrix *b);
 t_matrix	matrices_multiply(const t_matrix *a, const t_matrix *b);
 
-double		matrix_cofactor(const t_matrix *m, const int r, const int c, const int d);
+double		matrix_cofactor(const t_matrix *m, const int r,
+				const int c, const int d);
 double		matrix_det_d2(const t_vector *m);
 double		matrix_determinant(const t_matrix *m, const int d);
-double		matrix_minor(const t_matrix *m, const int r, const int c, const int d);
+double		matrix_minor(const t_matrix *m, const int r,
+				const int c, const int d);
 
 t_matrix	matrix_inverse(const t_matrix *m);
 t_matrix	matrix_reduce(const t_matrix *m, const int r, const int c);
