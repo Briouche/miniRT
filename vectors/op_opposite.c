@@ -6,13 +6,13 @@
 /*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 15:05:55 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/10/31 10:48:32 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/11/10 11:33:40 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vectors.h"
 
-t_vector	op_opposite(t_vector *v)
+t_vector	op_opposite(const t_vector *v)
 {
 	return ((t_vector){-v->x, -v->y, -v->z, v->w});
 }

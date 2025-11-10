@@ -6,15 +6,15 @@
 /*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 09:09:39 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/10/31 10:49:26 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/11/10 11:32:19 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vectors.h"
 
-int	is_vector(t_vector *v)
+int	is_vector(const t_vector *v)
 {
-	if (fabs(v->w) < __DBL_EPSILON__)
+	if (fabs(v->w) < 0.000001)
 		return (1);
 	return (0);
 }

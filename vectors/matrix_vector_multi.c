@@ -6,18 +6,23 @@
 /*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 17:42:46 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/11/05 12:44:13 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/11/10 11:33:05 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vectors.h"
 
-t_vector	matrix_vector_multi(t_matrix *m, t_vector *v)
+t_vector	matrix_vector_multi(const t_matrix *m, const t_vector *v)
 {
+	const double	x = v->x;
+	const double	y = v->y;
+	const double	z = v->z;
+	const double	w = v->w;
+
 	return ((t_vector){
-		v->x * m->c1.x + v->y * m->c2.x + v->z * m->c3.x + v->w * m->c4.x,
-		v->x * m->c1.y + v->y * m->c2.y + v->z * m->c3.y + v->w * m->c4.y,
-		v->x * m->c1.z + v->y * m->c2.z + v->z * m->c3.z + v->w * m->c4.z,
-		v->x * m->c1.w + v->y * m->c2.w + v->z * m->c3.w + v->w * m->c4.w
+		x * m->c1.x + y * m->c2.x + z * m->c3.x + w * m->c4.x,
+		x * m->c1.y + y * m->c2.y + z * m->c3.y + w * m->c4.y,
+		x * m->c1.z + y * m->c2.z + z * m->c3.z + w * m->c4.z,
+		x * m->c1.w + y * m->c2.w + z * m->c3.w + w * m->c4.w
 	});
 }

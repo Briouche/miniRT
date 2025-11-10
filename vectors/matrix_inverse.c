@@ -6,18 +6,17 @@
 /*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 14:15:23 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/11/05 13:03:21 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/11/10 11:32:41 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vectors.h"
 
-t_matrix	matrix_inverse(t_matrix *m)
+t_matrix	matrix_inverse(const t_matrix *m)
 {
-	t_matrix	inversed;
-	double		det;
+	t_matrix		inversed;
+	const double	det = matrix_determinant(m, 4);
 
-	det = matrix_determinant(m, 4);
 	if (!det)
 		return ((t_matrix){(t_vector){0, 0, 0, 0}, (t_vector){0, 0, 0, 0},
 		(t_vector){0, 0, 0, 0}, (t_vector){0, 0, 0, 0}});

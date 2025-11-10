@@ -6,7 +6,7 @@
 /*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 10:02:16 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/11/06 13:46:00 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/11/10 11:35:44 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,12 @@ int	cannon_ball(t_display *img, t_vector *color)
 {
 	t_proj		projectile;
 	t_envir		environnement;
-	double		tmp;
 	t_vector	tmp_vec;
 
 	projectile.position = (t_vector){0, 1, 0, 1};
 	projectile.velocity = (t_vector){1, 1.8, 0, 0};
-	tmp = 11.25;
 	tmp_vec = op_normalise(&projectile.velocity);
-	projectile.velocity = op_multi(&tmp_vec, &tmp);
+	projectile.velocity = op_multi_scalar(&tmp_vec, 11.25);
 	environnement.gravity = (t_vector){0, -0.1, 0, 0};
 	environnement.wind = (t_vector){-0.01, 0, 0, 0};
 	while (projectile.position.y >= 0)

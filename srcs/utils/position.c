@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   op_multi.c                                         :+:      :+:    :+:   */
+/*   position.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/30 15:52:09 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/10/31 10:48:46 by fkrakow          ###   ########.fr       */
+/*   Created: 2025/11/08 16:22:59 by fkrakow           #+#    #+#             */
+/*   Updated: 2025/11/10 11:37:57 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vectors.h"
+#include <utils.h>
 
-t_vector	op_multi(t_vector *v, double *scalar)
+t_vector	position(t_ray *r, double t)
 {
-	double	n;
+	t_vector	tmp;
 
-	n = *scalar;
-	return ((t_vector){v->x * n, v->y * n, v->z * n, v->w});
+	tmp = op_multi_scalar(&r->direction, t);
+	return (op_plus(&r->origin, &tmp));
 }

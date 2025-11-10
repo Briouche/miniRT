@@ -6,7 +6,7 @@
 /*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 14:06:06 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/11/06 14:49:44 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/11/10 11:39:14 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,22 @@
 # define MINIRT_H
 
 # include "../libft/libft.h"
-# include "../vectors/vectors.h"
+# include "utils.h"
 # include "display.h"
-# include "structures.h"
 
-# include <unistd.h>
-# include <stdlib.h>
 # include <stdio.h>
 # include <fcntl.h>
-#include <mlx.h>
-#include <float.h>
+# include <float.h>
 
 # define WIDTH 900
 # define HEIGHT 550
-
 
 // main functions
 int		init_display(t_display *display);
 int		render_image(t_display *img);
 void	display_loop(t_display *display);
 
+// Ray Tracer chapters
 int		cannon_ball(t_display *img, t_vector *color);
 int		draw_clock(t_display *img, t_vector *white);
 
@@ -65,7 +61,6 @@ void	ft_free_tab(char ***tab);
 void	free_scene(t_scene **scene);
 
 // strings
-char	**ft_split(const char *str, char c);
 double	ft_atod(const char *str);
 
 //DEBUGGING

@@ -6,15 +6,16 @@
 /*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 11:09:02 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/11/06 14:00:19 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/11/08 16:34:32 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTURES_H
 # define STRUCTURES_H
 
-//object structs
+# include "../vectors/vectors.h"
 
+//object structs
 typedef struct s_count
 {
 	int	ambient_count;
@@ -32,8 +33,8 @@ typedef enum e_type
 
 typedef struct s_sphere
 {
-	t_vector	center;
-	double		diameter;
+	t_vector	c;
+	double		r;
 	t_vector	color;
 }	t_sphere;
 
@@ -46,7 +47,7 @@ typedef struct s_plane
 
 typedef struct s_cylinder
 {
-	t_vector	center;
+	t_vector	c;
 	t_vector	v;
 	double		diameter;
 	double		height;

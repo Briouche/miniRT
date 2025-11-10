@@ -6,7 +6,7 @@
 /*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 13:01:26 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/10/31 15:09:47 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/11/08 16:28:36 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define DISPLAY_H
 
 # include <mlx.h>
+# include "../vectors/vectors.h"
 
 typedef struct s_display
 {

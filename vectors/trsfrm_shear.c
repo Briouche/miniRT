@@ -6,13 +6,13 @@
 /*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 16:55:16 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/11/05 17:00:44 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/11/10 11:34:09 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vectors.h"
 
-t_matrix	trsfrm_shear(t_vector *a, t_vector *b)
+t_matrix	trsfrm_shear(const t_vector *a, const t_vector *b)
 {
 	return ((t_matrix){{1, a->z, b->x, 0}, {a->x, 1, b->y, 0},
 		{a->y, a->w, 1, 0}, {0, 0, 0, 1}});

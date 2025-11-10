@@ -6,15 +6,15 @@
 /*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 09:03:34 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/10/31 15:40:42 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/11/10 11:32:16 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vectors.h"
 
-int	is_point(t_vector *v)
+int	is_point(const t_vector *v)
 {
-	if (fabs(v->w - 1) < __DBL_EPSILON__)
+	if (fabs(v->w - 1) < 0.000001)
 		return (1);
 	return (0);
 }

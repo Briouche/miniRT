@@ -6,13 +6,13 @@
 /*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 14:35:23 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/11/04 10:16:39 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/11/10 11:33:01 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vectors.h"
 
-t_matrix	matrix_transpose(t_matrix *m)
+t_matrix	matrix_transpose(const t_matrix *m)
 {
 	return ((t_matrix){
 		(t_vector){m->c1.x, m->c2.x, m->c3.x, m->c4.x},

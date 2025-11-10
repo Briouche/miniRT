@@ -6,13 +6,13 @@
 /*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 18:21:15 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/11/04 10:16:32 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/11/10 11:32:32 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vectors.h"
 
-double	matrix_det_d2(t_vector *m)
+double	matrix_det_d2(const t_vector *m)
 {
 	return (m->x * m->w - m->y * m->z);
 }

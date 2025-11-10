@@ -6,7 +6,7 @@
 /*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 10:50:13 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/11/06 10:50:30 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/11/09 15:30:37 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,10 +83,10 @@ int	parse_sphere(t_obj_list **objects, char **line)
 	new_obj->type = SPHERE;
 	if (!line[1] || !line[2] || !line[3] || line[4])
 		return (print_error("Bad sphere\n"), free(new_obj), 0);
-	if (!parse_point(line[1], &new_obj->obj.sp.center))
+	if (!parse_point(line[1], &new_obj->obj.sp.c))
 		return (print_error("Bad sphere\n"), free(new_obj), 0);
-	new_obj->obj.sp.diameter = ft_atod(line[2]);
-	if (new_obj->obj.sp.diameter == -DBL_MAX || new_obj->obj.sp.diameter <= 0.0)
+	new_obj->obj.sp.r = ft_atod(line[2]) / 2;
+	if (new_obj->obj.sp.r == -DBL_MAX || new_obj->obj.sp.r <= 0.0)
 		return (print_error("Bad sphere\n"), free(new_obj), 0);
 	if (!parse_color(line[3], &new_obj->obj.sp.color))
 		return (print_error("Bad sphere\n"), free(new_obj), 0);
@@ -127,7 +127,7 @@ int	parse_cylinder(t_obj_list **objects, char **line)
 	new_obj->type = CYLINDER;
 	if (!line[1] || !line[2] || !line[3] || !line[4] || !line[5] || line[6])
 		return (print_error("Bad cylinder\n"), free(new_obj), 0);
-	if (!parse_point(line[1], &new_obj->obj.cy.center))
+	if (!parse_point(line[1], &new_obj->obj.cy.c))
 		return (print_error("Bad cylinder\n"), free(new_obj), 0);
 	if (!parse_vector(line[2], &new_obj->obj.cy.v) || \
 		!is_normed_v(&new_obj->obj.cy.v))

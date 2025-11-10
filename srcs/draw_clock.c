@@ -6,7 +6,7 @@
 /*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 17:17:24 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/11/06 14:08:04 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/11/10 11:36:30 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,16 @@ int	draw_clock(t_display *img, t_vector *white)
 	double		angle;
 	int			n;
 
-	vec = point(&(double){0}, &(double){1}, &(double){0});
-	trans[2] = trsfrm_scale(&(double){3.0 / 8.0 * HEIGHT},
-			&(double){3.0 / 8.0 * HEIGHT}, &(double){1});
-	trans[3] = trsfrm_translate(&(double){HEIGHT / 2.0},
-			&(double){HEIGHT / 2.0}, &(double){0});
+	vec = point((double){0}, (double){1}, (double){0});
+	trans[2] = trsfrm_scale((double){3.0 / 8.0 * HEIGHT},
+			(double){3.0 / 8.0 * HEIGHT}, (double){1});
+	trans[3] = trsfrm_translate((double){HEIGHT / 2.0},
+			(double){HEIGHT / 2.0}, (double){0});
 	n = -1;
 	while (++n < 3600)
 	{
 		angle = n * (M_PI / 1800);
-		trans[1] = trsfrm_rotate_z(&angle);
+		trans[1] = trsfrm_rotate_z(angle);
 		trans[0] = matrices_multiply(&trans[2], &trans[1]);
 		trans[0] = matrices_multiply(&trans[3], &trans[0]);
 		new_vec = matrix_vector_multi(&trans[0], &vec);

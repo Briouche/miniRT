@@ -6,7 +6,7 @@
 /*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 16:22:35 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/11/06 14:53:28 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/11/08 11:13:58 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,11 @@ int		ft_atoi(const char *str);
 long	ft_atol(const char *str);
 
 char	**ft_split(const char *s, char c);
-char	*ft_strchr(char *s, int c);
+char	*ft_strchr(const char *s, int c);
 char	*ft_strdup(const char *s1);
 char	*ft_strjoin(const char *s1, const char *s2);
 int		ft_strlen(const char *s);
+char	*ft_strndup(const char *src, int n);
 
 char	*ft_gnl(int fd);
 

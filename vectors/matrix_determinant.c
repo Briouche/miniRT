@@ -6,13 +6,13 @@
 /*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 12:07:15 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/11/04 12:39:40 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/11/10 11:32:36 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vectors.h"
 
-double	matrix_determinant(t_matrix *m, int d)
+double	matrix_determinant(const t_matrix *m, const int d)
 {
 	double		det;
 

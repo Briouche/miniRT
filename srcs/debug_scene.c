@@ -6,7 +6,7 @@
 /*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 15:20:42 by brcoppie          #+#    #+#             */
-/*   Updated: 2025/11/06 13:59:08 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/11/09 15:31:08 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	print_object(t_object *obj)
 	if (!obj && obj->type == SPHERE)
 	{
 		printf("Sphere\n");
-		print_vec("\tCenter: ", &obj->obj.sp.center);
-		printf("\tDiameter: %.2f\n", obj->obj.sp.diameter);
+		print_vec("\tCenter: ", &obj->obj.sp.c);
+		printf("\tRadius: %.2f\n", obj->obj.sp.r);
 		print_vec("\tColor: ", &obj->obj.sp.color);
 	}
 	else if (!obj && obj->type == PLANE)
@@ -31,7 +31,7 @@ void	print_object(t_object *obj)
 	else if (!obj && obj->type == CYLINDER)
 	{
 		printf("Cylinder\n");
-		print_vec("\tCenter: ", &obj->obj.cy.center);
+		print_vec("\tCenter: ", &obj->obj.cy.c);
 		print_vec("\tVector: ", &obj->obj.cy.v);
 		printf("\tDiameter: %.2f\n", obj->obj.cy.diameter);
 		printf("\tHeight: %.2f\n", obj->obj.cy.height);

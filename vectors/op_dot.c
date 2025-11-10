@@ -6,13 +6,13 @@
 /*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 16:38:35 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/11/04 11:55:43 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/11/10 11:33:23 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vectors.h"
 
-double	op_dot(t_vector *a, t_vector *b)
+double	op_dot(const t_vector *a, const t_vector *b)
 {
 	return (a->x * b->x + a->y * b->y + a->z * b->z + a->w * b->w);
 }
