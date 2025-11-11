@@ -6,7 +6,7 @@
 /*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 16:56:58 by brcoppie          #+#    #+#             */
-/*   Updated: 2025/11/06 14:25:29 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/11/11 14:40:21 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,15 @@ void	print_error(char *error_msg)
 		ft_putstr_fd(error_msg, 2);
 }
 
-void	free_scene(t_scene **scene)
+void	free_scene(t_scene *scene)
 {
-	if (!scene || !(*scene))
+	if (!scene)
 		return ;
-	if ((*scene)->objects)
+	if (scene->objects)
 	{
-		free((*scene)->objects);
-		(*scene)->objects = NULL;
+		free(scene->objects);
+		scene->objects = NULL;
 	}
-	free(*scene);
-	*scene = NULL;
 }
 
 void	ft_free_tab(char ***tab)

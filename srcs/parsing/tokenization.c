@@ -6,7 +6,7 @@
 /*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 15:12:05 by brcoppie          #+#    #+#             */
-/*   Updated: 2025/11/06 14:09:38 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/11/11 14:37:19 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	**tokenize_line(int fd)
 	return (tokens);
 }
 
-int	parse_line(t_scene **scene, t_obj_list **objects, char **tokens)
+int	parse_line(t_scene *scene, t_obj_list **objects, char **tokens)
 {
 	if (!tokens || !tokens[0] || !tokens[0][0])
 		return (0);

@@ -6,7 +6,7 @@
 /*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 11:44:39 by brcoppie          #+#    #+#             */
-/*   Updated: 2025/11/06 14:25:17 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/11/11 14:39:23 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,22 +81,22 @@ int	is_normed_v(t_vector *vec)
 		return (1);
 }
 
-int	parse_camera(t_scene **scene, char **line)
+int	parse_camera(t_scene *scene, char **line)
 {
-	if ((*scene)->count.camera_count > 0)
+	if (scene->count.camera_count > 0)
 		return (print_error("More than 1 Camera\n"), 0);
-	(*scene)->count.camera_count++;
+	scene->count.camera_count++;
 	if (!line[1] || !line[2] || !line[3] || line[4])
 		return (print_error("Bad Camera line\n"), 0);
 	if (line[0][0] != 'C' || line[0][1])
 		return (print_error("Bad Camera line\n"), 0);
-	if (!parse_point(line[1], &(*scene)->cam.viewpoint))
+	if (!parse_point(line[1], &scene->cam.viewpoint))
 		return (print_error("Bad Camera viewpoint\n"), 0);
-	if (!parse_vector(line[2], &(*scene)->cam.orientation)
-		|| !is_normed_v(&(*scene)->cam.orientation))
+	if (!parse_vector(line[2], &scene->cam.orientation)
+		|| !is_normed_v(&scene->cam.orientation))
 		return (print_error("Bad Camera orientation\n"), 0);
-	(*scene)->cam.fov = ft_atod(line[3]);
-	if ((*scene)->cam.fov > 180 || (*scene)->cam.fov < 0)
+	scene->cam.fov = ft_atod(line[3]);
+	if (scene->cam.fov > 180 || scene->cam.fov < 0)
 		return (print_error("Bad Camera FOV\n"), 0);
 	return (1);
 }

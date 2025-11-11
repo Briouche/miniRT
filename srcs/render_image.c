@@ -6,7 +6,7 @@
 /*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 13:31:03 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/11/10 11:37:31 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/11/11 14:45:04 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,8 @@ int	render_image(t_display *img)
 	r = 255;
 	g = 0;
 	b = 0;
-	// color = vec_color(&r, &g, &b);
-	// cannon_ball(img, &color);
 	color = vec_color(r, g, b);
+	cannon_ball(img, &color);
 	draw_clock(img, &color);
 	return (0);
 }

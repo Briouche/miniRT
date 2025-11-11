@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   debug_scene.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
+/*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 15:20:42 by brcoppie          #+#    #+#             */
-/*   Updated: 2025/11/10 15:19:52 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/11/11 14:44:00 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	print_scene(t_scene *scene)
 {
 	int	n;
 
-	printf("=== Scene ===\n");
+	printf("============ Scene =========\n");
 	printf("Ambient Light:\n");
 	printf("\tRatio: %.2f\n", scene->ambient_light.ratio);
 	print_vec("\tColor: ", &scene->ambient_light.color);

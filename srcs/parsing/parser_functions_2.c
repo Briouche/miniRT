@@ -3,48 +3,48 @@
 /*                                                        :::      ::::::::   */
 /*   parser_functions_2.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
+/*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 10:50:13 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/11/10 15:20:12 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/11/11 14:42:51 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
 
-int	parse_ambient(t_scene **scene, char **line)
+int	parse_ambient(t_scene *scene, char **line)
 {
-	if ((*scene)->count.ambient_count > 0)
+	if (scene->count.ambient_count > 0)
 		return (print_error("More than 1 ambient light\n"), 0);
-	(*scene)->count.ambient_count++;
+	scene->count.ambient_count++;
 	if (!line[1] || !line[2] || line[3])
 		return (print_error("Bad Ambient line\n"), 0);
 	if (line[0][0] != 'A' || line[0][1])
 		return (print_error("Bad Ambient line\n"), 0);
-	(*scene)->ambient_light.ratio = ft_atod(line[1]);
-	if ((*scene)->ambient_light.ratio > 1.0
-		|| (*scene)->ambient_light.ratio < 0.0)
+	scene->ambient_light.ratio = ft_atod(line[1]);
+	if (scene->ambient_light.ratio > 1.0
+		|| scene->ambient_light.ratio < 0.0)
 		return (print_error("Bad Ambient light ratio\n"), 0);
-	if (!parse_color(line[2], &(*scene)->ambient_light.color))
+	if (!parse_color(line[2], &scene->ambient_light.color))
 		return (print_error("Bad Ambient light color\n"), 0);
 	return (1);
 }
 
-int	parse_light(t_scene **scene, char **line)
+int	parse_light(t_scene *scene, char **line)
 {
-	if ((*scene)->count.light_count > 0)
+	if (scene->count.light_count > 0)
 		return (print_error("More than 1 light\n"), 0);
-	(*scene)->count.light_count++;
+	scene->count.light_count++;
 	if (!line[1] || !line[2] || !line[3] || line[4])
 		return (print_error("Bad light line\n"), 0);
 	if (line[0][0] != 'L' || line[0][1])
 		return (print_error("Bad light line\n"), 0);
-	if (!parse_point(line[1], &(*scene)->light.coord))
+	if (!parse_point(line[1], &scene->light.coord))
 		return (print_error("Bad light coordinates\n"), 0);
-	(*scene)->light.ratio = ft_atod(line[2]);
-	if ((*scene)->light.ratio > 1.0 || (*scene)->light.ratio < 0.0)
+	scene->light.ratio = ft_atod(line[2]);
+	if (scene->light.ratio > 1.0 || scene->light.ratio < 0.0)
 		return (print_error("Bad light ratio\n"), 0);
-	if (!parse_color(line[3], &(*scene)->light.color))
+	if (!parse_color(line[3], &scene->light.color))
 		return (print_error("Bad light color\n"), 0);
 	return (1);
 }

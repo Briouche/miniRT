@@ -6,7 +6,7 @@
 /*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 12:52:56 by brcoppie          #+#    #+#             */
-/*   Updated: 2025/11/06 14:26:04 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/11/11 14:37:11 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static void	init_scene(t_scene *scene)
 	scene->objects = NULL;
 }
 
-int	parse_scene(t_scene **scene, char *filename)
+int	parse_scene(t_scene *scene, char *filename)
 {
 	int			fd;
 	char		**line;
@@ -75,7 +75,7 @@ int	parse_scene(t_scene **scene, char *filename)
 		ft_free_tab(&line);
 		line = tokenize_line(fd);
 	}
-	if (!list_to_array(*scene, objects))
+	if (!list_to_array(scene, objects))
 	{
 		free_object_list(objects);
 		ft_free_tab(&line);
@@ -87,7 +87,7 @@ int	parse_scene(t_scene **scene, char *filename)
 	return (1);
 }
 
-int	parsing(int ac, char *filename, t_scene **scene)
+int	parsing(int ac, char *filename, t_scene *scene)
 {
 	if (ac != 2)
 	{
@@ -101,7 +101,7 @@ int	parsing(int ac, char *filename, t_scene **scene)
 	}
 	else if (!check_openread(filename))
 		return (1);
-	init_scene(*scene);
+	init_scene(scene);
 	if (!parse_scene(scene, filename))
 		return (1);
 	return (0);

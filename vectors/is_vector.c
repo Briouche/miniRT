@@ -6,7 +6,7 @@
 /*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 09:09:39 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/11/10 11:32:19 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/11/11 14:17:05 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,5 @@
 
 int	is_vector(const t_vector *v)
 {
-	if (fabs(v->w) < 0.000001)
-		return (1);
-	return (0);
+	return (fabs(v->w) < 0.000001);
 }
