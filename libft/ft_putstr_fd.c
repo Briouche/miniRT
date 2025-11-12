@@ -6,13 +6,13 @@
 /*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 12:15:29 by brcoppie          #+#    #+#             */
-/*   Updated: 2025/10/25 17:02:11 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/11/11 18:29:03 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr_fd(char *s, int fd)
+void	ft_putstr_fd(const char *s, int fd)
 {
 	write(fd, s, ft_strlen(s));
 }

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   debug_scene.c                                      :+:      :+:    :+:   */
+/*   print_scene.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 15:20:42 by brcoppie          #+#    #+#             */
-/*   Updated: 2025/11/11 14:44:00 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/11/12 15:29:41 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
 
-void	print_object(t_object *obj)
+static void	print_object(t_object *obj)
 {
 	if (obj && obj->type == SPHERE)
 	{
@@ -47,8 +47,8 @@ void	print_scene(t_scene *scene)
 
 	printf("============ Scene =========\n");
 	printf("Ambient Light:\n");
-	printf("\tRatio: %.2f\n", scene->ambient_light.ratio);
-	print_vec("\tColor: ", &scene->ambient_light.color);
+	printf("\tRatio: %.2f\n", scene->ambient.ratio);
+	print_vec("\tColor: ", &scene->ambient.color);
 	printf("Camera:\n");
 	print_vec("\tViewpoint: ", &scene->cam.viewpoint);
 	print_vec("\tOrientation: ", &scene->cam.orientation);
@@ -57,9 +57,9 @@ void	print_scene(t_scene *scene)
 	print_vec("\tCoord: ", &scene->light.coord);
 	printf("\tRatio: %.2f\n", scene->light.ratio);
 	print_vec("\tColor: ", &scene->light.color);
-	printf("Objects (%d):\n", scene->count.obj_count);
+	printf("Total of number of objects: %d\n", scene->size);
 	n = -1;
-	while (++n < scene->count.obj_count)
+	while (++n < scene->size)
 	{
 		printf("Object %d:\n", n);
 		print_object(&scene->objects[n]);

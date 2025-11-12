@@ -33,10 +33,11 @@ SRC_DIR = srcs
 OBJ_DIR = objs
 DEPS_DIR = includes
 
-SRCS =	cannon_ball.c draw_clock.c main.c init_display.c render_image.c display_loop.c free.c \
+SRCS =	main.c cannon_ball.c draw_clock.c \
+		init_display.c render_image.c display_loop.c \
 		ft_ato_.c \
-		parsing/parser_functions.c parsing/parser_functions_2.c parsing/parsing.c \
-		parsing/tokenization.c parsing/file.c parsing/debug_scene.c \
+		parser/parsing.c parser/parse_scene.c \
+		parser/parse_lightning.c parser/parse_shapes.c parser/parse_utils.c parser/print_scene.c \
 		utils/ray.c utils/intersect.c utils/position.c utils/sphere.c
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 

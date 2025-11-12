@@ -6,7 +6,7 @@
 /*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 16:22:35 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/11/08 11:13:58 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/11/12 12:21:08 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,15 @@ void	ft_free_array(void **arr);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
 void	*ft_memset(void	*s, int c, size_t n);
 
-void	ft_putchar_fd(char c, int fd);
-void	ft_putstr_fd(char *s, int fd);
+void	ft_putchar_fd(const char c, int fd);
+void	ft_putstr_fd(const char *s, int fd);
 
 int		ft_atoi(const char *str);
 long	ft_atol(const char *str);
 
 char	**ft_split(const char *s, char c);
 char	*ft_strchr(const char *s, int c);
+int		ft_strcmp(const char *s1, const char *s2);
 char	*ft_strdup(const char *s1);
 char	*ft_strjoin(const char *s1, const char *s2);
 int		ft_strlen(const char *s);

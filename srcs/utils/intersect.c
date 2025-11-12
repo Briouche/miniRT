@@ -6,13 +6,13 @@
 /*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 16:40:10 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/11/11 14:26:23 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/11/11 15:55:09 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <utils.h>
 
-static void	find_points(t_intersect *res, double a, double b)
+static void	find_points(t_intersec *res, double a, double b)
 {
 	double		sqrt_discrim;
 
@@ -21,7 +21,7 @@ static void	find_points(t_intersect *res, double a, double b)
 	res->i2 = -b + sqrt_discrim;
 }
 
-int	intersect(t_intersect *s, t_sphere *sp, t_ray *r)
+int	intersect(t_intersec *s, t_sphere *sp, t_ray *r)
 {
 	double		a;
 	double		b;

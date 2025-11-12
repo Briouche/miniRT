@@ -6,7 +6,7 @@
 /*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 11:09:02 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/11/08 16:34:32 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/11/12 15:28:59 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,7 @@
 
 # include "../vectors/vectors.h"
 
-//object structs
-typedef struct s_count
-{
-	int	ambient_count;
-	int	camera_count;
-	int	light_count;
-	int	obj_count;
-}	t_count;
-
-typedef enum e_type
-{
-	SPHERE,
-	PLANE,
-	CYLINDER
-}	t_type;
-
+// objects' definition
 typedef struct s_sphere
 {
 	t_vector	c;
@@ -54,6 +39,15 @@ typedef struct s_cylinder
 	t_vector	color;
 }	t_cylinder;
 
+// objects' types
+typedef enum e_type
+{
+	SPHERE,
+	PLANE,
+	CYLINDER
+}	t_type;
+
+// objects themselves
 typedef struct s_object
 {
 	t_type	type;
@@ -65,13 +59,14 @@ typedef struct s_object
 	}				obj;
 }	t_object;
 
+// list of all objects
 typedef struct s_obj_list
 {
 	t_object			*object;
 	struct s_obj_list	*next;
 }	t_obj_list;
 
-//other elements
+//scene's elements
 typedef struct s_ambient
 {
 	double		ratio;
@@ -92,13 +87,25 @@ typedef struct s_light
 	t_vector	color;
 }	t_light;
 
-//scene
+// to limit our number of ambient light,
+// camera, and light to one
+typedef struct s_count
+{
+	int	ambient_count;
+	int	camera_count;
+	int	light_count;
+}	t_count;
+
+// the scene itself containing all the information
+// from the input file
 typedef struct s_scene
 {
-	t_ambient	ambient_light;
+	t_ambient	ambient;
 	t_camera	cam;
 	t_light		light;
 	t_object	*objects;
+	t_obj_list	*objs_list;
+	int			size;
 	t_count		count;
 }	t_scene;
 

@@ -6,46 +6,25 @@
 /*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 14:00:34 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/11/11 14:43:35 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/11/12 15:26:51 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
 
-//void	print_file(char *filename)
-//{
-//    int		fd;
-//    char	*line;
-
-//	fd = open(filename, O_RDONLY);
-//	if (fd < 0)
-//	{
-//		perror("open");
-//		return;
-//	}
-//	line = ft_gnl(fd);
-//	while (line != NULL)
-//	{
-//		ft_putstr_fd(line, 1);
-//		free(line);
-//		line = ft_gnl(fd);
-//	}
-//	ft_putchar_fd('\n', 1);
-//	close(fd);
-//}
-
-int	main(int ac, char **av)
+int	main(int argc, char *const argv[])
 {
 	t_display	display;
 	t_scene		scene;
 
-	//parsing tester
-	if (parsing(ac, av[1], &scene))
+	if (argc != 2)
+	{
+		ft_putstr_fd("Error: Usage: minirt <scene.rt>\n", 2);
 		return (1);
-	//print_file(av[1]);
+	}
+	if (parsing(argv[1], &scene))
+		return (1);
 	print_scene(&scene);
-	free_scene(&scene);
-
 	if (init_display(&display))
 		return (1);
 	if (render_image(&display))
