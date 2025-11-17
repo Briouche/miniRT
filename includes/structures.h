@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structures.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
+/*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 11:09:02 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/11/12 15:28:59 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/11/17 16:52:46 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef struct s_cylinder
 {
 	t_vector	c;
 	t_vector	v;
-	double		diameter;
+	double		radius;
 	double		height;
 	t_vector	color;
 }	t_cylinder;
@@ -46,6 +46,8 @@ typedef enum e_type
 	PLANE,
 	CYLINDER
 }	t_type;
+
+
 
 // objects themselves
 typedef struct s_object

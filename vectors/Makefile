@@ -14,7 +14,8 @@ else
 endif
 
 SRCS=	is_equal.c is_point.c is_vector.c is_equal_matrix.c \
-		op_cross.c op_dot.c op_magnitude.c op_minus.c op_multi_scalar.c op_normalise.c op_opposite.c op_plus.c \
+		op_cross.c op_dot.c op_magnitude.c op_minus.c op_multi_scalar.c \
+		op_normalise.c op_opposite.c op_plus.c op_perpendicular_comp.c \
 		add_colors.c multi_colors.c multi_scalar_colors.c sub_colors.c \
 		point.c vector.c vec_color.c matrix.c \
 		matrices_add.c matrices_multiply.c \

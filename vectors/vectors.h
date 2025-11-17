@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vectors.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
+/*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 09:04:26 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/11/10 11:43:27 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/11/17 17:10:06 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ t_vector	op_multi_scalar(const t_vector *v, const double n);
 t_vector	op_normalise(const t_vector *v);
 t_vector	op_opposite(const t_vector *v);
 t_vector	op_plus(const t_vector *a, const t_vector *b);
+t_vector	op_perpendicular_comp(t_vector *v, t_vector *axis);
 
 t_vector	point(const double x, const double y, const double z);
 t_vector	vector(const double x, const double y, const double z);

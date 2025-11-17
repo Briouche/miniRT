@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_scene.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
+/*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 15:20:42 by brcoppie          #+#    #+#             */
-/*   Updated: 2025/11/12 15:29:41 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/11/17 16:53:29 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	print_object(t_object *obj)
 		printf("Cylinder\n");
 		print_vec("\tCenter: ", &obj->obj.cy.c);
 		print_vec("\tVector: ", &obj->obj.cy.v);
-		printf("\tDiameter: %.2f\n", obj->obj.cy.diameter);
+		printf("\tRadius: %.2f\n", obj->obj.cy.radius);
 		printf("\tHeight: %.2f\n", obj->obj.cy.height);
 		print_vec("\tColor: ", &obj->obj.cy.color);
 	}

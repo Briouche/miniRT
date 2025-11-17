@@ -3,40 +3,51 @@
 /*                                                        :::      ::::::::   */
 /*   intersect.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
+/*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 16:40:10 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/11/11 15:55:09 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/11/17 19:14:15 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <utils.h>
 
-static void	find_points(t_intersec *res, double a, double b)
+void	sort_intersections(t_intersec_info *intersections, int size)
 {
-	double		sqrt_discrim;
+	int				i;
+	int				j;
+	t_intersec_info	tmp;
 
-	sqrt_discrim = sqrt(a);
-	res->i1 = -b - sqrt_discrim;
-	res->i2 = -b + sqrt_discrim;
+	i = 0;
+	j = 0;
+	while (i < size - 1)
+	{
+		while (j < size - i - 1)
+		{
+			if (intersections[j].t > intersections[j + 1].t)
+			{
+				tmp = intersections[j];
+				intersections[j] = intersections[j + 1];
+				intersections[j + 1] = tmp;
+			}
+			j++;
+		}
+		j = 0;
+		i++;
+	}
 }
 
-int	intersect(t_intersec *s, t_sphere *sp, t_ray *r)
+int	all_ray_intersections(t_scene *scene, t_ray *ray, t_intersec_info *inters)
 {
-	double		a;
-	double		b;
-	double		c;
-	t_vector	sp_origin;
-	t_vector	r_dir;
+	int				i;
+	int				hits;
 
-	r_dir = r->direction;
-	a = op_dot(&r_dir, &r_dir);
-	sp_origin = (t_vector){sp->c.x, sp->c.y, sp->c.z, 0};
-	b = 2 * op_dot(&r_dir, &sp_origin);
-	c = op_dot(&sp_origin, &sp_origin) - 1;
-	a = sqrt(b) - 4 * a * c;
-	if (a < 0)
-		return (0);
-	find_points(s, a, b);
-	return (1);
+	i = 0;
+	hits = 0;
+	while (i < scene->size)
+	{
+		hits += obj_intersections(&scene->objects[i], ray, inters[hits]);
+		i++;
+	}
+	return (hits);
 }

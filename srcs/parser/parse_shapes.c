@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_shapes.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
+/*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 10:50:13 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/11/12 15:13:12 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/11/17 16:54:34 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,11 +100,11 @@ int	parse_cylinder(t_obj_list **obj_list, int *size, char *const token[])
 	new_obj = NULL;
 	if (parse_cylinder_bis(token, &new_obj))
 		return (1);
-	new_obj->obj.cy.diameter = ft_atod(token[3]);
+	new_obj->obj.cy.radius = ft_atod(token[3]) / 2;
 	new_obj->obj.cy.height = ft_atod(token[4]);
-	if (new_obj->obj.cy.diameter == -DBL_MAX
+	if (new_obj->obj.cy.radius == -DBL_MAX
 		|| new_obj->obj.cy.height == -DBL_MAX
-		|| new_obj->obj.cy.diameter <= 0.0
+		|| new_obj->obj.cy.radius <= 0.0
 		|| new_obj->obj.cy.height <= 0.0)
 		return (input_error("invalid cylinder's diameter or height, \
 			not > 0\n", new_obj));
