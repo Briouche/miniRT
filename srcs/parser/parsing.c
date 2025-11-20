@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
+/*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 12:52:56 by brcoppie          #+#    #+#             */
-/*   Updated: 2025/11/12 15:46:30 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/11/20 18:23:29 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,5 +99,6 @@ int	parsing(const char *filename, t_scene *scene)
 		ft_putstr_fd("Error: malloc failed while building objs", 2);
 		return (1);
 	}
+	precompute_transformations(scene->objects, scene);
 	return (0);
 }

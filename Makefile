@@ -27,18 +27,18 @@ else
 endif
 
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -I$(MLX_DIR) -Iincludes
+CFLAGS = -g -Wall -Werror -Wextra -I$(MLX_DIR) -Iincludes
 
 SRC_DIR = srcs
 OBJ_DIR = objs
 DEPS_DIR = includes
 
-SRCS =	main.c cannon_ball.c draw_clock.c \
-		init_display.c render_image.c display_loop.c \
+SRCS =	main.c cannon_ball.c draw_clock.c chapter5.c \
+		init_display.c render_image.c display_loop.c camera.c \
 		ft_ato_.c \
 		parser/parsing.c parser/parse_scene.c \
 		parser/parse_lightning.c parser/parse_shapes.c parser/parse_utils.c parser/print_scene.c \
-		utils/ray.c utils/intersect.c utils/position.c utils/sphere.c
+		utils/ray.c utils/intersect.c utils/intersect_obj.c utils/position.c utils/sphere.c utils/transform.c
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 
 DEPS = miniRT.h structures.h

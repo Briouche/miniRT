@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_scene.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
+/*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 12:52:56 by brcoppie          #+#    #+#             */
-/*   Updated: 2025/11/12 15:35:45 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/11/20 18:17:15 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,7 @@ int	parse_scene(t_scene *scene, const char *filename)
 {
 	int			fd;
 	char		**tokens;
-	t_obj_list	*objects;
 
-	(void)objects;
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
 		return (1);

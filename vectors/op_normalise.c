@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op_normalise.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
+/*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 16:05:41 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/11/10 11:33:37 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/11/20 15:56:22 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,7 @@ t_vector	op_normalise(const t_vector *v)
 {
 	const double	norm = op_magnitude(v);
 
+	if (norm == 0)
+		return ((t_vector){0, 0, 0, v->w});
 	return ((t_vector){v->x / norm, v->y / norm, v->z / norm, v->w});
 }

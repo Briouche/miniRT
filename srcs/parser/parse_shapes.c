@@ -6,13 +6,13 @@
 /*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 10:50:13 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/11/17 16:54:34 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/11/20 17:49:29 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
 
-static int	add_to_list(t_object *new_obj, t_obj_list **obj_list)
+int	add_to_list(t_object *new_obj, t_obj_list **obj_list)
 {
 	t_obj_list	*tmp;
 
@@ -49,7 +49,7 @@ int	parse_sphere(t_obj_list **obj_list, int *size, char *const token[])
 	return (0);
 }
 
-int	parse_plane(t_obj_list **obj_list, int *size, char *const *token)
+int	parse_plane(t_obj_list **obj_list, int *size, char *const token[])
 {
 	t_object	*new_obj;
 

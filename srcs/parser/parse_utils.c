@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
+/*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 18:16:12 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/11/12 15:35:56 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/11/20 15:06:10 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	parse_color(const char *str, t_vector *colors)
 	colors->x = ft_atoi(tokens[0]);
 	colors->y = ft_atoi(tokens[1]);
 	colors->z = ft_atoi(tokens[2]);
+	colors->w = 0;
 	ft_free_array((void **)tokens);
 	if (colors->x < 0 || colors->x > 255 \
 		|| colors->y < 0 || colors->y > 255 \
@@ -52,6 +53,7 @@ int	parse_point(const char *str, t_vector *p)
 	p->x = ft_atod(tokens[0]);
 	p->y = ft_atod(tokens[1]);
 	p->z = ft_atod(tokens[2]);
+	p->w = 1;
 	ft_free_array((void **)tokens);
 	if (p->x == -DBL_MAX || p->y == -DBL_MAX || p->z == -DBL_MAX)
 		return (input_error("coordinates need to be double values\n", NULL));
@@ -74,6 +76,7 @@ int	parse_vector(const char *str, t_vector *v)
 	v->x = ft_atod(tokens[0]);
 	v->y = ft_atod(tokens[1]);
 	v->z = ft_atod(tokens[2]);
+	v->w = 0;
 	ft_free_array((void **)tokens);
 	if (v->x == -DBL_MAX || v->y == -DBL_MAX || v->z == -DBL_MAX)
 		return (input_error("components need to be double values\n", NULL));

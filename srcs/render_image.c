@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_image.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
+/*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 13:31:03 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/11/11 14:45:04 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/11/20 19:11:02 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,17 @@ void	put_pixel_to_image(t_display *display, int x, int y, t_vector *color)
 	*(unsigned int *)pixel_address = ft_vtoi(color);
 }
 
-int	render_image(t_display *img)
+int	render_image(t_display *img, t_scene *scene)
 {
 	t_vector	color;
 	double		r;
 	double		g;
 	double		b;
 
-	r = 255;
-	g = 0;
-	b = 0;
+	r = 155;
+	g = 195;
+	b = 200;
 	color = vec_color(r, g, b);
-	cannon_ball(img, &color);
-	draw_clock(img, &color);
+	sphere_silhouette(scene, img, &color);
 	return (0);
 }

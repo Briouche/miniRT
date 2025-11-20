@@ -6,7 +6,7 @@
 /*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 11:09:02 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/11/17 16:52:46 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/11/20 17:42:08 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ typedef struct s_sphere
 	t_vector	c;
 	double		r;
 	t_vector	color;
+	t_matrix	tr_matrix;
+	t_matrix	inv_tr;
 }	t_sphere;
 
 typedef struct s_plane
@@ -28,6 +30,8 @@ typedef struct s_plane
 	t_vector	p;
 	t_vector	v;
 	t_vector	color;
+	t_matrix	tr_matrix;
+	t_matrix	inv_tr;
 }	t_plane;
 
 typedef struct s_cylinder
@@ -37,11 +41,14 @@ typedef struct s_cylinder
 	double		radius;
 	double		height;
 	t_vector	color;
+	t_matrix	tr_matrix;
+	t_matrix	inv_tr;
 }	t_cylinder;
 
 // objects' types
 typedef enum e_type
 {
+	NONE,
 	SPHERE,
 	PLANE,
 	CYLINDER
