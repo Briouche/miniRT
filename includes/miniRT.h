@@ -6,7 +6,7 @@
 /*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 14:06:06 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/11/20 19:21:07 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/11/20 21:35:42 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include <float.h>
 
 # define WIDTH 800
-# define HEIGHT 550
+# define HEIGHT 800
 # define PI 3.141592653589793
 
 // main functions
@@ -57,7 +57,6 @@ int		parse_point(const char *str, t_vector *p);
 int		parse_vector(const char *str, t_vector *v);
 
 //DEBUGGING
-void	print_intersections(t_intersec_info *inters, int count);
 void	print_scene(t_scene *scene);
 void	sphere_silhouette(t_scene *scene, t_display *img, t_vector *color);
 

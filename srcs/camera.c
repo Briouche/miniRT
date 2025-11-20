@@ -6,7 +6,7 @@
 /*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 15:57:55 by brcoppie          #+#    #+#             */
-/*   Updated: 2025/11/20 19:28:17 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/11/20 21:35:17 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static double	calc_fx(int x, t_camera *cam)
 	double	aspect_ratio;
 
 	aspect_ratio = (WIDTH / HEIGHT);
-	fx = (2 * ((x + 0.5) / WIDTH) - 1) * aspect_ratio;
+	fx = (2 * ((x + 0.5) / WIDTH) - 1);
 	fx = fx * (tan((cam->fov * PI / 180) / 2));
 	return (fx);
 }

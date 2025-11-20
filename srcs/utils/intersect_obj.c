@@ -6,7 +6,7 @@
 /*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 19:11:03 by brcoppie          #+#    #+#             */
-/*   Updated: 2025/11/20 17:22:14 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/11/20 21:07:24 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,9 @@ int	intersect_sp(t_sphere *sp, t_ray *ray, t_intersec *obj_inter)
 	t_vector	d;
 
 	r = transform_ray(ray, &sp->inv_tr);
+	r.direction = op_normalise(&r.direction);
 	d = op_minus(&r.origin, &(t_vector){0, 0, 0, 1});
 	a = op_dot(&(r.direction), &(r.direction));
-	//if (a == 0)
-	//	return (0);
 	b = 2 * op_dot(&(r.direction), &d);
 	c = op_dot(&d, &d) - 1;
 	discr = b * b - 4 * a * c;

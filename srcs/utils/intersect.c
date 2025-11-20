@@ -6,7 +6,7 @@
 /*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 16:40:10 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/11/20 18:38:59 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/11/20 19:44:30 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int	the_hit(t_intersec_info *inters, t_scene *scene)
 
 	i = 0;
 	mem = 2147483647;
-	while (i < scene->size)
+	while (i < scene->size && inters[i].obj != NULL)
 	{
 		if (inters[i].t > 0 && inters[i].t < mem)
 			mem = i;
