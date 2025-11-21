@@ -6,7 +6,7 @@
 /*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 16:40:10 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/11/20 19:44:30 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/11/21 15:49:01 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,17 +45,17 @@ static int	obj_intersections(t_object *obj, t_ray *ray, t_intersec_info *inters)
 
 	if (obj->type == SPHERE)
 	{
-		if (!intersect_sp(&obj->obj.sp, ray, &obj_inter))
+		if (!intersect_sp(obj, ray, &obj_inter))
 			return (0);
 	}
 	else if (obj->type == PLANE)
 	{
-		if (!intersect_pl(&obj->obj.pl, ray, &obj_inter))
+		if (!intersect_pl(obj, ray, &obj_inter))
 			return (0);
 	}
 	else if (obj->type == CYLINDER)
 	{
-		if (!intersect_cy(&obj->obj.cy, ray, &obj_inter))
+		if (!intersect_cy(obj, ray, &obj_inter))
 			return (0);
 	}
 	inters[0].obj = obj;
@@ -86,10 +86,12 @@ int	the_hit(t_intersec_info *inters, t_scene *scene)
 	int	mem;
 
 	i = 0;
-	mem = 2147483647;
-	while (i < scene->size && inters[i].obj != NULL)
+	mem = -1;
+	while (i < scene->size * 2 && inters[i].obj != NULL)
 	{
-		if (inters[i].t > 0 && inters[i].t < mem)
+		if (mem == -1 && inters[i].t > 0)
+			mem = i;
+		else if (inters[i].t > 0 && inters[i].t < inters[mem].t)
 			mem = i;
 		i++;
 	}

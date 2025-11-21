@@ -6,7 +6,7 @@
 /*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 14:15:40 by brcoppie          #+#    #+#             */
-/*   Updated: 2025/11/20 20:57:32 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/11/21 15:50:14 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,15 @@ t_intersec_info	find_hit(t_scene *scene, t_ray *ray)
 
 	hits = ray_all_intersections(scene, ray, inters);
 	i = the_hit(inters, scene);
-	if (hits == 0)
+	if (hits == 0 || i == -1)
 	{
-		inters[0].t = 2147483647;
+		inters[0].t = -1;
 		return (inters[0]);
 	}
 	return (inters[i]);
 }
 
-void	sphere_silhouette(t_scene *scene, t_display *img, t_vector *color)
+void	sphere_silhouette(t_scene *scene, t_display *img)
 {
 	int				x;
 	int				y;
@@ -43,9 +43,14 @@ void	sphere_silhouette(t_scene *scene, t_display *img, t_vector *color)
 		{
 			ray = generate_camera_ray(x, y, &scene->cam);
 			hit = find_hit(scene, &ray);
-			if (hit.t < 2147483646)
+			if (hit.t != -1)
 			{
-				put_pixel_to_image(img, x, HEIGHT - y, color);
+				if (hit.obj->type == SPHERE)
+					put_pixel_to_image(img, x, HEIGHT - y, &hit.obj->obj.sp.color);
+				else if (hit.obj->type == PLANE)
+					put_pixel_to_image(img, x, HEIGHT - y, &hit.obj->obj.pl.color);
+				else if (hit.obj->type == CYLINDER)
+					put_pixel_to_image(img, x, HEIGHT - y, &hit.obj->obj.cy.color);
 			}
 			y++;
 		}

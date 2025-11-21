@@ -6,7 +6,7 @@
 /*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 14:06:06 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/11/20 21:35:42 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/11/21 15:32:32 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int		parse_vector(const char *str, t_vector *v);
 
 //DEBUGGING
 void	print_scene(t_scene *scene);
-void	sphere_silhouette(t_scene *scene, t_display *img, t_vector *color);
+void	sphere_silhouette(t_scene *scene, t_display *img);
 
 // strings
 double	ft_atod(const char *str);

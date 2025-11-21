@@ -6,7 +6,7 @@
 /*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 19:11:03 by brcoppie          #+#    #+#             */
-/*   Updated: 2025/11/20 21:07:24 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/11/21 15:04:21 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 //		at² + bt + c = 0
 //		t = (-b +/- sqrt(Δ)) / 2
 //use unit_sphere with vector {0, 0, 0} and r = 1 and transform ray
-int	intersect_sp(t_sphere *sp, t_ray *ray, t_intersec *obj_inter)
+int	intersect_sp(t_object *sp, t_ray *ray, t_intersec *obj_inter)
 {
 	double		a;
 	double		b;
@@ -46,17 +46,19 @@ int	intersect_sp(t_sphere *sp, t_ray *ray, t_intersec *obj_inter)
 // find intersections of a plane and a ray
 //				with pl = plane and r = ray:
 //			t = (pl.v * (pl.p - r.o)) / (pl.v * r.v)
-
-int	intersect_pl(t_plane *pl, t_ray *r, t_intersec *obj_inter)
+//use unit plane with pl.p (0,0,0,1) and pl.v (0,1,0,0)
+int	intersect_pl(t_object *pl, t_ray *ray, t_intersec *obj_inter)
 {
 	double	a;
 	double	b;
 	double	t;
 	t_vector	d;
+	t_ray		r;
 
-	d = op_minus(&pl->p, &r->origin);
-	a = op_dot(&pl->v, &d);
-	b = op_dot(&pl->v, &r->direction);
+	r = transform_ray(ray, &pl->inv_tr);
+	d = op_minus(&(t_vector){0, 0, 0, 1}, &r.origin);
+	a = op_dot(&(t_vector){0, 1, 0, 0}, &d);
+	b = op_dot(&(t_vector){0, 1, 0, 0}, &r.direction);
 	if (b == 0)
 		return (0);
 	t = a / b;
@@ -74,35 +76,46 @@ int	intersect_pl(t_plane *pl, t_ray *r, t_intersec *obj_inter)
 //			b = 2(r.v⊥​ * r.o⊥​)
 //			c = ∥r.o⊥​∥² - r²
 //		discr = b² - 4ac
-static double	discriminant_cy(t_cylinder *cy, t_ray *r, double *a, double *b)
+//use unit_cylinder with cy.c (0,0,0,1), cy.v (0,1,0,0), radius 1 and height 1
+static double	discriminant_cy(t_ray *r, double *a, double *b)
 {
 	double		c;
 	t_vector	rv_comp;
 	t_vector	ro_comp;
 	t_vector	d;
 
-	d = op_minus(&r->origin, &cy->c);
-	rv_comp = op_perpendicular_comp(&r->direction, &cy->v);
-	ro_comp = op_perpendicular_comp(&d, &cy->v);
+	d = op_minus(&r->origin, &(t_vector){0, 0, 0, 1});
+	rv_comp = op_perpendicular_comp(&r->direction, &(t_vector){0, 1, 0, 0});
+	ro_comp = op_perpendicular_comp(&d, &(t_vector){0, 1, 0, 0});
 	(*a) = op_dot(&rv_comp, &rv_comp);
 	(*b) = 2 * op_dot(&rv_comp, &ro_comp);
-	c = op_dot(&ro_comp, &ro_comp) - cy->radius * cy->radius;
+	c = op_dot(&ro_comp, &ro_comp) - 1;
 	return ((*b) * (*b) - 4 * (*a) * c);
 }
 
-int	intersect_cy(t_cylinder *cy, t_ray *r, t_intersec *obj_inter)
+int	intersect_cy(t_object *cy, t_ray *ray, t_intersec *obj_inter)
 {
 	double	discr;
 	double	a;
 	double	b;
 	double	sqrt_discr;
+	t_ray	r;
 
-	discr = discriminant_cy(cy, r, &a, &b);
+	r = transform_ray(ray, &cy->inv_tr);
+	discr = discriminant_cy(&r, &a, &b);
 	if (discr < 0)
 		return (0);
-	//add check for finite cylinder!!
 	sqrt_discr = sqrt(discr);
 	obj_inter->t1 = (-b - sqrt_discr) / (2 * a);
 	obj_inter->t2 = (-b + sqrt_discr) / (2 * a);
+
+	a = r.origin.y + obj_inter->t1 * r.direction.y;
+	b = r.origin.y + obj_inter->t2 * r.direction.y;
+	if ((a > 0.5 || a < -0.5) && (b > 0.5 || b < -0.5))
+		return (0);
+	else if ((a > 0.5 || a < -0.5) && !(b > 0.5 || b < -0.5))
+		obj_inter->t1 = obj_inter->t2;
+	else if (!(a > 0.5 || a < -0.5) && (b > 0.5 || b < -0.5))
+		obj_inter->t2 = obj_inter->t1;
 	return (1);
 }
