@@ -6,7 +6,7 @@
 /*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 16:22:35 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/11/12 12:21:08 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/12/02 16:44:27 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,15 @@
 # include <stdlib.h> // for malloc
 
 # define BUFFER_SIZE 32
+# define MAX_SIGNIFICANT_DIGITS 17
+
+double	ft_atod(const char *str);
+int		ft_atoi(const char *str);
+long	ft_atol(const char *str);
+int		parse_sign(const char **s);
+void	process_integer(const char c, double *res, int *state);
+void	process_fraction(const char c, double *frac_part,
+		double *frac_div, int *state);
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
@@ -30,9 +39,6 @@ void	*ft_memset(void	*s, int c, size_t n);
 
 void	ft_putchar_fd(const char c, int fd);
 void	ft_putstr_fd(const char *s, int fd);
-
-int		ft_atoi(const char *str);
-long	ft_atol(const char *str);
 
 char	**ft_split(const char *s, char c);
 char	*ft_strchr(const char *s, int c);

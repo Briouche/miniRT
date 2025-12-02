@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   print_scene.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
+/*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 15:20:42 by brcoppie          #+#    #+#             */
-/*   Updated: 2025/11/17 16:53:29 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/12/02 17:00:58 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <miniRT.h>
+#include <parser.h>
 
 static void	print_object(t_object *obj)
 {
@@ -19,14 +19,14 @@ static void	print_object(t_object *obj)
 		printf("Sphere\n");
 		print_vec("\tCenter: ", &obj->obj.sp.c);
 		printf("\tRadius: %.2f\n", obj->obj.sp.r);
-		print_vec("\tColor: ", &obj->obj.sp.color);
+		print_vec("\tColor: ", &obj->color);
 	}
 	else if (obj && obj->type == PLANE)
 	{
 		printf("Plane\n");
 		print_vec("\tPoint: ", &obj->obj.pl.p);
 		print_vec("\tNormal: ", &obj->obj.pl.v);
-		print_vec("\tColor: ", &obj->obj.pl.color);
+		print_vec("\tColor: ", &obj->color);
 	}
 	else if (obj && obj->type == CYLINDER)
 	{
@@ -35,7 +35,7 @@ static void	print_object(t_object *obj)
 		print_vec("\tVector: ", &obj->obj.cy.v);
 		printf("\tRadius: %.2f\n", obj->obj.cy.radius);
 		printf("\tHeight: %.2f\n", obj->obj.cy.height);
-		print_vec("\tColor: ", &obj->obj.cy.color);
+		print_vec("\tColor: ", &obj->color);
 	}
 	else
 		printf("Unkown type\n");

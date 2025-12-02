@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersect_obj.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
+/*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 19:11:03 by brcoppie          #+#    #+#             */
-/*   Updated: 2025/11/21 15:04:21 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/12/02 16:56:47 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 //		at² + bt + c = 0
 //		t = (-b +/- sqrt(Δ)) / 2
 //use unit_sphere with vector {0, 0, 0} and r = 1 and transform ray
-int	intersect_sp(t_object *sp, t_ray *ray, t_intersec *obj_inter)
+int	intersect_sp(t_object *sp, t_ray *ray, t_inter_values *obj_inter)
 {
 	double		a;
 	double		b;
@@ -47,7 +47,7 @@ int	intersect_sp(t_object *sp, t_ray *ray, t_intersec *obj_inter)
 //				with pl = plane and r = ray:
 //			t = (pl.v * (pl.p - r.o)) / (pl.v * r.v)
 //use unit plane with pl.p (0,0,0,1) and pl.v (0,1,0,0)
-int	intersect_pl(t_object *pl, t_ray *ray, t_intersec *obj_inter)
+int	intersect_pl(t_object *pl, t_ray *ray, t_inter_values *obj_inter)
 {
 	double	a;
 	double	b;
@@ -93,7 +93,7 @@ static double	discriminant_cy(t_ray *r, double *a, double *b)
 	return ((*b) * (*b) - 4 * (*a) * c);
 }
 
-int	intersect_cy(t_object *cy, t_ray *ray, t_intersec *obj_inter)
+int	intersect_cy(t_object *cy, t_ray *ray, t_inter_values *obj_inter)
 {
 	double	discr;
 	double	a;

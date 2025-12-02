@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersect.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
+/*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 16:40:10 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/11/21 15:49:01 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/12/02 16:58:36 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@
 //	}
 //}
 
-static int	obj_intersections(t_object *obj, t_ray *ray, t_intersec_info *inters)
+static int	obj_intersections(t_object *obj, t_ray *ray, t_inter *inters)
 {
-	t_intersec	obj_inter;
+	t_inter_values	obj_inter;
 
 	if (obj->type == SPHERE)
 	{
@@ -65,7 +65,7 @@ static int	obj_intersections(t_object *obj, t_ray *ray, t_intersec_info *inters)
 	return (2);
 }
 
-int	ray_all_intersections(t_scene *scene, t_ray *ray, t_intersec_info *inters)
+int	ray_all_intersections(t_scene *scene, t_ray *ray, t_inter *inters)
 {
 	int				i;
 	int				hits;
@@ -80,7 +80,7 @@ int	ray_all_intersections(t_scene *scene, t_ray *ray, t_intersec_info *inters)
 	return (hits);
 }
 
-int	the_hit(t_intersec_info *inters, t_scene *scene)
+int	the_hit(t_inter *inters, t_scene *scene)
 {
 	int	i;
 	int	mem;

@@ -6,11 +6,11 @@
 /*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 18:10:11 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/11/12 15:36:38 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/12/02 16:48:59 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <miniRT.h>
+#include <parser.h>
 
 int	parse_ambient(t_scene *scene, char *const token[])
 {

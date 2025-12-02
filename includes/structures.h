@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structures.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
+/*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 11:09:02 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/11/21 12:58:29 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/12/02 17:00:04 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,19 @@
 # define STRUCTURES_H
 
 # include "../vectors/vectors.h"
+# include "../libft/libft.h"
 
 // objects' definition
 typedef struct s_sphere
 {
 	t_vector	c;
 	double		r;
-	t_vector	color;
 }	t_sphere;
 
 typedef struct s_plane
 {
 	t_vector	p;
 	t_vector	v;
-	t_vector	color;
 }	t_plane;
 
 typedef struct s_cylinder
@@ -36,7 +35,6 @@ typedef struct s_cylinder
 	t_vector	v;
 	double		radius;
 	double		height;
-	t_vector	color;
 }	t_cylinder;
 
 // objects' types
@@ -51,15 +49,16 @@ typedef enum e_type
 // objects themselves
 typedef struct s_object
 {
-	t_type	type;
+	t_type		type;
+	t_vector	color;
+	t_matrix	tr_matrix;
+	t_matrix	inv_tr;
 	union u_obj
 	{
 		t_sphere	sp;
 		t_plane		pl;
 		t_cylinder	cy;
 	}				obj;
-	t_matrix	tr_matrix;
-	t_matrix	inv_tr;
 }	t_object;
 
 // list of all objects

@@ -3,23 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   camera.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
+/*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 15:57:55 by brcoppie          #+#    #+#             */
-/*   Updated: 2025/11/20 21:35:17 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/12/02 17:54:09 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <miniRT.h>
+#include <utils.h>
+#include <display.h>
 
 //	"normalized coordinates" --> from [800, 500] to [-1, 1] * aspect ratio
 //		then apply fov
 static double	calc_fx(int x, t_camera *cam)
 {
 	double	fx;
-	double	aspect_ratio;
-
-	aspect_ratio = (WIDTH / HEIGHT);
+	
 	fx = (2 * ((x + 0.5) / WIDTH) - 1);
 	fx = fx * (tan((cam->fov * PI / 180) / 2));
 	return (fx);

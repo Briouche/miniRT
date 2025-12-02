@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
+/*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 18:16:12 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/11/20 15:06:10 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/12/02 16:49:17 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <miniRT.h>
+#include <parser.h>
 
 int	parse_color(const char *str, t_vector *colors)
 {
@@ -55,7 +55,7 @@ int	parse_point(const char *str, t_vector *p)
 	p->z = ft_atod(tokens[2]);
 	p->w = 1;
 	ft_free_array((void **)tokens);
-	if (p->x == -DBL_MAX || p->y == -DBL_MAX || p->z == -DBL_MAX)
+	if (isinf(p->x) || isinf(p->y) || isinf(p->z))
 		return (input_error("coordinates need to be double values\n", NULL));
 	return (0);
 }
@@ -78,7 +78,7 @@ int	parse_vector(const char *str, t_vector *v)
 	v->z = ft_atod(tokens[2]);
 	v->w = 0;
 	ft_free_array((void **)tokens);
-	if (v->x == -DBL_MAX || v->y == -DBL_MAX || v->z == -DBL_MAX)
+	if (isinf(v->x) || isinf(v->y) || isinf(v->z))
 		return (input_error("components need to be double values\n", NULL));
 	return (0);
 }

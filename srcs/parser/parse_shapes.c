@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse_shapes.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
+/*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 10:50:13 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/11/20 17:49:29 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/12/02 17:00:38 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <miniRT.h>
+#include <parser.h>
 
 int	add_to_list(t_object *new_obj, t_obj_list **obj_list)
 {
@@ -39,9 +39,9 @@ int	parse_sphere(t_obj_list **obj_list, int *size, char *const token[])
 	if (parse_point(token[1], &new_obj->obj.sp.c))
 		return (input_error("invalid sphere center point\n", new_obj));
 	new_obj->obj.sp.r = ft_atod(token[2]) / 2;
-	if (new_obj->obj.sp.r == -DBL_MAX || new_obj->obj.sp.r <= 0.0)
+	if (isinf(new_obj->obj.sp.r) || new_obj->obj.sp.r <= 0.0)
 		return (input_error("invalid sphere diameter, not > 0\n", new_obj));
-	if (parse_color(token[3], &new_obj->obj.sp.color))
+	if (parse_color(token[3], &new_obj->color))
 		return (input_error("invalid sphere color\n", new_obj));
 	if (add_to_list(new_obj, obj_list))
 		return (input_error("malloc failed\n", new_obj));
@@ -66,7 +66,7 @@ int	parse_plane(t_obj_list **obj_list, int *size, char *const token[])
 		|| op_magnitude(&new_obj->obj.pl.v) > 1)
 		return (input_error("invalid normal vector, needs to be normalised\n",
 				new_obj));
-	if (parse_color(token[3], &new_obj->obj.pl.color))
+	if (parse_color(token[3], &new_obj->color))
 		return (input_error("invalid place color\n", new_obj));
 	if (add_to_list(new_obj, obj_list))
 		return (input_error("malloc failed\n", new_obj));
@@ -102,13 +102,13 @@ int	parse_cylinder(t_obj_list **obj_list, int *size, char *const token[])
 		return (1);
 	new_obj->obj.cy.radius = ft_atod(token[3]) / 2;
 	new_obj->obj.cy.height = ft_atod(token[4]);
-	if (new_obj->obj.cy.radius == -DBL_MAX
-		|| new_obj->obj.cy.height == -DBL_MAX
+	if (isinf(new_obj->obj.cy.radius)
+		|| isinf(new_obj->obj.cy.height)
 		|| new_obj->obj.cy.radius <= 0.0
 		|| new_obj->obj.cy.height <= 0.0)
 		return (input_error("invalid cylinder's diameter or height, \
 			not > 0\n", new_obj));
-	if (parse_color(token[5], &new_obj->obj.cy.color))
+	if (parse_color(token[5], &new_obj->color))
 		return (input_error("invalid cylinder color\n", new_obj));
 	if (add_to_list(new_obj, obj_list))
 		return (input_error("malloc failed\n", new_obj));
