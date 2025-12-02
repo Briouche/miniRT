@@ -6,7 +6,7 @@
 /*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 14:15:40 by brcoppie          #+#    #+#             */
-/*   Updated: 2025/12/02 17:03:33 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/12/02 17:59:42 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,11 @@ void	put_pixel_to_image(t_display *display, int x, int y, t_vector *color)
 
 void	sphere_silhouette(t_scene *scene, t_display *img)
 {
-	int				x;
-	int				y;
-	t_ray			ray;
-	t_inter	hit;
+	int			x;
+	int			y;
+	t_ray		ray;
+	t_inter		hit;
+	t_vector	color;
 
 	x = 0;
 	y = 0;
@@ -65,7 +66,8 @@ void	sphere_silhouette(t_scene *scene, t_display *img)
 			hit = find_hit(scene, &ray);
 			if (hit.t != -1)
 			{
-				put_pixel_to_image(img, x, HEIGHT - y, &hit.obj->color);
+				color = compute_final_color(scene, &hit, &ray);
+				put_pixel_to_image(img, x, HEIGHT - y, &color);
 			}
 			y++;
 		}

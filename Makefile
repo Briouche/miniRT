@@ -53,6 +53,7 @@ BOOK_CHATPERS_DIR= book_chapters
 SRCS+= $(addprefix $(BOOK_CHATPERS_DIR)/, $(BOOK_CHAPTERS_SRCS))
 
 
+SRCS +=	shading/shading.c shading/normal_at.c shading/compute_color.c
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 
 DEPS = miniRT.h structures.h

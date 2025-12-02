@@ -6,7 +6,7 @@
 /*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 11:09:02 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/12/02 17:00:04 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/12/02 18:03:37 by fkrakow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,27 @@
 
 # include "../vectors/vectors.h"
 # include "../libft/libft.h"
+
+//shading
+
+typedef struct s_light_info
+{
+	float	reflect_dot_eye;
+	float	light_dot_normal;
+	t_vector	effective_color;
+	t_vector	final_color;
+	t_vector	lightv;
+	t_vector	eyev;
+}	t_light_info;
+
+typedef struct s_material
+{
+	t_vector	color;
+	float		ambient;
+	float		diffuse;
+	float		specular;
+	float		shininess;
+}	t_material;
 
 // objects' definition
 typedef struct s_sphere
@@ -53,6 +74,7 @@ typedef struct s_object
 	t_vector	color;
 	t_matrix	tr_matrix;
 	t_matrix	inv_tr;
+	t_material	mat;
 	union u_obj
 	{
 		t_sphere	sp;
@@ -84,8 +106,8 @@ typedef struct s_camera
 
 typedef struct s_light
 {
-	t_vector	coord;
 	double		ratio;
+	t_vector	coord;
 	t_vector	color;
 }	t_light;
 
