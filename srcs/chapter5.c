@@ -6,7 +6,7 @@
 /*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 14:15:40 by brcoppie          #+#    #+#             */
-/*   Updated: 2025/11/21 15:50:14 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/12/02 17:02:51 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	sphere_silhouette(t_scene *scene, t_display *img)
 	int				y;
 	t_ray			ray;
 	t_intersec_info	hit;
+	t_vector		color;
 
 	x = 0;
 	y = 0;
@@ -45,12 +46,13 @@ void	sphere_silhouette(t_scene *scene, t_display *img)
 			hit = find_hit(scene, &ray);
 			if (hit.t != -1)
 			{
+				color = compute_final_color(scene, &hit, &ray);
 				if (hit.obj->type == SPHERE)
-					put_pixel_to_image(img, x, HEIGHT - y, &hit.obj->obj.sp.color);
+					put_pixel_to_image(img, x, HEIGHT - y, &color);
 				else if (hit.obj->type == PLANE)
-					put_pixel_to_image(img, x, HEIGHT - y, &hit.obj->obj.pl.color);
+					put_pixel_to_image(img, x, HEIGHT - y, &color);
 				else if (hit.obj->type == CYLINDER)
-					put_pixel_to_image(img, x, HEIGHT - y, &hit.obj->obj.cy.color);
+					put_pixel_to_image(img, x, HEIGHT - y, &color);
 			}
 			y++;
 		}

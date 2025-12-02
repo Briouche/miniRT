@@ -6,7 +6,7 @@
 /*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 14:06:06 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/11/21 15:32:32 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/12/02 17:12:43 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,12 @@ int		parse_cylinder(t_obj_list **obj_list, int *size, char *const token[]);
 int		parse_color(const char *str, t_vector *colors);
 int		parse_point(const char *str, t_vector *p);
 int		parse_vector(const char *str, t_vector *v);
+
+// shading
+t_vector	normal_at(t_object *obj, t_vector *p, t_ray *ray);
+t_vector	lighting(t_scene *scene, t_material *mat, \
+					t_vector *pos, t_vector *normalv);
+t_vector	compute_final_color(t_scene *scene, t_intersec_info *hit, t_ray *r);
 
 //DEBUGGING
 void	print_scene(t_scene *scene);

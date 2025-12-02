@@ -6,7 +6,7 @@
 /*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 11:09:02 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/11/21 12:58:29 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/12/02 17:18:31 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,32 @@
 
 # include "../vectors/vectors.h"
 
+//shading
+
+typedef struct s_light_info
+{
+	float	reflect_dot_eye;
+	float	light_dot_normal;
+	t_vector	effective_color;
+	t_vector	final_color;
+	t_vector	lightv;
+	t_vector	eyev;
+}	t_light_info;
+
+typedef struct s_material
+{
+	t_vector	color;
+	float		ambient;
+	float		diffuse;
+	float		specular;
+	float		shininess;
+}	t_material;
+
 // objects' definition
 typedef struct s_sphere
 {
-	t_vector	c;
 	double		r;
+	t_vector	c;
 	t_vector	color;
 }	t_sphere;
 
@@ -32,10 +53,10 @@ typedef struct s_plane
 
 typedef struct s_cylinder
 {
-	t_vector	c;
-	t_vector	v;
 	double		radius;
 	double		height;
+	t_vector	c;
+	t_vector	v;
 	t_vector	color;
 }	t_cylinder;
 
@@ -60,6 +81,7 @@ typedef struct s_object
 	}				obj;
 	t_matrix	tr_matrix;
 	t_matrix	inv_tr;
+	t_material	mat;
 }	t_object;
 
 // list of all objects
@@ -85,8 +107,8 @@ typedef struct s_camera
 
 typedef struct s_light
 {
-	t_vector	coord;
 	double		ratio;
+	t_vector	coord;
 	t_vector	color;
 }	t_light;
 

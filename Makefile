@@ -38,7 +38,8 @@ SRCS =	main.c cannon_ball.c draw_clock.c chapter5.c \
 		ft_ato_.c \
 		parser/parsing.c parser/parse_scene.c \
 		parser/parse_lightning.c parser/parse_shapes.c parser/parse_utils.c parser/print_scene.c \
-		utils/ray.c utils/intersect.c utils/intersect_obj.c utils/position.c utils/sphere.c utils/transform.c
+		utils/ray.c utils/intersect.c utils/intersect_obj.c utils/position.c utils/sphere.c utils/transform.c \
+		shading/shading.c shading/normal_at.c shading/compute_color.c
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 
 DEPS = miniRT.h structures.h
