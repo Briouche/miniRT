@@ -21,7 +21,7 @@ int		check_filename(const char *filename);
 int		check_openread(const char *filename);
 
 // parsing
-int		parsing(const char *filename, t_scene *scene);
+int		parse_file(const char *filename, t_scene *scene);
 int		parse_scene(t_scene *scene, const char *filename);
 int		input_error(const char *msg, t_object *obj);
 int		add_to_list(t_object *new_obj, t_obj_list **obj_list);

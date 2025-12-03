@@ -14,10 +14,10 @@
 # define DISPLAY_H
 
 # include <mlx.h>
-# include "../vectors/vectors.h"
+# include "structures.h"
 
-# define WIDTH 800
-# define HEIGHT 800
+# define WIDTH 800.0
+# define HEIGHT 800.0
 
 typedef struct s_display
 {

@@ -13,7 +13,7 @@ MLX_DIR_MAC = ./minilibx-mac
 MLX_LIB_MAC = libmlx.dylib
 
 LD_FLAGS_MAC = $(MLX_LIB_MAC) -framework Metal -framework MetalKit -framework Cocoa
-LD_FLAGS_LINUX = -L$(MLX_DIR_LINUX) $(MLX_LIB_LINUX) -lXext -lX11 -lz -lbsd -O3
+LD_FLAGS_LINUX = -L$(MLX_DIR_LINUX) $(MLX_LIB_LINUX) -lXext -lX11 -lz -lbsd
 
 OS:= $(shell uname -s)
 ifeq ($(OS), Linux)

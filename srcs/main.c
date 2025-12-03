@@ -22,7 +22,7 @@ int	main(int argc, char *const argv[])
 		ft_putstr_fd("Error: Usage: miniRT <scene.rt>\n", 2);
 		return (1);
 	}
-	if (parsing(argv[1], &scene))
+	if (parse_file(argv[1], &scene))
 		return (1);
 	if (init_display(&display))
 	{

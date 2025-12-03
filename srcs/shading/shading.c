@@ -87,8 +87,8 @@ t_vector	lighting(t_scene *scene, t_material *mat, \
 	diffuse = get_diffuse(&light_info, normalv, scene);
 	specular = get_specular(scene, &light_info, mat, normalv);
 	//to test the different components one by one
-	//ft_memset(&diffuse, 0, sizeof(t_vector));
-	//ft_memset(&ambient, 0, sizeof(t_vector));
+	// ft_memset(&diffuse, 0, sizeof(t_vector));
+	// ft_memset(&ambient, 0, sizeof(t_vector));
 	//ft_memset(&specular, 0, sizeof(t_vector));
 	return (compute_final_color(&diffuse, &ambient, &specular));
 }

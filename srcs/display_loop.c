@@ -38,6 +38,7 @@ void	display_loop(t_display *display)
 {
 	mlx_put_image_to_window(display->mlx_ptr, display->mlx_win,
 		display->mlx_img, 0, 0);
+	exit_program(display);
 	mlx_key_hook(display->mlx_win, handle_key, display);
 	mlx_hook(display->mlx_win, DestroyNotify,
 		StructureNotifyMask, exit_program, display);

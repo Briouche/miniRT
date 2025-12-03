@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "structures.h"
 #include <parser.h>
 
 static void	free_next(t_obj_list **tmp)
@@ -20,6 +21,12 @@ static void	free_next(t_obj_list **tmp)
 	next = (*tmp)->next;
 	free(*tmp);
 	*tmp = next;
+}
+
+static void	free_obj_list(t_obj_list **tmp)
+{
+	while (*tmp != NULL)
+		free_next(tmp);
 }
 
 int	list_to_array(t_obj_list *list, int size, t_object **objects)
@@ -46,7 +53,7 @@ int	list_to_array(t_obj_list *list, int size, t_object **objects)
 	return (0);
 }
 
-int	parsing(const char *filename, t_scene *scene)
+int	parse_file(const char *filename, t_scene *scene)
 {
 	if (check_filename(filename))
 	{
@@ -57,7 +64,10 @@ int	parsing(const char *filename, t_scene *scene)
 		return (1);
 	ft_memset(scene, 0, sizeof(t_scene));
 	if (parse_scene(scene, filename))
+	{
+		free_obj_list(&scene->objs_list);
 		return (1);
+	}
 	if (list_to_array(scene->objs_list, scene->size, &scene->objects))
 	{
 		ft_putstr_fd("Error: malloc failed while building objs", 2);
