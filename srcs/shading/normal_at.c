@@ -6,7 +6,7 @@
 /*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 15:46:38 by brcoppie          #+#    #+#             */
-/*   Updated: 2025/12/02 17:46:09 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/12/03 13:47:43 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,7 @@ static t_vector	normal_on_plane(t_object *obj, t_ray *ray)
 static t_vector	normal_on_sphere(t_object *obj, t_vector *p, t_ray *ray)
 {
 	t_vector	normal;
-	//t_vector	p_trnsf;
-	//t_matrix	m;
 
-	//p_trnsf = matrix_vector_multi(&obj->inv_tr, p);
-	//normal = op_minus(&p_trnsf, &(t_vector){0, 0, 0, 1});
-	//m = matrix_transpose(&obj->inv_tr);
-	//normal = matrix_vector_multi(&m, &normal);
 	normal = op_minus(p, &obj->obj.sp.c);
 	normal = op_normalise(&normal);
 	normal.w = 0;

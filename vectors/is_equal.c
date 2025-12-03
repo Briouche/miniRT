@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_equal.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
+/*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 09:34:28 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/11/10 11:32:13 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/12/03 13:55:35 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	is_equal(const t_vector *a, const t_vector *b)
 {
-	return (fabs(a->x - b->x) < 0.000001
-		&& fabs(a->y - b->y) < 0.000001
-		&& fabs(a->z - b->z) < 0.000001
-		&& fabs(a->w - b->w) < 0.000001);
+	return (fabs(a->x - b->x) < 0.001
+		&& fabs(a->y - b->y) < 0.001
+		&& fabs(a->z - b->z) < 0.001
+		&& fabs(a->w - b->w) < 0.001);
 }

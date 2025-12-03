@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersect_obj.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
+/*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 19:11:03 by brcoppie          #+#    #+#             */
-/*   Updated: 2025/12/02 16:56:47 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/12/03 13:52:27 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ int	intersect_sp(t_object *sp, t_ray *ray, t_inter_values *obj_inter)
 	t_vector	d;
 
 	r = transform_ray(ray, &sp->inv_tr);
-	r.direction = op_normalise(&r.direction);
 	d = op_minus(&r.origin, &(t_vector){0, 0, 0, 1});
 	a = op_dot(&(r.direction), &(r.direction));
 	b = 2 * op_dot(&(r.direction), &d);
@@ -49,9 +48,9 @@ int	intersect_sp(t_object *sp, t_ray *ray, t_inter_values *obj_inter)
 //use unit plane with pl.p (0,0,0,1) and pl.v (0,1,0,0)
 int	intersect_pl(t_object *pl, t_ray *ray, t_inter_values *obj_inter)
 {
-	double	a;
-	double	b;
-	double	t;
+	double		a;
+	double		b;
+	double		t;
 	t_vector	d;
 	t_ray		r;
 
@@ -108,7 +107,6 @@ int	intersect_cy(t_object *cy, t_ray *ray, t_inter_values *obj_inter)
 	sqrt_discr = sqrt(discr);
 	obj_inter->t1 = (-b - sqrt_discr) / (2 * a);
 	obj_inter->t2 = (-b + sqrt_discr) / (2 * a);
-
 	a = r.origin.y + obj_inter->t1 * r.direction.y;
 	b = r.origin.y + obj_inter->t2 * r.direction.y;
 	if ((a > 0.5 || a < -0.5) && (b > 0.5 || b < -0.5))

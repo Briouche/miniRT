@@ -13,7 +13,7 @@ MLX_DIR_MAC = ./minilibx-mac
 MLX_LIB_MAC = libmlx.dylib
 
 LD_FLAGS_MAC = $(MLX_LIB_MAC) -framework Metal -framework MetalKit -framework Cocoa
-LD_FLAGS_LINUX = -L$(MLX_DIR_LINUX) $(MLX_LIB_LINUX) -lXext -lX11 -lz -lbsd
+LD_FLAGS_LINUX = -L$(MLX_DIR_LINUX) $(MLX_LIB_LINUX) -lXext -lX11 -lz -lbsd -O3
 
 OS:= $(shell uname -s)
 ifeq ($(OS), Linux)
@@ -37,8 +37,8 @@ SRCS =	main.c \
 		init_display.c render_image.c display_loop.c \
 
 
-PARSER_SRCS=	check_file.c parse_file.c parse_lightning.c parse_scene.c parse_shapes.c \
-				parse_utils.c precompute_transforms.c print_scene.c
+PARSER_SRCS= check_file.c parse_file.c parse_lightning.c parse_scene.c parse_shapes.c \
+parse_utils.c precompute_transforms.c print_scene.c
 PARSER_DIR= parser
 SRCS+= $(addprefix $(PARSER_DIR)/, $(PARSER_SRCS))
 

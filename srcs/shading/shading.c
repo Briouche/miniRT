@@ -6,7 +6,7 @@
 /*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 12:28:49 by brcoppie          #+#    #+#             */
-/*   Updated: 2025/12/02 17:17:34 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/12/03 14:01:12 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ static t_vector	get_specular(t_scene *scene, t_light_info *light_info, \
 	ft_memset(&specular, 0, sizeof(t_vector));
 	inverse_lightv = op_multi_scalar(&light_info->lightv, -1);
 	reflectv = reflect(&inverse_lightv, normalv);
+	reflectv = op_normalise(&reflectv);
 	light_info->reflect_dot_eye = op_dot(&reflectv, &light_info->eyev);
 	if (light_info->reflect_dot_eye > 0 && light_info->light_dot_normal >= 0)
 	{
@@ -41,8 +42,8 @@ static t_vector	get_specular(t_scene *scene, t_light_info *light_info, \
 	return (specular);
 }
 
-static t_vector	get_diffuse(t_light_info *light_info, t_material *mat, \
-						t_vector *normalv)
+static t_vector	get_diffuse(t_light_info *light_info, \
+		t_vector *normalv, t_scene *scene)
 {
 	t_vector	diffuse;
 
@@ -51,10 +52,21 @@ static t_vector	get_diffuse(t_light_info *light_info, t_material *mat, \
 	if (light_info->light_dot_normal >= 0)
 	{
 		diffuse = multi_scalar_colors(&light_info->effective_color, \
-										mat->diffuse);
-		diffuse = multi_scalar_colors(&diffuse, light_info->light_dot_normal);
+				light_info->light_dot_normal * scene->light.ratio);
 	}
 	return (diffuse);
+}
+
+t_vector	compute_final_color(t_vector *diffuse, t_vector *ambient, t_vector *specular)
+{
+	t_vector	final_color;
+
+	final_color = add_colors(ambient, diffuse);
+	final_color = add_colors(&final_color, specular);
+	final_color.x = fmin(fmax(final_color.x, 0), 255);
+	final_color.y = fmin(fmax(final_color.y, 0), 255);
+	final_color.z = fmin(fmax(final_color.z, 0), 255);
+	return (final_color);
 }
 
 t_vector	lighting(t_scene *scene, t_material *mat, \
@@ -70,12 +82,13 @@ t_vector	lighting(t_scene *scene, t_material *mat, \
 	light_info.lightv = op_normalise(&light_info.lightv);
 	light_info.eyev = op_minus(&scene->cam.viewpoint, pos);
 	light_info.eyev = op_normalise(&light_info.eyev);
-
-	ambient = multi_scalar_colors(&light_info.effective_color, mat->ambient);
-	diffuse = get_diffuse(&light_info, mat, normalv);
+	ambient = multi_colors(&mat->color, &scene->ambient.color);
+	ambient = multi_scalar_colors(&ambient, mat->ambient);
+	diffuse = get_diffuse(&light_info, normalv, scene);
 	specular = get_specular(scene, &light_info, mat, normalv);
-
-	light_info.final_color = add_colors(&ambient, &diffuse);
-	light_info.final_color = add_colors(&light_info.final_color, &specular);
-	return (light_info.final_color);
+	//to test the different components one by one
+	//ft_memset(&diffuse, 0, sizeof(t_vector));
+	//ft_memset(&ambient, 0, sizeof(t_vector));
+	//ft_memset(&specular, 0, sizeof(t_vector));
+	return (compute_final_color(&diffuse, &ambient, &specular));
 }

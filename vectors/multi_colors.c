@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   multi_colors.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
+/*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 12:11:20 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/11/10 11:33:12 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/12/03 13:43:49 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 t_vector	multi_colors(const t_vector *a, const t_vector *b)
 {
-	return ((t_vector){a->x * b->x, a->y * b->y, a->z * b->z, 0});
+	return ((t_vector){a->x * b->x / 255, a->y * b->y / 255, a->z * b->z / 255, 0});
 }

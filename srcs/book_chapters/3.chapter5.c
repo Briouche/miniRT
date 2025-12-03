@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   3.chapter5.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
+/*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 14:15:40 by brcoppie          #+#    #+#             */
-/*   Updated: 2025/12/02 17:59:42 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/12/03 14:01:17 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	sphere_silhouette(t_scene *scene, t_display *img)
 			hit = find_hit(scene, &ray);
 			if (hit.t != -1)
 			{
-				color = compute_final_color(scene, &hit, &ray);
+				color = compute_color(scene, &hit, &ray);
 				put_pixel_to_image(img, x, HEIGHT - y, &color);
 			}
 			y++;
@@ -75,5 +75,3 @@ void	sphere_silhouette(t_scene *scene, t_display *img)
 		x++;
 	}
 }
-
-

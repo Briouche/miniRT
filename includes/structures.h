@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structures.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
+/*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 11:09:02 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/12/02 18:03:37 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/12/03 13:49:50 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,9 @@
 
 typedef struct s_light_info
 {
-	float	reflect_dot_eye;
-	float	light_dot_normal;
+	double		reflect_dot_eye;
+	double		light_dot_normal;
 	t_vector	effective_color;
-	t_vector	final_color;
 	t_vector	lightv;
 	t_vector	eyev;
 }	t_light_info;

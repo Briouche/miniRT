@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_lightning.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
+/*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 18:10:11 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/12/02 16:48:59 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/12/03 13:58:27 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,13 @@ int	parse_camera(t_scene *scene, char *const token[])
 	if (parse_point(token[1], &scene->cam.viewpoint))
 		return (input_error("invalid viewpoint\n", NULL));
 	if (parse_vector(token[2], &scene->cam.orientation)
-		|| op_magnitude(&scene->cam.orientation) > 1)
+		|| fabs(op_magnitude(&scene->cam.orientation) - 1) > 0.001)
 		return (input_error("invalid camera orientation, \
-			not a normalised vector\n", NULL));
+not a normalised vector\n", NULL));
 	scene->cam.fov = ft_atod(token[3]);
 	if (scene->cam.fov > 180 || scene->cam.fov < 0)
 		return (input_error("invalid camera field of view, \
-			not in [0.0; 180]\n", NULL));
+not in [0.0; 180]\n", NULL));
 	return (0);
 }
 

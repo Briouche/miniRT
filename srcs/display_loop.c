@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display_loop.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
+/*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 11:20:46 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/12/02 16:39:15 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/12/03 13:58:19 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
