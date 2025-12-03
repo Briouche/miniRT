@@ -35,8 +35,10 @@ static char	*append_to_line(char *line, char *to_append, int should_free)
 		if (should_free)
 			free(to_append);
 	}
+	else if (should_free)
+		line = to_append;
 	else
-		line = (should_free) ? to_append : ft_strdup(to_append);
+		line = ft_strdup(to_append);
 	return (line);
 }
 
