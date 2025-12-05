@@ -48,6 +48,6 @@ char	*ft_strjoin(const char *s1, const char *s2);
 int		ft_strlen(const char *s);
 char	*ft_strndup(const char *src, int n);
 
-char	*ft_gnl(int fd);
+char	*get_next_line(int fd);
 
 #endif

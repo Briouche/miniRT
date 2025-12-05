@@ -98,6 +98,10 @@ typedef struct s_ambient
 
 typedef struct s_camera
 {
+	t_vector	right;
+	t_vector	up;
+	double		tan_fov;
+	double		tan2_fov;
 	t_vector	viewpoint;
 	t_vector	orientation;
 	double		fov;
@@ -127,8 +131,9 @@ typedef struct s_scene
 	t_camera	cam;
 	t_light		light;
 	t_object	*objects;
-	t_obj_list	*objs_list;
+	void		*inters;
 	int			size;
+	t_obj_list	*objs_list;
 	t_count		count;
 }	t_scene;
 

@@ -32,6 +32,7 @@ int	main(int argc, char *const argv[])
 	if (render_image(&display, &scene))
 	{
 		free(scene.objects);
+		exit_program(&display);
 		return (1);
 	}
 	free(scene.objects);

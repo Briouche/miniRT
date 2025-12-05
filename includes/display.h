@@ -36,4 +36,6 @@ int		init_display(t_display *display);
 int		render_image(t_display *img, t_scene *scene);
 void	display_loop(t_display *display);
 
+int		exit_program(t_display *display);
+
 #endif

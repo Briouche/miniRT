@@ -17,7 +17,7 @@ static char	**parse_line(int fd)
 	char	*line;
 	char	**tokens;
 
-	line = ft_gnl(fd);
+	line = get_next_line(fd);
 	if (!line)
 		return (NULL);
 	tokens = ft_split(line, ' ');

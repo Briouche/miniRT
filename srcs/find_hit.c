@@ -12,34 +12,7 @@
 
 #include <utils.h>
 
-//DO NOT USE THIS --> bubble sort, way too many operations
-//					--> insertion sort maybe, or just keep smallest positive
-//void	sort_intersections(t_intersec_info *intersections, int size)
-//{
-//	int				i;
-//	int				j;
-//	t_intersec_info	tmp;
-
-//	i = 0;
-//	j = 0;
-//	while (i < size - 1)
-//	{
-//		while (j < size - i - 1)
-//		{
-//			if (intersections[j].t > intersections[j + 1].t)
-//			{
-//				tmp = intersections[j];
-//				intersections[j] = intersections[j + 1];
-//				intersections[j + 1] = tmp;
-//			}
-//			j++;
-//		}
-//		j = 0;
-//		i++;
-//	}
-//}
-
-static int	obj_intersections(t_object *obj, t_ray *ray, t_inter *inters)
+static int	intersect_obj(t_object *obj, t_ray *ray, t_inter *inters)
 {
 	t_inter_values	obj_inter;
 
@@ -65,35 +38,33 @@ static int	obj_intersections(t_object *obj, t_ray *ray, t_inter *inters)
 	return (2);
 }
 
-int	ray_all_intersections(t_scene *scene, t_ray *ray, t_inter *inters)
+static int	ray_intersect_objs(t_scene *scene, t_ray *ray, t_inter *inters)
 {
-	int				i;
-	int				hits;
+	int		i;
+	int		hits;
 
 	i = 0;
 	hits = 0;
 	while (i < scene->size)
-	{
-		hits += obj_intersections(&scene->objects[i], ray, &inters[hits]);
-		i++;
-	}
+		hits += intersect_obj(&scene->objects[i++], ray, &inters[hits]);
 	return (hits);
 }
 
-int	the_hit(t_inter *inters, t_scene *scene)
+t_inter	find_hit(t_scene *scene, t_ray *ray)
 {
-	int	i;
-	int	mem;
+	t_inter	hit;
+	t_inter	*inters;
+	int		n;
+	int		nbr_hits;
 
-	i = 0;
-	mem = -1;
-	while (i < scene->size * 2 && inters[i].obj != NULL)
-	{
-		if (mem == -1 && inters[i].t > 0)
-			mem = i;
-		else if (inters[i].t > 0 && inters[i].t < inters[mem].t)
-			mem = i;
-		i++;
-	}
-	return (mem);
+	inters = scene->inters;
+	nbr_hits = ray_intersect_objs(scene, ray, inters);
+	if (!nbr_hits)
+		return ((t_inter){.t = -1});
+	hit = (t_inter){.t = INFINITY};
+	n = -1;
+	while (++n < nbr_hits)
+		if (inters[n].t < hit.t && inters[n].t > 0.00001)
+			hit = inters[n];
+	return (hit);
 }

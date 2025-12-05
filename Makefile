@@ -35,6 +35,7 @@ DEPS_DIR = includes
 
 SRCS =	main.c \
 		init_display.c render_image.c display_loop.c \
+		init_scene.c find_hit.c generate_cam_ray.c
 
 
 PARSER_SRCS= check_file.c parse_file.c parse_lightning.c parse_scene.c parse_shapes.c \
@@ -43,14 +44,13 @@ PARSER_DIR= parser
 SRCS+= $(addprefix $(PARSER_DIR)/, $(PARSER_SRCS))
 
 
-UTILS_SRCS= camera.c intersect_obj.c intersect.c position.c ray.c transform_ray.c
+UTILS_SRCS= intersect_cy.c intersect_pl.c intersect_sp.c position.c ray.c transform_ray.c
 UTILS_DIR= utils
 SRCS+= $(addprefix $(UTILS_DIR)/, $(UTILS_SRCS))
 
 
 BOOK_CHAPTERS_SRCS= 0.display_chapters.c 1.cannon_ball.c 2.draw_clock.c 3.chapter5.c
 BOOK_CHATPERS_DIR= book_chapters
-SRCS+= $(addprefix $(BOOK_CHATPERS_DIR)/, $(BOOK_CHAPTERS_SRCS))
 
 
 SRCS +=	shading/shading.c shading/normal_at.c shading/compute_color.c

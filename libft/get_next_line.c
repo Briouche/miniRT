@@ -75,7 +75,7 @@ static char	*find_new_line(int fd, char *buffer, char *line, char *new_line)
 	return (line);
 }
 
-char	*ft_gnl(int fd)
+char	*get_next_line(int fd)
 {
 	static char	buffer[BUFFER_SIZE + 1];
 	char		*line;

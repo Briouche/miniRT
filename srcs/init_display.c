@@ -21,11 +21,16 @@ int	init_display(t_display *display)
 			WIDTH, HEIGHT, "miniRT");
 	if (!display->mlx_win)
 	{
+		mlx_destroy_display(display->mlx_ptr);
+		free(display->mlx_ptr);
 		return (1);
 	}
 	display->mlx_img = mlx_new_image(display->mlx_ptr, WIDTH, HEIGHT);
 	if (!display->mlx_img)
 	{
+		mlx_destroy_window(display->mlx_ptr, display->mlx_win);
+		mlx_destroy_display(display->mlx_ptr);
+		free(display->mlx_ptr);
 		return (1);
 	}
 	display->addr = mlx_get_data_addr(display->mlx_img,
