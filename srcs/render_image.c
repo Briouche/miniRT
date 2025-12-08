@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_image.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
+/*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 13:31:03 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/12/02 16:33:01 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/12/05 17:22:45 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,9 @@ static int	cast_ray(int *coord, t_scene *scene)
 	if (hit.t == -1 || hit.t == INFINITY)
 		color = (t_vector){0, 0, 0, 0};
 	else
-		color = hit.obj->color;
-	// color = compute_color(scene, &hit, &ray);
+		color = compute_color(scene, &hit, &ray);
+	if (coord[0] == 100 || coord[1] == 100)
+		color = (t_vector){255,0,0,0};
 	return (ft_vtoi(&color));
 }
 

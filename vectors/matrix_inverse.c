@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   matrix_inverse.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
+/*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 14:15:23 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/11/10 11:32:41 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/12/05 18:28:50 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

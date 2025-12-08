@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   precompute_transforms.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
+/*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 13:00:55 by brcoppie          #+#    #+#             */
-/*   Updated: 2025/12/02 16:52:12 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/12/08 17:28:31 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,16 @@ static void	transf_matrix_pl(t_object *pl)
 
 	n = pl->obj.pl.v;
 	if (fabs(n.y) > 0.99)
-		u = (t_vector){.x = 1, .y = 0, .z = 0, .w = 0};
+		u = (t_vector){.x = 0, .y = 0, .z = 1, .w = 0};
 	else
 		u = (t_vector){.x = 0, .y = 1, .z = 0, .w = 0};
 	u = op_cross(&u, &n);
 	u = op_normalise(&u);
-	v = op_cross(&u, &n);
+	v = op_cross(&n, &u);
 	v = op_normalise(&v);
 	pl->tr_matrix.c1 = u;
-	pl->tr_matrix.c2 = v;
-	pl->tr_matrix.c3 = n;
+	pl->tr_matrix.c2 = n;
+	pl->tr_matrix.c3 = v;
 	pl->tr_matrix.c4 = pl->obj.pl.p;
 	pl->inv_tr = matrix_inverse(&pl->tr_matrix);
 }
@@ -56,7 +56,7 @@ static void	transf_matrix_cy(t_object *cy)
 		u = (t_vector){.x = 1, .y = 0, .z = 0, .w = 0};
 	else
 		u = (t_vector){.x = 0, .y = 1, .z = 0, .w = 0};
-	u = op_cross(&u, &n);
+	u = op_cross(&n, &u);
 	u = op_normalise(&u);
 	v = op_cross(&u, &n);
 	v = op_normalise(&v);

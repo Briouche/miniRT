@@ -51,6 +51,7 @@ SRCS+= $(addprefix $(UTILS_DIR)/, $(UTILS_SRCS))
 
 BOOK_CHAPTERS_SRCS= 0.display_chapters.c 1.cannon_ball.c 2.draw_clock.c 3.chapter5.c
 BOOK_CHATPERS_DIR= book_chapters
+#SRCS+= $(addprefix $(BOOK_CHATPERS_DIR)/, $(BOOK_CHAPTERS_SRCS))
 
 
 SRCS +=	shading/shading.c shading/normal_at.c shading/compute_color.c

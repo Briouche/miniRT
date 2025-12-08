@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersect_pl.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
+/*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/05 10:22:00 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/12/05 10:22:01 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/12/08 17:13:17 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	intersect_pl(t_object *pl, t_ray *ray, t_inter_values *obj_inter)
 	d = op_minus(&(t_vector){0, 0, 0, 1}, &r.origin);
 	a = op_dot(&(t_vector){0, 1, 0, 0}, &d);
 	b = op_dot(&(t_vector){0, 1, 0, 0}, &r.direction);
-	if (b == 0)
+	if (fabs(b) < 0.00001)
 		return (0);
 	t = a / b;
 	obj_inter->t1 = t;

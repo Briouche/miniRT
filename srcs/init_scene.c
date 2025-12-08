@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_scene.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
+/*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/05 10:28:20 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/12/05 10:28:21 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/12/05 17:42:18 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ static void	init_cam(t_camera *cam)
 	up = op_cross(&right, &cam->orientation);
 	up = op_normalise(&up);
 	cam->up = up;
-	cam->tan_fov = tan((cam->fov * PI / 180) / 2);
+	cam->tan2_fov = tan((cam->fov * PI / 180) / 2);
 	aspect_ratio = WIDTH / HEIGHT;
-	cam->tan2_fov = cam->tan_fov / aspect_ratio;
+	cam->tan_fov = cam->tan2_fov * aspect_ratio;
 }
 
 static int	init_intersections(t_inter **intersections, int size)
