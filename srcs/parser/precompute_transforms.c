@@ -6,7 +6,7 @@
 /*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 13:00:55 by brcoppie          #+#    #+#             */
-/*   Updated: 2025/12/08 17:28:31 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/12/09 14:34:50 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,19 +53,19 @@ static void	transf_matrix_cy(t_object *cy)
 
 	n = cy->obj.cy.v;
 	if (fabs(n.y) > 0.99)
-		u = (t_vector){.x = 1, .y = 0, .z = 0, .w = 0};
+		u = (t_vector){.x = 0, .y = 0, .z = 1, .w = 0};
 	else
 		u = (t_vector){.x = 0, .y = 1, .z = 0, .w = 0};
-	u = op_cross(&n, &u);
+	u = op_cross(&u, &n);
 	u = op_normalise(&u);
-	v = op_cross(&u, &n);
+	v = op_cross(&n, &u);
 	v = op_normalise(&v);
 	u = op_multi_scalar(&u, cy->obj.cy.radius);
-	v = op_multi_scalar(&v, cy->obj.cy.height);
-	n = op_multi_scalar(&n, cy->obj.cy.radius);
+	v = op_multi_scalar(&v, cy->obj.cy.radius);
+	n = op_multi_scalar(&n, cy->obj.cy.height);
 	cy->tr_matrix.c1 = u;
-	cy->tr_matrix.c2 = v;
-	cy->tr_matrix.c3 = n;
+	cy->tr_matrix.c2 = n;
+	cy->tr_matrix.c3 = v;
 	cy->tr_matrix.c4 = cy->obj.cy.c;
 	cy->inv_tr = matrix_inverse(&cy->tr_matrix);
 }
