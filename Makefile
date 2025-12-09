@@ -1,113 +1,82 @@
 NAME = miniRT
 
+CC = cc
+CFLAGS = -Wall -Werror -Wextra
+
 LIBFT = libft.a
 LIBFT_DIR = libft
 
 VECTORS = vectors.a
 VECTORS_DIR = vectors
 
-MLX_DIR_LINUX = ./minilibx-linux
-MLX_LIB_LINUX = libmlx_Linux.a
-
-MLX_DIR_MAC = ./minilibx-mac
-MLX_LIB_MAC = libmlx.dylib
-
-LD_FLAGS_MAC = $(MLX_LIB_MAC) -framework Metal -framework MetalKit -framework Cocoa
-LD_FLAGS_LINUX = -L$(MLX_DIR_LINUX) $(MLX_LIB_LINUX) -lXext -lX11 -lz -lbsd
-
-OS:= $(shell uname -s)
-ifeq ($(OS), Linux)
-	MLX_DIR= $(MLX_DIR_LINUX)
-	MLX_LIB= $(MLX_LIB_LINUX)
-	LD_FLAGS= $(LD_FLAGS_LINUX)
-else
-	MLX_DIR= $(MLX_DIR_MAC)
-	MLX_LIB= $(MLX_LIB_MAC)
-	LD_FLAGS= $(LD_FLAGS_MAC)
-endif
-
-CC = cc
-CFLAGS = -g -Wall -Werror -Wextra -I$(MLX_DIR) -Iincludes
+MLX = libmlx.a
+MLX_DIR = minilibx-linux
+MLX_FLAGS = -L$(MLX_DIR) -lmlx -lXext -lX11 -lz -lm
 
 SRC_DIR = srcs
 OBJ_DIR = objs
 DEPS_DIR = includes
+
+DEPS = display.h miniRT.h parser.h structures.h utils.h
+DEPS := $(addprefix $(DEPS_DIR)/, $(DEPS))
+
 
 SRCS =	main.c \
 		init_display.c render_image.c display_loop.c \
 		init_scene.c find_hit.c generate_cam_ray.c
 
 
-PARSER_SRCS= check_file.c parse_file.c parse_lightning.c parse_scene.c parse_shapes.c \
-parse_utils.c precompute_transforms.c print_scene.c
-PARSER_DIR= parser
+PARSER_SRCS=	check_file.c parse_file.c parse_lightning.c parse_scene.c parse_shapes.c \
+				parse_utils.c precompute_transforms.c print_scene.c
+PARSER_DIR=	parser
 SRCS+= $(addprefix $(PARSER_DIR)/, $(PARSER_SRCS))
 
 
-UTILS_SRCS= intersect_cy.c intersect_pl.c intersect_sp.c position.c ray.c transform_ray.c
-UTILS_DIR= utils
+UTILS_SRCS=	intersect_cy.c intersect_pl.c intersect_sp.c position.c ray.c transform_ray.c
+UTILS_DIR=	utils
 SRCS+= $(addprefix $(UTILS_DIR)/, $(UTILS_SRCS))
 
 
-BOOK_CHAPTERS_SRCS= 0.display_chapters.c 1.cannon_ball.c 2.draw_clock.c 3.chapter5.c
-BOOK_CHATPERS_DIR= book_chapters
-#SRCS+= $(addprefix $(BOOK_CHATPERS_DIR)/, $(BOOK_CHAPTERS_SRCS))
+SHADING_SRCS =	shading.c normal_at.c compute_color.c
+SHADING_DIR= shading
+SRCS+= $(addprefix $(SHADING_DIR)/, $(SHADING_SRCS))
 
 
-SRCS +=	shading/shading.c shading/normal_at.c shading/compute_color.c
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 
-DEPS = miniRT.h structures.h
-DEPS := $(addprefix $(DEPS_DIR)/, $(DEPS))
+RM = rm -rf
 
-RM = rm -f
 
 all: $(NAME)
 
-
-$(NAME): $(OBJS) $(LIBFT) $(VECTORS) $(MLX_LIB)
-	$(CC) $(OBJS) $(LIBFT_DIR)/$(LIBFT) $(VECTORS_DIR)/$(VECTORS) $(LD_FLAGS) -lm -o $(NAME)
+$(NAME): $(OBJS) $(LIBFT_DIR)/$(LIBFT) $(VECTORS_DIR)/$(VECTORS) $(MLX_DIR)/$(MLX)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFT_DIR)/$(LIBFT) $(VECTORS_DIR)/$(VECTORS) $(MLX_FLAGS) -o $(NAME)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(DEPS)
-	@mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) -c $< -o $@
+		@mkdir -p $(dir $@)
+		$(CC) $(CFLAGS) -I$(DEPS_DIR) -I$(MLX_DIR) -c $< -o $@
 
+$(LIBFT_DIR)/$(LIBFT):
+	make -C $(LIBFT_DIR) > /dev/null
 
-$(LIBFT):
-	cd $(LIBFT_DIR) ; make > /dev/null
+$(VECTORS_DIR)/$(VECTORS):
+	make -C $(VECTORS_DIR) > /dev/null
 
-$(VECTORS):
-	cd $(VECTORS_DIR) ; make > /dev/null
-
-$(MLX_LIB):
-ifeq ($(OS), Linux)
-	$(MAKE) libx_linux
-else
-	$(MAKE) libx_mac
-endif
-
-libx_linux:
-	cd $(MLX_DIR_LINUX) ; make > /dev/null 2>&1
-	cp $(MLX_DIR_LINUX)/$(MLX_LIB_LINUX) .
-	cd $(MLX_DIR_LINUX) ; make clean > /dev/null
-
-libx_mac:
-	cd $(MLX_DIR_MAC) ; make > /dev/null 2>&1
-	cp $(MLX_DIR_MAC)/$(MLX_LIB_MAC) .
-	cd $(MLX_DIR_MAC) ; make fclean > /dev/null
-
+$(MLX_DIR)/$(MLX):
+	make -C $(MLX_DIR) > /dev/null 2>&1
 
 clean:
-	$(RM) -r $(OBJ_DIR)
-	cd $(LIBFT_DIR) ; make clean > /dev/null
-	cd $(VECTORS_DIR) ; make clean > /dev/null
+	$(RM) $(OBJ_DIR)
+	make -C $(LIBFT_DIR) clean > /dev/null
+	make -C $(VECTORS_DIR) clean > /dev/null
+	make -C $(MLX_DIR) clean > /dev/null
 
 fclean: clean
 	$(RM) $(NAME)
-	$(RM) $(MLX_LIB)
-	cd $(LIBFT_DIR) ; make fclean > /dev/null
-	cd $(VECTORS_DIR) ; make fclean > /dev/null
+	make -C $(LIBFT_DIR) fclean > /dev/null
+	make -C $(VECTORS_DIR) fclean > /dev/null
+	make -C $(MLX_DIR) clean > /dev/null
 
 re: fclean all
 
-.PHONY: all clean libx_linux libx_mac fclean re
+.PHONY: all clean fclean re

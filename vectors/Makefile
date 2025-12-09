@@ -6,12 +6,7 @@ TESTS_DIR= tests
 CC= cc
 CFLAGS= -Wall -Werror -Wextra
 
-UNAME := $(shell uname)
-ifeq ($(UNAME), Linux)
-	LDFLAGS = -lm
-else
-	LDFLAGS =
-endif
+LDFLAGS = -lm
 
 SRCS=	is_equal.c is_point.c is_vector.c is_equal_matrix.c \
 		op_cross.c op_dot.c op_magnitude.c op_minus.c op_multi_scalar.c \
@@ -22,7 +17,7 @@ SRCS=	is_equal.c is_point.c is_vector.c is_equal_matrix.c \
 		matrix_cofactor.c matrix_det_d2.c matrix_determinant.c matrix_minor.c \
 		matrix_inverse.c matrix_reduce.c matrix_transpose.c matrix_vector_multi.c \
 		trsfrm_rotate.c trsfrm_scale.c trsfrm_shear.c trsfrm_translate.c \
-		prints.c 
+		prints.c
 OBJ_DIR= objs
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 
@@ -47,7 +42,6 @@ test: $(NAME)
 clean:
 	$(RM) -r $(OBJ_DIR)
 	cd $(TESTS_DIR) ; make clean
-	
 
 fclean: clean
 	$(RM) $(NAME)
