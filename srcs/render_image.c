@@ -6,11 +6,12 @@
 /*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 13:31:03 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/12/05 17:22:45 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/12/09 19:03:38 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
+
 
 static int	ft_vtoi(t_vector *color)
 {
@@ -26,11 +27,9 @@ static int	cast_ray(int *coord, t_scene *scene)
 	ray = generate_cam_ray(coord[0], coord[1], &scene->cam);
 	hit = find_hit(scene, &ray);
 	if (hit.t == -1 || hit.t == INFINITY)
-		color = (t_vector){0, 0, 0, 0};
+		return (0);
 	else
 		color = compute_color(scene, &hit, &ray);
-	if (coord[0] == 100 || coord[1] == 100)
-		color = (t_vector){255,0,0,0};
 	return (ft_vtoi(&color));
 }
 

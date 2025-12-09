@@ -6,7 +6,7 @@
 /*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 11:20:46 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/12/03 13:58:19 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/12/09 18:30:52 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	display_loop(t_display *display)
 {
 	mlx_put_image_to_window(display->mlx_ptr, display->mlx_win,
 		display->mlx_img, 0, 0);
-	// exit_program(display);
 	mlx_key_hook(display->mlx_win, handle_key, display);
 	mlx_hook(display->mlx_win, DestroyNotify,
 		StructureNotifyMask, exit_program, display);

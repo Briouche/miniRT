@@ -37,7 +37,7 @@ UTILS_DIR=	utils
 SRCS+= $(addprefix $(UTILS_DIR)/, $(UTILS_SRCS))
 
 
-SHADING_SRCS =	shading.c normal_at.c compute_color.c
+SHADING_SRCS =	compute_color.c normal_at.c shading.c shadows.c
 SHADING_DIR= shading
 SRCS+= $(addprefix $(SHADING_DIR)/, $(SHADING_SRCS))
 
@@ -75,7 +75,6 @@ fclean: clean
 	$(RM) $(NAME)
 	make -C $(LIBFT_DIR) fclean > /dev/null
 	make -C $(VECTORS_DIR) fclean > /dev/null
-	make -C $(MLX_DIR) clean > /dev/null
 
 re: fclean all
 

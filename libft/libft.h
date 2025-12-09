@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
+/*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 16:22:35 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/12/02 16:44:27 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/12/09 18:30:03 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ long	ft_atol(const char *str);
 int		parse_sign(const char **s);
 void	process_integer(const char c, double *res, int *state);
 void	process_fraction(const char c, double *frac_part,
-		double *frac_div, int *state);
+			double *frac_div, int *state);
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);

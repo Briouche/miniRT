@@ -6,7 +6,7 @@
 /*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 15:46:38 by brcoppie          #+#    #+#             */
-/*   Updated: 2025/12/06 17:54:20 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/12/09 18:31:10 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ static t_vector	normal_on_cylinder(t_object *obj, t_vector *p, t_ray *ray)
 
 static t_vector	normal_on_plane(t_object *obj, t_ray *ray)
 {
-	//(void)ray;
 	if (op_dot(&ray->direction, &obj->obj.pl.v) > 0)
 		return (op_multi_scalar(&obj->obj.pl.v, -1));
 	return (obj->obj.pl.v);

@@ -6,7 +6,7 @@
 /*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 11:09:02 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/12/03 13:49:50 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/12/09 18:50:12 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include "../libft/libft.h"
 
 //shading
-
 typedef struct s_light_info
 {
 	double		reflect_dot_eye;

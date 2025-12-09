@@ -6,7 +6,7 @@
 /*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 12:28:49 by brcoppie          #+#    #+#             */
-/*   Updated: 2025/12/06 15:41:16 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/12/09 18:34:13 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static t_vector	get_specular(t_scene *scene, t_light_info *light_info, \
 	return (specular);
 }
 
-static t_vector	get_diffuse(t_light_info *light_info, \
+static t_vector	get_diffuse(t_light_info *light_info,
 		t_vector *normalv, t_scene *scene)
 {
 	t_vector	diffuse;
@@ -51,13 +51,14 @@ static t_vector	get_diffuse(t_light_info *light_info, \
 	light_info->light_dot_normal = op_dot(&light_info->lightv, normalv);
 	if (light_info->light_dot_normal >= 0)
 	{
-		diffuse = multi_scalar_colors(&light_info->effective_color, \
+		diffuse = multi_scalar_colors(&light_info->effective_color,
 				light_info->light_dot_normal * scene->light.ratio);
 	}
 	return (diffuse);
 }
 
-t_vector	compute_final_color(t_vector *diffuse, t_vector *ambient, t_vector *specular)
+t_vector	compute_final_color(t_vector *diffuse,
+		t_vector *ambient, t_vector *specular)
 {
 	t_vector	final_color;
 
@@ -69,26 +70,27 @@ t_vector	compute_final_color(t_vector *diffuse, t_vector *ambient, t_vector *spe
 	return (final_color);
 }
 
-t_vector	lighting(t_scene *scene, t_material *mat, \
-					t_vector *pos, t_vector *normalv)
+t_vector	lighting(t_scene *scene, t_inter *hit, t_vector *normalv)
 {
 	t_vector		ambient;
 	t_vector		diffuse;
 	t_vector		specular;
 	t_light_info	light_info;
 
-	light_info.effective_color = multi_colors(&mat->color, &scene->light.color);
-	light_info.lightv = op_minus(&scene->light.coord, pos);
+	light_info.effective_color = multi_colors(&hit->obj->mat.color,
+			&scene->light.color);
+	light_info.lightv = op_minus(&scene->light.coord, &hit->pos);
 	light_info.lightv = op_normalise(&light_info.lightv);
-	light_info.eyev = op_minus(&scene->cam.viewpoint, pos);
+	light_info.eyev = op_minus(&scene->cam.viewpoint, &hit->pos);
 	light_info.eyev = op_normalise(&light_info.eyev);
-	ambient = multi_colors(&mat->color, &scene->ambient.color);
-	ambient = multi_scalar_colors(&ambient, mat->ambient);
-	diffuse = get_diffuse(&light_info, normalv, scene);
-	specular = get_specular(scene, &light_info, mat, normalv);
-	//to test the different components one by one
-	//ft_memset(&diffuse, 0, sizeof(t_vector));
-	//ft_memset(&ambient, 0, sizeof(t_vector));
-	//ft_memset(&specular, 0, sizeof(t_vector));
+	ambient = multi_colors(&hit->obj->mat.color, &scene->ambient.color);
+	ambient = multi_scalar_colors(&ambient, hit->obj->mat.ambient);
+	ft_memset(&diffuse, 0, sizeof(t_vector));
+	ft_memset(&specular, 0, sizeof(t_vector));
+	if (!hit->in_shadow)
+	{
+		diffuse = get_diffuse(&light_info, normalv, scene);
+		specular = get_specular(scene, &light_info, &hit->obj->mat, normalv);
+	}
 	return (compute_final_color(&diffuse, &ambient, &specular));
 }
