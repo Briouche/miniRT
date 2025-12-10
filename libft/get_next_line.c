@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brcoppie <fkrakow@student.42belgium.be     +#+  +:+       +#+        */
+/*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 14:38:21 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/12/03 14:38:21 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/12/10 12:50:28 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ static char	*append_to_line(char *line, char *to_append, int should_free)
 		line = to_append;
 	else
 		line = ft_strdup(to_append);
+	
 	return (line);
 }
 
@@ -71,9 +72,12 @@ static char	*find_new_line(int fd, char *buffer, char *line, char *new_line)
 		if (new_line)
 			return (process_new_line(line, buffer, new_line));
 		line = append_to_line(line, buffer, 0);
+		buffer[0] = '\0';
 	}
 	return (line);
 }
+
+#include <stdio.h>
 
 char	*get_next_line(int fd)
 {
