@@ -20,12 +20,21 @@ static t_vector	normal_on_cylinder(t_object *obj, t_vector *p, t_ray *ray)
 	t_vector	normal;
 	t_vector	c_to_p;
 	t_vector	axis_component;
+	double		dist_sq;
 	double		proj_on_axis;
 
 	c_to_p = op_minus(p, &obj->obj.cy.c);
 	proj_on_axis = op_dot(&c_to_p, &obj->obj.cy.v);
-	axis_component = op_multi_scalar(&obj->obj.cy.v, proj_on_axis);
-	normal = op_minus(&c_to_p, &axis_component);
+	dist_sq = op_dot(&c_to_p, &c_to_p) - (proj_on_axis * proj_on_axis);
+	if (proj_on_axis >= (obj->obj.cy.height / 2.0 - 1e-4) && dist_sq < 1.0 + 1e-4)
+		return (obj->obj.cy.v);
+	else if (proj_on_axis <= (-obj->obj.cy.height / 2.0 + 1e-4) && dist_sq < 1.0 + 1e-4)
+		return (op_multi_scalar(&obj->obj.cy.v, -1));
+	else
+	{
+		axis_component = op_multi_scalar(&obj->obj.cy.v, proj_on_axis);
+		normal = op_minus(&c_to_p, &axis_component);
+	}
 	normal = op_normalise(&normal);
 	if (op_dot(&normal, &ray->direction) > 0)
 		normal = op_multi_scalar(&normal, -1);

@@ -78,5 +78,4 @@ int	parse_scene(t_scene *scene, const char *filename)
 	}
 	close(fd);
 	return (0);
-	(void)fd;
 }

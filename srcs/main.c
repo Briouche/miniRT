@@ -29,7 +29,7 @@ int	main(int argc, char *const argv[])
 		free(scene.objects);
 		return (1);
 	}
-	if (render_image(&display, &scene))
+	if (scene.size > 0 && render_image(&display, &scene))
 	{
 		free(scene.objects);
 		exit_program(&display);

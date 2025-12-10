@@ -28,7 +28,7 @@ static t_vector	get_specular(t_scene *scene, t_light_info *light_info, \
 	t_vector	inverse_lightv;
 	double		fac_shininess;
 
-	ft_memset(&specular, 0, sizeof(t_vector));
+	specular = (t_vector){0, 0, 0, 0};
 	inverse_lightv = op_multi_scalar(&light_info->lightv, -1);
 	reflectv = reflect(&inverse_lightv, normalv);
 	reflectv = op_normalise(&reflectv);
