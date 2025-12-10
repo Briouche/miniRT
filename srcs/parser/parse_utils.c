@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
+/*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 18:16:12 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/12/02 16:49:17 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/12/10 13:31:45 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	parse_color(const char *str, t_vector *colors)
 	{
 		ft_free_array((void **)tokens);
 		return ((input_error("colors need to have three \
-			values between [0,255]\n", NULL)));
+values between [0,255]\n", NULL)));
 	}
 	colors->x = ft_atoi(tokens[0]);
 	colors->y = ft_atoi(tokens[1]);
@@ -34,7 +34,7 @@ int	parse_color(const char *str, t_vector *colors)
 		|| colors->y < 0 || colors->y > 255 \
 		||colors->z < 0 || colors->z > 255)
 		return (input_error("colors need to have three \
-			values between [0,255]\n", NULL));
+values between [0,255]\n", NULL));
 	return (0);
 }
 
@@ -67,8 +67,8 @@ int	parse_vector(const char *str, t_vector *v)
 	tokens = ft_split(str, ',');
 	if (!tokens)
 		return (0);
-	if (!tokens[0] || !tokens[1] || !tokens[2] || tokens[3] || \
-		!tokens[0][0] || !tokens[1][0] || !tokens[2][0])
+	if (!tokens[0] || !tokens[1] || !tokens[2] || tokens[3]
+		|| !tokens[0][0] || !tokens[1][0] || !tokens[2][0])
 	{
 		ft_free_array((void **)tokens);
 		return (input_error("vectors need three coordinates\n", NULL));

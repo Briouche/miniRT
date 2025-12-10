@@ -6,7 +6,7 @@
 /*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 18:10:11 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/12/03 13:58:27 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/12/10 13:32:57 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	parse_camera(t_scene *scene, char *const token[])
 	if (parse_point(token[1], &scene->cam.viewpoint))
 		return (input_error("invalid viewpoint\n", NULL));
 	if (parse_vector(token[2], &scene->cam.orientation)
-		|| fabs(op_magnitude(&scene->cam.orientation) - 1) > 0.001)
+		|| fabs(op_magnitude(&scene->cam.orientation) - 1) > EPSILON)
 		return (input_error("invalid camera orientation, \
 not a normalised vector\n", NULL));
 	scene->cam.fov = ft_atod(token[3]);

@@ -6,7 +6,7 @@
 /*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 15:46:38 by brcoppie          #+#    #+#             */
-/*   Updated: 2025/12/09 18:31:10 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/12/10 13:34:44 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,11 @@ static t_vector	normal_on_cylinder(t_object *obj, t_vector *p, t_ray *ray)
 	c_to_p = op_minus(p, &obj->obj.cy.c);
 	proj_on_axis = op_dot(&c_to_p, &obj->obj.cy.v);
 	dist_sq = op_dot(&c_to_p, &c_to_p) - (proj_on_axis * proj_on_axis);
-	if (proj_on_axis >= (obj->obj.cy.height / 2.0 - 1e-4) && dist_sq < 1.0 + 1e-4)
+	if (proj_on_axis >= (obj->obj.cy.height / 2.0 - EPSILON)
+		&& dist_sq < 1.0 + EPSILON)
 		return (obj->obj.cy.v);
-	else if (proj_on_axis <= (-obj->obj.cy.height / 2.0 + 1e-4) && dist_sq < 1.0 + 1e-4)
+	else if (proj_on_axis <= (-obj->obj.cy.height / 2.0 + EPSILON)
+		&& dist_sq < 1.0 + EPSILON)
 		return (op_multi_scalar(&obj->obj.cy.v, -1));
 	else
 	{

@@ -32,7 +32,7 @@ PARSER_DIR=	parser
 SRCS+= $(addprefix $(PARSER_DIR)/, $(PARSER_SRCS))
 
 
-UTILS_SRCS=	intersect_cy.c intersect_pl.c intersect_sp.c position.c ray.c transform_ray.c
+UTILS_SRCS=	intersect_cy_caps.c intersect_cy.c intersect_pl.c intersect_sp.c position.c ray.c transform_ray.c
 UTILS_DIR=	utils
 SRCS+= $(addprefix $(UTILS_DIR)/, $(UTILS_SRCS))
 

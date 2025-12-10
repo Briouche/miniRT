@@ -6,7 +6,7 @@
 /*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 14:38:21 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/12/10 12:50:28 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/12/10 13:27:50 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ static char	*append_to_line(char *line, char *to_append, int should_free)
 		line = to_append;
 	else
 		line = ft_strdup(to_append);
-	
 	return (line);
 }
 
@@ -76,8 +75,6 @@ static char	*find_new_line(int fd, char *buffer, char *line, char *new_line)
 	}
 	return (line);
 }
-
-#include <stdio.h>
 
 char	*get_next_line(int fd)
 {

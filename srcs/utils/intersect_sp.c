@@ -6,7 +6,7 @@
 /*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/05 10:21:45 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/12/06 15:46:41 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/12/10 13:22:41 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	intersect_sp(t_object *sp, t_ray *ray, t_inter_values *obj_inter)
 	b = 2 * op_dot(&(r.direction), &d);
 	c = op_dot(&d, &d) - 1;
 	c = b * b - 4 * a * c;
-	if (fabs(c) < 0.001)
+	if (fabs(c) < EPSILON)
 		return (0);
 	c = sqrt(c);
 	a *= 2;

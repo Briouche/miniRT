@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_vector.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
+/*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 09:09:39 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/11/11 14:17:05 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/12/10 13:20:36 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 int	is_vector(const t_vector *v)
 {
-	return (fabs(v->w) < 0.000001);
+	return (fabs(v->w) < EPSILON);
 }

@@ -6,21 +6,11 @@
 /*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 19:11:03 by brcoppie          #+#    #+#             */
-/*   Updated: 2025/12/09 15:44:25 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/12/10 13:34:16 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <utils.h>
-
-static int	check_cap(t_ray *r, double t)
-{
-	double	x;
-	double	z;
-
-	x = r->origin.x + t * r->direction.x;
-	z = r->origin.z + t * r->direction.z;
-	return ((x * x + z * z) <= 1.0);
-}
 
 // find intersections of a cylinder and a ray
 //	with
@@ -32,7 +22,7 @@ static int	check_cap(t_ray *r, double t)
 //			c = ∥r.o⊥​∥² - r²
 //		discr = b² - 4ac
 //use unit_cylinder with cy.c (0,0,0,1), cy.v (0,1,0,0), radius 1 and height 1
-static double	discriminant_cy(t_ray *r, double *a, double *b)
+static double	discriminant_cy(t_ray *r, double *a)
 {
 	double		c;
 	t_vector	rv_comp;
@@ -42,24 +32,24 @@ static double	discriminant_cy(t_ray *r, double *a, double *b)
 	d = op_minus(&r->origin, &(t_vector){0, 0, 0, 1});
 	rv_comp = op_perpendicular_comp(&r->direction, &(t_vector){0, 1, 0, 0});
 	ro_comp = op_perpendicular_comp(&d, &(t_vector){0, 1, 0, 0});
-	(*a) = op_dot(&rv_comp, &rv_comp);
-	(*b) = 2 * op_dot(&rv_comp, &ro_comp);
+	(a[0]) = op_dot(&rv_comp, &rv_comp);
+	(a[1]) = 2 * op_dot(&rv_comp, &ro_comp);
 	c = op_dot(&ro_comp, &ro_comp) - 1;
-	return ((*b) * (*b) - 4 * (*a) * c);
+	return (a[1] * a[1] - 4 * a[0] * c);
 }
 
 // Check if t_val is a valid intersection with the cylinder body bounds
 // and updates the closest intersections in obj_inter.
 static void	update_body_intersections(t_ray *r, t_inter_values *obj_inter,
-		double a_val, double b_val, double discr)
+double *a, double discr)
 {
 	double	t1;
 	double	t2;
 	double	y1;
 	double	y2;
 
-	t1 = (-b_val - discr) / (2 * a_val);
-	t2 = (-b_val + discr) / (2 * a_val);
+	t1 = (-a[1] - discr) / (2 * a[0]);
+	t2 = (-a[1] + discr) / (2 * a[0]);
 	y1 = r->origin.y + t1 * r->direction.y;
 	y2 = r->origin.y + t2 * r->direction.y;
 	if (y1 >= -0.5 && y1 <= 0.5)
@@ -79,44 +69,16 @@ static void	update_body_intersections(t_ray *r, t_inter_values *obj_inter,
 // Find intersections with the cylindrical body (excluding caps)
 static void	intersect_body(t_ray *r, t_inter_values *obj_inter)
 {
-	double	a;
-	double	b;
+	double	a[2];
 	double	discr;
 
-	discr = discriminant_cy(r, &a, &b);
+	discr = discriminant_cy(r, a);
 	if (discr >= 0)
-		update_body_intersections(r, obj_inter, a, b, sqrt(discr));
-}
-
-// Updates the closest intersection in obj_inter
-// if t_cap is closer than t1 or t2
-static void	set_cap_intersection(t_inter_values *obj_inter, double t_cap)
-{
-	if (t_cap < obj_inter->t1)
-	{
-		obj_inter->t2 = obj_inter->t1;
-		obj_inter->t1 = t_cap;
-	}
-	else if (t_cap < obj_inter->t2)
-		obj_inter->t2 = t_cap;
-}
-
-// Find intersections with the cylinder caps (y = 0.5 and y = -0.5 planes)
-static void	intersect_caps(t_ray *r, t_inter_values *obj_inter)
-{
-	double	t_cap;
-
-	if (fabs(r->direction.y) < 1e-6)
-		return ;
-	t_cap = (0.5 - r->origin.y) / r->direction.y;
-	if (check_cap(r, t_cap))
-		set_cap_intersection(obj_inter, t_cap);
-	t_cap = (-0.5 - r->origin.y) / r->direction.y;
-	if (check_cap(r, t_cap))
-		set_cap_intersection(obj_inter, t_cap);
+		update_body_intersections(r, obj_inter, a, sqrt(discr));
 }
 
 // Main intersection function
+// for intersections add: 	intersect_caps(&r, obj_inter);
 int	intersect_cy(t_object *cy, t_ray *ray, t_inter_values *obj_inter)
 {
 	t_ray	r;
@@ -125,6 +87,5 @@ int	intersect_cy(t_object *cy, t_ray *ray, t_inter_values *obj_inter)
 	obj_inter->t1 = INFINITY;
 	obj_inter->t2 = INFINITY;
 	intersect_body(&r, obj_inter);
-	intersect_caps(&r, obj_inter);
 	return (obj_inter->t1 != INFINITY || obj_inter->t2 != INFINITY);
 }

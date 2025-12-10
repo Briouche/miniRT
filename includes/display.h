@@ -6,7 +6,7 @@
 /*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 13:01:26 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/12/10 12:30:00 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/12/10 13:18:39 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@ typedef struct s_display
 	int		size_line;
 	int		endian;
 }	t_display;
-
-void	put_pixel_to_image(t_display *display, int x, int y, t_vector *color);
 
 int		init_display(t_display *display);
 int		render_image(t_display *img, t_scene *scene);

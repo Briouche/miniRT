@@ -6,7 +6,7 @@
 /*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 12:55:12 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/12/09 18:26:48 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/12/10 13:18:22 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,6 @@ t_ray		transform_ray(t_ray *ray, t_matrix *tr_matrix);
 int			intersect_sp(t_object *sp, t_ray *r, t_inter_values *obj_inter);
 int			intersect_pl(t_object *pl, t_ray *r, t_inter_values *obj_inter);
 int			intersect_cy(t_object *cy, t_ray *r, t_inter_values *obj_inter);
+void		intersect_caps(t_ray *r, t_inter_values *obj_inter);
 
 #endif

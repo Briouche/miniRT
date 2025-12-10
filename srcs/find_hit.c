@@ -6,7 +6,7 @@
 /*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 16:40:10 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/12/09 16:39:58 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/12/10 13:22:06 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ t_inter	find_hit(t_scene *scene, t_ray *ray)
 	hit = (t_inter){.t = INFINITY};
 	n = -1;
 	while (++n < nbr_hits)
-		if (inters[n].t < hit.t && inters[n].t > 0.00001)
+		if (inters[n].t < hit.t && inters[n].t > EPSILON)
 			hit = inters[n];
 	return (hit);
 }

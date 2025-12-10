@@ -6,12 +6,11 @@
 /*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 13:31:03 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/12/09 19:03:38 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/12/10 13:28:08 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
-
 
 static int	ft_vtoi(t_vector *color)
 {

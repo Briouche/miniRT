@@ -6,7 +6,7 @@
 /*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 12:28:49 by brcoppie          #+#    #+#             */
-/*   Updated: 2025/12/09 18:34:13 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/12/10 13:06:55 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static t_vector	get_diffuse(t_light_info *light_info,
 {
 	t_vector	diffuse;
 
-	ft_memset(&diffuse, 0, sizeof(t_vector));
+	diffuse = (t_vector){0, 0, 0, 0};
 	light_info->light_dot_normal = op_dot(&light_info->lightv, normalv);
 	if (light_info->light_dot_normal >= 0)
 	{

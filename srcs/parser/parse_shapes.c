@@ -6,7 +6,7 @@
 /*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 10:50:13 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/12/09 14:30:05 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/12/10 13:32:19 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	parse_plane(t_obj_list **obj_list, int *size, char *const token[])
 	if (parse_point(token[1], &new_obj->obj.pl.p))
 		return (input_error("invalid plane point\n", new_obj));
 	if (parse_vector(token[2], &new_obj->obj.pl.v)
-		|| fabs(op_magnitude(&new_obj->obj.pl.v) - 1) > 0.001)
+		|| fabs(op_magnitude(&new_obj->obj.pl.v) - 1) > EPSILON)
 		return (input_error("invalid normal vector, needs to be normalised\n",
 				new_obj));
 	if (parse_color(token[3], &new_obj->color))
@@ -87,7 +87,7 @@ t_object **new_obj)
 	if (parse_point(token[1], &(*new_obj)->obj.cy.c))
 		return (input_error("invalid cylinder center point\n", *new_obj));
 	if (parse_vector(token[2], &(*new_obj)->obj.cy.v)
-		|| fabs(op_magnitude(&(*new_obj)->obj.cy.v) - 1) > 0.001)
+		|| fabs(op_magnitude(&(*new_obj)->obj.cy.v) - 1) > EPSILON)
 		return (input_error("invalid cylinder axis vector, needs \
 			to be normalised\n", *new_obj));
 	return (0);

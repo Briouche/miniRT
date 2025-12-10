@@ -32,12 +32,7 @@ $(NAME): $(OBJS)
 	$(AR) $@ $(OBJS)
 
 $(OBJ_DIR)/%.o: %.c $(DEPS)
-	@mkdir -p $(dir $@)
-	$(CC) -c $< -o $@ $(CFLAGS)
-
-test: $(NAME)
-	cd $(TESTS_DIR) ; make
-	./$(TESTS_DIR)/$(TESTS_BIN)
+	@mkdir -p $(dir $@)	intersect_caps(&r, obj_inter);
 
 clean:
 	$(RM) -r $(OBJ_DIR)

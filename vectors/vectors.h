@@ -6,7 +6,7 @@
 /*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 09:04:26 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/11/17 17:10:06 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/12/10 13:20:06 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include <unistd.h>
 # include <math.h>
+
+# define EPSILON 0.001
 
 typedef struct s_vector
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_point.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkrakow <fkrakow@student.42belgium.be>     +#+  +:+       +#+        */
+/*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 09:03:34 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/11/11 14:17:11 by fkrakow          ###   ########.fr       */
+/*   Updated: 2025/12/10 13:20:32 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 int	is_point(const t_vector *v)
 {
-	return (fabs(v->w - 1) < 0.000001);
+	return (fabs(v->w - 1) < EPSILON);
 }
