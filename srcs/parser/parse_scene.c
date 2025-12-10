@@ -6,7 +6,7 @@
 /*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 12:52:56 by brcoppie          #+#    #+#             */
-/*   Updated: 2025/12/09 15:05:44 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/12/10 11:46:54 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,4 @@ int	parse_scene(t_scene *scene, const char *filename)
 	}
 	close(fd);
 	return (0);
-	(void)fd;
 }
