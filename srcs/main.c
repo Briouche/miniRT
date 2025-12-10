@@ -6,7 +6,7 @@
 /*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 14:00:34 by fkrakow           #+#    #+#             */
-/*   Updated: 2025/12/10 11:21:59 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/12/10 13:51:25 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	main(int argc, char *const argv[])
 		free(scene.objects);
 		return (1);
 	}
-	if (scene.size > 0 && render_image(&display, &scene))
+	if (render_image(&display, &scene))
 	{
 		free(scene.objects);
 		exit_program(&display);
