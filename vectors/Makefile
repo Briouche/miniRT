@@ -1,8 +1,5 @@
 NAME= vectors.a
 
-TESTS_BIN= tests_vectors
-TESTS_DIR= tests
-
 CC= cc
 CFLAGS= -Wall -Werror -Wextra
 
@@ -32,16 +29,15 @@ $(NAME): $(OBJS)
 	$(AR) $@ $(OBJS)
 
 $(OBJ_DIR)/%.o: %.c $(DEPS)
-	@mkdir -p $(dir $@)	intersect_caps(&r, obj_inter);
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	$(RM) -r $(OBJ_DIR)
-	cd $(TESTS_DIR) ; make clean
 
 fclean: clean
 	$(RM) $(NAME)
-	cd $(TESTS_DIR) ; make fclean
 
 re: fclean all
 
-.PHONY: all test clean fclean re
+.PHONY: all clean fclean re
