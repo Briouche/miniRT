@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   camera.c                                           :+:      :+:    :+:   */
+/*   generate_cam_ray.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brcoppie <brcoppie@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 15:57:55 by brcoppie          #+#    #+#             */
-/*   Updated: 2025/12/03 13:51:33 by brcoppie         ###   ########.fr       */
+/*   Updated: 2025/12/10 16:49:34 by brcoppie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_ray	generate_cam_ray(int x, int y, t_camera *cam)
 	up = cam->up;
 	fx = (2 * ((x + 0.5) / WIDTH) - 1);
 	fx *= cam->tan_fov;
-	fy = 2 * ((y + 0.5) / HEIGHT) - 1;
+	fy = (2 * ((y + 0.5) / HEIGHT) - 1);
 	fy *= cam->tan2_fov;
 	right = op_multi_scalar(&right, fx);
 	up = op_multi_scalar(&up, fy);
