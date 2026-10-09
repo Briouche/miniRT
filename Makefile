@@ -1,7 +1,7 @@
 NAME = miniRT
 
 CC = cc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -std=gnu17
 
 LIBFT = libft.a
 LIBFT_DIR = libft
@@ -11,7 +11,7 @@ VECTORS_DIR = vectors
 
 MLX = libmlx.a
 MLX_DIR = minilibx-linux
-MLX_FLAGS = -L$(MLX_DIR) -lmlx -lXext -lX11 -lz -lm
+MLX_FLAGS = -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
 
 SRC_DIR = srcs
 OBJ_DIR = objs
@@ -63,7 +63,7 @@ $(VECTORS_DIR)/$(VECTORS):
 	make -C $(VECTORS_DIR) > /dev/null
 
 $(MLX_DIR)/$(MLX):
-	make -C $(MLX_DIR) > /dev/null 2>&1
+	make -C $(MLX_DIR) -f Makefile.mk INC=/usr/include CC="$(CC) -std=gnu17" > /dev/null 2>&1
 
 clean:
 	$(RM) $(OBJ_DIR)
